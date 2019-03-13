@@ -8,18 +8,20 @@ Data Dependencies                 .         .          .          .           . 
 Flow Dependencies                 .         .          .          .           .           .          .
 Initialization                    .         .          .          .           .           .          .
 Non-Aliasing                      .         .          .          .           .           .          .
-Run-time Checks                   .         .          .          .           .           .          .
+Run-time Checks                   1         .          .          .    1 (CVC4)           .          .
 Assertions                        .         .          .          .           .           .          .
-Functional Contracts              6         .          .          .    6 (CVC4)           .          .
+Functional Contracts              7         .          .          .    7 (CVC4)           .          .
 LSP Verification                  .         .          .          .           .           .          .
 ------------------------------------------------------------------------------------------------------
-Total                             6         .          .          .    6 (100%)           .          .
+Total                             8         .          .          .    8 (100%)           .          .
 
 
 Analyzed 1 unit
-in unit submarine, 5 subprograms and packages out of 5 analyzed
+in unit submarine, 7 subprograms and packages out of 7 analyzed
   SubMarine at submarine.ads:1 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
-  SubMarine.closeInnerDoor at submarine.ads:31 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.closeOuterDoor at submarine.ads:45 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.openInnerDoor at submarine.ads:24 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
-  SubMarine.openOuterDoor at submarine.ads:39 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  SubMarine.CheckOxygen at submarine.ads:58 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  SubMarine.closeInnerDoor at submarine.ads:38 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.closeOuterDoor at submarine.ads:51 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.emergancySurface at submarine.ads:62 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  SubMarine.openInnerDoor at submarine.ads:32 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  SubMarine.openOuterDoor at submarine.ads:45 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)

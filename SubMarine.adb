@@ -38,8 +38,6 @@ is
 
    -----------------------------------------------------------------------------
 
-
-
    procedure openOuterDoor is
    begin
 
@@ -71,12 +69,31 @@ is
 
    end closeOuterDoor;
 
+   -----------------------------------------------------------------------------
 
 
+   procedure CheckOxygen is
+   begin
+      if (OxygenLevel <= warningLevel) then
+         null;
+        --initiate warning
+      end if;
+
+      if(OxygenLevel <= EmptyOxygen) then
+         null;
+         -- surface
+      end if;
+
+   end CheckOxygen;
 
 
+   procedure emergancySurface is
+   begin
 
-
+      while CurrentDepth > Depth'First loop
+         CurrentDepth := CurrentDepth - 1;
+      end loop;
+   end emergancySurface;
 
 
 end SubMarine;

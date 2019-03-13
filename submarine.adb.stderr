@@ -1,0 +1,3 @@
+submarine.ads:7:39: binary operator expected
+submarine.ads:7:40: illegal character
+submarine.ads:63:40: missing ","
