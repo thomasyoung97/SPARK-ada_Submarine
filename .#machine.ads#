@@ -1,0 +1,22 @@
+package SubMarine
+with SPARK_Mode
+is
+
+
+   type Depth is range 0..1000;
+   type Oxygen is range 0..1000;
+   type Torpeado_Store is range 0..50;
+
+
+   TorpeadoChamberLoaded : bool := false;
+   outerDoorClosed : bool := true;
+   inerDoorClosed : bool := true;
+
+
+   procedure openInnerDoor with
+     Global => (In_Out => (outerDoorClosed, inerDoorClosed)),
+     Pre => outerDoorClosed = True and then inerDoorClosed = True,
+     Post => inerDoorClosed = False;
+
+
+end SubMarine;

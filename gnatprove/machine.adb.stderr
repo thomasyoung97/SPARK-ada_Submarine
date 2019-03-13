@@ -1,0 +1,2 @@
+machine.adb:1:14: file "submarine.ads" not found
+machine.adb:10:21: missing ";"

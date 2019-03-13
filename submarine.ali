@@ -1,0 +1,48 @@
+V "GNAT Lib v2018"
+A -O2
+A -gnatA
+A -g
+A -gnatc
+A -mtune=generic
+A -march=x86-64
+P NO FX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IMPLEMENTATION_ASPECT_SPECIFICATIONS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U submarine%b		submarine.adb		5a1a3f68 OO PK
+
+U submarine%s		submarine.ads		fb3b04fe EE OO PK
+
+D submarine.ads		20190313151440 fb3b04fe submarine%s
+D submarine.adb		20190313151440 a1213b96 submarine%b
+X 1 submarine.ads
+1K9*SubMarine 52l5 52e14 2|1b14 75l5 75t14
+6I9*Depth<short_integer>
+9I9*Oxygen<short_integer>
+10I9*Torpeado_Store<short_short_integer>
+12E9*OpenClose 12e37 16r20
+12n23*Open{12E9} 27r37 33r36 42r37 47r36 2|9r33 21r31 46r33 52r31
+12n30*closed{12E9} 20r39 21r39 26r36 27r69 34r37 41r36 42r69 48r37 2|31r31
+. 62r31
+13E9*lock 13e35 17r25
+13n18*locked{13E9} 20r66 21r66 35r39 49r38 2|15r38 32r36 63r36
+13n26*unlocked{13E9} 28r38 43r38 2|17r39
+15R9*door 18e14 20r16 21r16
+16e7*open_close{12E9} 20m25 21m25 26r23 27r24 27r56 33r23 34r24 41r23 42r24
+. 42r56 47r23 48r24 2|9r20 21m17 31m17 46r20 52m17 62m17
+17e7*locked_unlocked{13E9} 20m47 21m47 28r20 35r21 43r20 49r20 2|15r20 17m20
+. 32m17 63m17
+20r4*DoorInner{15R9} 25r28 26r13 27r14 28r10 32r27 33r13 34r14 35r11 40r28
+. 42r46 2|15r10 17m10 21m7 31m7 32m7 46r10
+21r4*DoorOuter{15R9} 25r38 27r46 40r38 41r13 42r14 43r10 46r27 47r13 48r14
+. 49r10 2|9r10 52m7 62m7 63m7
+24U14*openInnerDoor 2|6b14 24l8 24t21
+31U15*closeInnerDoor 2|28b14 34l8 34t22 48s10
+39U14*openOuterDoor 2|43b14 55l8 55t21
+45U14*closeOuterDoor 2|11s10 59b14 65l8 65t22
+

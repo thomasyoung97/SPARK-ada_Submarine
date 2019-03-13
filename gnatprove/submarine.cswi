@@ -1,0 +1,9 @@
+20190313151614
+-c
+-x
+ada
+-gnatA
+-g
+-O2
+-gnatc
+-gnates=C:\Users\40201953\Desktop\gnatprove\76ad83bb.tmp

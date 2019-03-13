@@ -1,0 +1,13 @@
+package body SubMarine
+with SPARK_Mode
+is
+
+
+   procedure openInnerDoor is
+   begin
+      inerDoorClosed := False;
+   end openInnerDoor;
+
+
+
+end Submarine;
