@@ -3,6 +3,7 @@ with SPARK_Mode
 is
 
 
+----- DOOR CONTROL --------------------------------------------------
    procedure openInnerDoor is
    begin
 
@@ -33,10 +34,6 @@ is
 
    end closeInnerDoor;
 
-
-
-
-   -----------------------------------------------------------------------------
 
    procedure openOuterDoor is
    begin
@@ -69,31 +66,126 @@ is
 
    end closeOuterDoor;
 
-   -----------------------------------------------------------------------------
+   ---- END DOOR CONTROL -----------------------------------------------------
 
-
+   ----- SYSTEM WARNING CHECKS ---------------------------------------------
    procedure CheckOxygen is
    begin
-      if (OxygenLevel <= warningLevel) then
-         null;
-        --initiate warning
+      if (OxygenLevel <= warningLevel and O2Warning.on_Off = Off) then
+
+         initiateO2Warning;
+
       end if;
 
-      if(OxygenLevel <= EmptyOxygen) then
-         null;
-         -- surface
+      if(OxygenLevel = EmptyOxygen) then
+
+         Surface;
+
       end if;
 
    end CheckOxygen;
 
 
-   procedure emergancySurface is
+   procedure CheckRectorTemp is
+   begin
+      if (currentTemp >= warningTemp and TempWarning.on_Off = Off ) then
+
+         initiateTempWarning;
+
+      end if;
+
+      if(currentTemp >= maxSafeTemp) then
+
+         Surface;
+
+      end if;
+
+   end CheckRectorTemp;
+
+   procedure initiateO2Warning is
+   begin
+      O2Warning.on_Off := On;
+   end initiateO2Warning;
+
+
+   procedure initiateTempWarning is
+   begin
+      TempWarning.on_Off := On;
+   end initiateTempWarning;
+
+   ----- END SYSTEM WARNING CHECKS -------------------------------------------
+
+
+
+   ------- DIVE CONTROL ------------------------------------------------------
+   procedure Surface is
    begin
 
       while CurrentDepth > Depth'First loop
+
          CurrentDepth := CurrentDepth - 1;
+
       end loop;
-   end emergancySurface;
+
+   end Surface;
+
+
+   procedure Dive is
+   begin
+
+      while CurrentDepth < maxDepth loop
+
+         CurrentDepth := CurrentDepth + 1;
+
+      end loop;
+
+   end Dive;
+
+   ---------- END DIVE CONTROL ------------------------------------------------
+
+
+   ---- WEAPON CONTROLS ----------------------------------------------
+   procedure loadTorpeado (A : in out AmmoStore; C : in out chambers)
+   is
+      i : AS_Index := A'First;
+      j : Chambered_index := C'First;
+
+      FirstTorpeadoindex : AS_Index := A'First;
+   begin
+
+      --get index of first torpeado in ammo store.
+      while i < A'Last loop
+         if(A(i) = Loaded) then
+            FirstTorpeadoindex := i;
+         end if;
+      end loop;
+
+
+      -- get first empty chamber, move torpeado
+      --from ammo store to chamber
+      while  j < C'Last loop
+         if (C(j) = Empty) then
+            A(FirstTorpeadoindex) := Empty;
+            C(j) := Loaded;
+         end if;
+      end loop;
+
+   end loadTorpeado;
+
+
+   procedure fireTorpeado (C : in out chambers) is
+      i : Chambered_index := C'First;
+   begin
+
+      while(i < C'Last) loop
+         C(i) := Empty;
+
+
+      end loop;
+
+   end fireTorpeado;
+
+   ---- END WEAPON CONROLS -------------------------------------------
 
 
 end SubMarine;

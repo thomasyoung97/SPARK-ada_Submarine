@@ -1764,7 +1764,7 @@ module Submarine__depth__rep
 
 end
 
-(* Module for axiomatizing type "ToxygenB" defined at submarine.ads:10, created in Gnat2Why.Types.Translate_Type *)
+(* Module for axiomatizing type "ToxygenB" defined at submarine.ads:12, created in Gnat2Why.Types.Translate_Type *)
 module Submarine__ToxygenB
  use import "_gnatprove_standard".Main
  use import "int".Int
@@ -1807,7 +1807,7 @@ module Submarine__ToxygenB
 
 end
 
-(* Module defining to_rep/of_rep for type "ToxygenB" defined at submarine.ads:10, created in Gnat2Why.Types.Translate_Type *)
+(* Module defining to_rep/of_rep for type "ToxygenB" defined at submarine.ads:12, created in Gnat2Why.Types.Translate_Type *)
 module Submarine__ToxygenB__rep
  use        Submarine__ToxygenB
  use import "_gnatprove_standard".Main
@@ -1827,7 +1827,7 @@ module Submarine__ToxygenB__rep
 
 end
 
-(* Module for axiomatizing type "oxygen" defined at submarine.ads:10, created in Gnat2Why.Types.Translate_Type *)
+(* Module for axiomatizing type "oxygen" defined at submarine.ads:12, created in Gnat2Why.Types.Translate_Type *)
 module Submarine__oxygen
  use import "_gnatprove_standard".Main
  use import "int".Int
@@ -1870,7 +1870,7 @@ module Submarine__oxygen
 
 end
 
-(* Module defining to_rep/of_rep for type "oxygen" defined at submarine.ads:10, created in Gnat2Why.Types.Translate_Type *)
+(* Module defining to_rep/of_rep for type "oxygen" defined at submarine.ads:12, created in Gnat2Why.Types.Translate_Type *)
 module Submarine__oxygen__rep
  use        Submarine__oxygen
  use import "_gnatprove_standard".Main
@@ -1890,12 +1890,195 @@ module Submarine__oxygen__rep
 
 end
 
-(* Module for axiomatizing type "Ttorpeado_storeB" defined at submarine.ads:16, created in Gnat2Why.Types.Translate_Type *)
-module Submarine__Ttorpeado_storeB
+(* Module for axiomatizing type "TtemperatureB" defined at submarine.ads:19, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__TtemperatureB
  use import "_gnatprove_standard".Main
  use import "int".Int
 
- type ttorpeado_storeB =
+ type ttemperatureB =
+  < range -32768 32767 >
+ 
+ function first 
+   : int =
+  ( -32768 )
+ 
+ function last 
+   : int =
+  32767
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = ttemperatureB, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type ttemperatureB__ref =
+  { mutable ttemperatureB__content "model_trace:" "name:" : ttemperatureB }
+ 
+ function ttemperatureB__ref___projection 
+   (a : ttemperatureB__ref) : ttemperatureB =
+  a.ttemperatureB__content
+ 
+ meta "model_projection" function ttemperatureB__ref___projection
+ 
+ meta "inline : no" function ttemperatureB__ref___projection
+ 
+ val ttemperatureB__havoc 
+   (x : ttemperatureB__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "TtemperatureB" defined at submarine.ads:19, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__TtemperatureB__rep
+ use        Submarine__TtemperatureB
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Submarine__TtemperatureB.ttemperatureB) : int =
+  (Submarine__TtemperatureB.ttemperatureB'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Submarine__TtemperatureB.ttemperatureB, 
+ predicate in_range = Submarine__TtemperatureB.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "temperature" defined at submarine.ads:19, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__temperature
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type temperature =
+  < range 0 2000 >
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  2000
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = temperature, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type temperature__ref =
+  { mutable temperature__content "model_trace:" "name:" : temperature }
+ 
+ function temperature__ref___projection 
+   (a : temperature__ref) : temperature =
+  a.temperature__content
+ 
+ meta "model_projection" function temperature__ref___projection
+ 
+ meta "inline : no" function temperature__ref___projection
+ 
+ val temperature__havoc 
+   (x : temperature__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "temperature" defined at submarine.ads:19, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__temperature__rep
+ use        Submarine__temperature
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Submarine__temperature.temperature) : int =
+  (Submarine__temperature.temperature'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Submarine__temperature.temperature, 
+ predicate in_range = Submarine__temperature.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "torpeadobay" defined at submarine.ads:25, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__torpeadobay
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type torpeadobay 
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  1
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = torpeadobay, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type torpeadobay__ref =
+  { mutable torpeadobay__content "model_trace:" "name:" : torpeadobay }
+ 
+ function torpeadobay__ref___projection 
+   (a : torpeadobay__ref) : torpeadobay =
+  a.torpeadobay__content
+ 
+ meta "model_projection" function torpeadobay__ref___projection
+ 
+ meta "inline : no" function torpeadobay__ref___projection
+ 
+ val torpeadobay__havoc 
+   (x : torpeadobay__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "torpeadobay" defined at submarine.ads:25, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__torpeadobay__rep
+ use        Submarine__torpeadobay
+ use import "_gnatprove_standard".Main
+
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Submarine__torpeadobay.torpeadobay, 
+ predicate in_range = Submarine__torpeadobay.in_range
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "Tas_indexB" defined at submarine.ads:29, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__Tas_indexB
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type tas_indexB =
   < range -128 127 >
  
  function first 
@@ -1911,40 +2094,40 @@ module Submarine__Ttorpeado_storeB
   ( (first <= x) /\ (x <= last) )
  
  clone export "ada__model".Static_Discrete with
- type t = ttorpeado_storeB, 
+ type t = tas_indexB, 
  function first = first, 
  function last = last, 
  predicate in_range = in_range
  
- type ttorpeado_storeB__ref =
-  { mutable ttorpeado_storeB__content "model_trace:" "name:" : ttorpeado_storeB }
+ type tas_indexB__ref =
+  { mutable tas_indexB__content "model_trace:" "name:" : tas_indexB }
  
- function ttorpeado_storeB__ref___projection 
-   (a : ttorpeado_storeB__ref) : ttorpeado_storeB =
-  a.ttorpeado_storeB__content
+ function tas_indexB__ref___projection 
+   (a : tas_indexB__ref) : tas_indexB =
+  a.tas_indexB__content
  
- meta "model_projection" function ttorpeado_storeB__ref___projection
+ meta "model_projection" function tas_indexB__ref___projection
  
- meta "inline : no" function ttorpeado_storeB__ref___projection
+ meta "inline : no" function tas_indexB__ref___projection
  
- val ttorpeado_storeB__havoc 
-   (x : ttorpeado_storeB__ref) : unit
+ val tas_indexB__havoc 
+   (x : tas_indexB__ref) : unit
   writes {x}
 
 end
 
-(* Module defining to_rep/of_rep for type "Ttorpeado_storeB" defined at submarine.ads:16, created in Gnat2Why.Types.Translate_Type *)
-module Submarine__Ttorpeado_storeB__rep
- use        Submarine__Ttorpeado_storeB
+(* Module defining to_rep/of_rep for type "Tas_indexB" defined at submarine.ads:29, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__Tas_indexB__rep
+ use        Submarine__Tas_indexB
  use import "_gnatprove_standard".Main
 
  function to_rep 
-   (x : Submarine__Ttorpeado_storeB.ttorpeado_storeB) : int =
-  (Submarine__Ttorpeado_storeB.ttorpeado_storeB'int x)
+   (x : Submarine__Tas_indexB.tas_indexB) : int =
+  (Submarine__Tas_indexB.tas_indexB'int x)
  
  clone export "ada__model".Rep_Proj_Int with
- type t = Submarine__Ttorpeado_storeB.ttorpeado_storeB, 
- predicate in_range = Submarine__Ttorpeado_storeB.in_range, 
+ type t = Submarine__Tas_indexB.tas_indexB, 
+ predicate in_range = Submarine__Tas_indexB.in_range, 
  function to_rep = to_rep
  
  meta "model_projection" function to_rep
@@ -1953,13 +2136,13 @@ module Submarine__Ttorpeado_storeB__rep
 
 end
 
-(* Module for axiomatizing type "torpeado_store" defined at submarine.ads:16, created in Gnat2Why.Types.Translate_Type *)
-module Submarine__torpeado_store
+(* Module for axiomatizing type "as_index" defined at submarine.ads:29, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__as_index
  use import "_gnatprove_standard".Main
  use import "int".Int
 
- type torpeado_store =
-  < range 0 50 >
+ type as_index =
+  < range 0 25 >
  
  function first 
    : int =
@@ -1967,47 +2150,47 @@ module Submarine__torpeado_store
  
  function last 
    : int =
-  50
+  25
  
  predicate in_range 
    (x : int)  =
   ( (first <= x) /\ (x <= last) )
  
  clone export "ada__model".Static_Discrete with
- type t = torpeado_store, 
+ type t = as_index, 
  function first = first, 
  function last = last, 
  predicate in_range = in_range
  
- type torpeado_store__ref =
-  { mutable torpeado_store__content "model_trace:" "name:" : torpeado_store }
+ type as_index__ref =
+  { mutable as_index__content "model_trace:" "name:" : as_index }
  
- function torpeado_store__ref___projection 
-   (a : torpeado_store__ref) : torpeado_store =
-  a.torpeado_store__content
+ function as_index__ref___projection 
+   (a : as_index__ref) : as_index =
+  a.as_index__content
  
- meta "model_projection" function torpeado_store__ref___projection
+ meta "model_projection" function as_index__ref___projection
  
- meta "inline : no" function torpeado_store__ref___projection
+ meta "inline : no" function as_index__ref___projection
  
- val torpeado_store__havoc 
-   (x : torpeado_store__ref) : unit
+ val as_index__havoc 
+   (x : as_index__ref) : unit
   writes {x}
 
 end
 
-(* Module defining to_rep/of_rep for type "torpeado_store" defined at submarine.ads:16, created in Gnat2Why.Types.Translate_Type *)
-module Submarine__torpeado_store__rep
- use        Submarine__torpeado_store
+(* Module defining to_rep/of_rep for type "as_index" defined at submarine.ads:29, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__as_index__rep
+ use        Submarine__as_index
  use import "_gnatprove_standard".Main
 
  function to_rep 
-   (x : Submarine__torpeado_store.torpeado_store) : int =
-  (Submarine__torpeado_store.torpeado_store'int x)
+   (x : Submarine__as_index.as_index) : int =
+  (Submarine__as_index.as_index'int x)
  
  clone export "ada__model".Rep_Proj_Int with
- type t = Submarine__torpeado_store.torpeado_store, 
- predicate in_range = Submarine__torpeado_store.in_range, 
+ type t = Submarine__as_index.as_index, 
+ predicate in_range = Submarine__as_index.in_range, 
  function to_rep = to_rep
  
  meta "model_projection" function to_rep
@@ -2016,7 +2199,401 @@ module Submarine__torpeado_store__rep
 
 end
 
-(* Module for axiomatizing type "openclose" defined at submarine.ads:19, created in Gnat2Why.Types.Translate_Type *)
+(* Module for axiomatizing the array theory associated to type "TammostoreB" defined at submarine.ads:30, created in Why.Gen.Arrays.Create_Rep_Array_Theory *)
+module Array__Int__Submarine__torpeadobay
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__torpeadobay
+ use        Submarine__torpeadobay__rep
+
+ function index_I1_one 
+   : int =
+  1
+ 
+ type component_type =
+  Submarine__torpeadobay.torpeadobay
+ 
+ clone export "_gnatprove_standard".Array__1 with
+ type I1.t = int, 
+ predicate I1.le = Int.(<=), 
+ predicate I1.lt = Int.(<), 
+ predicate I1.gt = Int.(>), 
+ function I1.add = Int.(+), 
+ function I1.sub = Int.(-), 
+ function I1.one = index_I1_one, 
+ type component_type = component_type
+ 
+ function bool_eq 
+   (a : map) (a__first : int) (a__last : int) (b : map) (b__first : int) (b__last : int) : bool =
+  ( (if ((a__first <= a__last)) then (
+   ( (b__first <= b__last) /\ ((a__last - a__first) = (b__last - b__first)) )) else (
+   (b__first > b__last))) /\ (forall temp___idx_154   : int.
+   (if (( (a__first <= temp___idx_154) /\ (temp___idx_154 <= a__last) )) then (
+    ((Submarine__torpeadobay__rep.to_rep (get a temp___idx_154)) = (Submarine__torpeadobay__rep.to_rep (get b ((b__first - a__first) + temp___idx_154))))) else true)) )
+ 
+ axiom bool_eq_rev :
+  (forall a   b   : map.
+  (forall a__first   a__last   b__first   b__last   : int.
+   ( ((bool_eq b b__first b__last a a__first a__last) = True) -> ( (if ((a__first <= a__last)) then (
+    ( (b__first <= b__last) /\ ((a__last - a__first) = (b__last - b__first)) )) else (
+    (b__first > b__last))) /\ (forall temp___idx_154   : int.
+    (if (( (a__first <= temp___idx_154) /\ (temp___idx_154 <= a__last) )) then (
+     ((Submarine__torpeadobay__rep.to_rep (get a temp___idx_154)) = (Submarine__torpeadobay__rep.to_rep (get b ((b__first - a__first) + temp___idx_154))))) else true)) ) )))
+
+end
+
+(* Module for axiomatizing concatenation for the array theory associated to type "TammostoreB" defined at submarine.ads:30, created in Why.Gen.Arrays.Declare_Concatenation_Symbols *)
+module Array__Int__Submarine__torpeadobay__Concat
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Array__Int__Submarine__torpeadobay
+
+ function index_Index_one 
+   : int =
+  1
+ 
+ clone export "_gnatprove_standard".Array__1__Concat with
+ type component_type = Array__Int__Submarine__torpeadobay.component_type, 
+ type map = Array__Int__Submarine__torpeadobay.map, 
+ type Index.t = int, 
+ predicate Index.le = Int.(<=), 
+ predicate Index.lt = Int.(<), 
+ predicate Index.gt = Int.(>), 
+ function Index.add = Int.(+), 
+ function Index.sub = Int.(-), 
+ function Index.one = index_Index_one, 
+ function get = Array__Int__Submarine__torpeadobay.get
+
+end
+
+(* Module for axiomatizing comparison for the array theory associated to type "TammostoreB" defined at submarine.ads:30, created in Why.Gen.Arrays.Declare_Comparison_Symbols *)
+module Array__Int__Submarine__torpeadobay_Comp
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__torpeadobay__rep
+ use        Array__Int__Submarine__torpeadobay
+
+ function index_Index_one 
+   : int =
+  1
+ 
+ clone export "ada__model".Array_Int_Rep_Comparison_Axiom with
+ type component_type = Array__Int__Submarine__torpeadobay.component_type, 
+ function to_rep = Submarine__torpeadobay__rep.to_rep, 
+ type map = Array__Int__Submarine__torpeadobay.map, 
+ type Index.t = int, 
+ predicate Index.le = Int.(<=), 
+ predicate Index.lt = Int.(<), 
+ predicate Index.gt = Int.(>), 
+ function Index.add = Int.(+), 
+ function Index.sub = Int.(-), 
+ function Index.one = index_Index_one, 
+ function get = Array__Int__Submarine__torpeadobay.get, 
+ function bool_eq = Array__Int__Submarine__torpeadobay.bool_eq
+
+end
+
+(* Module for axiomatizing type "TammostoreB" defined at submarine.ads:30, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__TammostoreB
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__torpeadobay
+ use        Submarine__Tas_indexB
+ use        Submarine__Tas_indexB__rep
+ use        Submarine__as_index
+ use        Array__Int__Submarine__torpeadobay
+
+ type component_type =
+  Submarine__torpeadobay.torpeadobay
+ 
+ function index_1_id 
+   (x : int) : int =
+  x
+ 
+ clone export "ada__model".Unconstr_Array with
+ type map = Array__Int__Submarine__torpeadobay.map, 
+ function array_bool_eq = Array__Int__Submarine__torpeadobay.bool_eq, 
+ type index_base_type = Submarine__Tas_indexB.tas_indexB, 
+ type index_rep_type = int, 
+ function to_rep = Submarine__Tas_indexB__rep.to_rep, 
+ function rep_to_int = index_1_id, 
+ predicate in_range_base = Submarine__Tas_indexB.in_range, 
+ predicate index_dynamic_property = Submarine__as_index.dynamic_property, 
+ predicate index_rep_le = Int.(<=)
+ 
+ type tammostoreB =
+  __t
+ 
+ meta "model_projection" function to_array
+ 
+ meta "inline : no" function to_array
+ 
+ meta "model_projection" function first
+ 
+ meta "inline : no" function first
+ 
+ meta "model_projection" function last
+ 
+ meta "inline : no" function last
+ 
+ type tammostoreB__ref =
+  { mutable tammostoreB__content "model_trace:" "name:" : tammostoreB }
+ 
+ function tammostoreB__ref___projection 
+   (a : tammostoreB__ref) : tammostoreB =
+  a.tammostoreB__content
+ 
+ meta "model_projection" function tammostoreB__ref___projection
+ 
+ meta "inline : no" function tammostoreB__ref___projection
+ 
+ val tammostoreB__havoc 
+   (x : tammostoreB__ref) : unit
+  writes {x}
+
+end
+
+(* Module for axiomatizing type "ammostore" defined at submarine.ads:30, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__ammostore
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__torpeadobay
+ use        Array__Int__Submarine__torpeadobay
+
+ type component_type =
+  Submarine__torpeadobay.torpeadobay
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  25
+ 
+ clone export "ada__model".Constr_Array with
+ type map = Array__Int__Submarine__torpeadobay.map, 
+ function array_bool_eq = Array__Int__Submarine__torpeadobay.bool_eq, 
+ function first = first, 
+ function last = last, 
+ type index_rep_type = int
+
+end
+
+(* Module for axiomatizing type "Tchambered_indexB" defined at submarine.ads:33, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__Tchambered_indexB
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type tchambered_indexB =
+  < range -128 127 >
+ 
+ function first 
+   : int =
+  ( -128 )
+ 
+ function last 
+   : int =
+  127
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = tchambered_indexB, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type tchambered_indexB__ref =
+  { mutable tchambered_indexB__content "model_trace:" "name:" : tchambered_indexB }
+ 
+ function tchambered_indexB__ref___projection 
+   (a : tchambered_indexB__ref) : tchambered_indexB =
+  a.tchambered_indexB__content
+ 
+ meta "model_projection" function tchambered_indexB__ref___projection
+ 
+ meta "inline : no" function tchambered_indexB__ref___projection
+ 
+ val tchambered_indexB__havoc 
+   (x : tchambered_indexB__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "Tchambered_indexB" defined at submarine.ads:33, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__Tchambered_indexB__rep
+ use        Submarine__Tchambered_indexB
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Submarine__Tchambered_indexB.tchambered_indexB) : int =
+  (Submarine__Tchambered_indexB.tchambered_indexB'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Submarine__Tchambered_indexB.tchambered_indexB, 
+ predicate in_range = Submarine__Tchambered_indexB.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "chambered_index" defined at submarine.ads:33, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__chambered_index
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type chambered_index =
+  < range 0 4 >
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  4
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = chambered_index, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type chambered_index__ref =
+  { mutable chambered_index__content "model_trace:" "name:" : chambered_index }
+ 
+ function chambered_index__ref___projection 
+   (a : chambered_index__ref) : chambered_index =
+  a.chambered_index__content
+ 
+ meta "model_projection" function chambered_index__ref___projection
+ 
+ meta "inline : no" function chambered_index__ref___projection
+ 
+ val chambered_index__havoc 
+   (x : chambered_index__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "chambered_index" defined at submarine.ads:33, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__chambered_index__rep
+ use        Submarine__chambered_index
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Submarine__chambered_index.chambered_index) : int =
+  (Submarine__chambered_index.chambered_index'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Submarine__chambered_index.chambered_index, 
+ predicate in_range = Submarine__chambered_index.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "TchambersB" defined at submarine.ads:34, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__TchambersB
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__torpeadobay
+ use        Array__Int__Submarine__torpeadobay
+ use        Submarine__Tchambered_indexB
+ use        Submarine__Tchambered_indexB__rep
+ use        Submarine__chambered_index
+
+ type component_type =
+  Submarine__torpeadobay.torpeadobay
+ 
+ function index_1_id 
+   (x : int) : int =
+  x
+ 
+ clone export "ada__model".Unconstr_Array with
+ type map = Array__Int__Submarine__torpeadobay.map, 
+ function array_bool_eq = Array__Int__Submarine__torpeadobay.bool_eq, 
+ type index_base_type = Submarine__Tchambered_indexB.tchambered_indexB, 
+ type index_rep_type = int, 
+ function to_rep = Submarine__Tchambered_indexB__rep.to_rep, 
+ function rep_to_int = index_1_id, 
+ predicate in_range_base = Submarine__Tchambered_indexB.in_range, 
+ predicate index_dynamic_property = Submarine__chambered_index.dynamic_property, 
+ predicate index_rep_le = Int.(<=)
+ 
+ type tchambersB =
+  __t
+ 
+ meta "model_projection" function to_array
+ 
+ meta "inline : no" function to_array
+ 
+ meta "model_projection" function first
+ 
+ meta "inline : no" function first
+ 
+ meta "model_projection" function last
+ 
+ meta "inline : no" function last
+ 
+ type tchambersB__ref =
+  { mutable tchambersB__content "model_trace:" "name:" : tchambersB }
+ 
+ function tchambersB__ref___projection 
+   (a : tchambersB__ref) : tchambersB =
+  a.tchambersB__content
+ 
+ meta "model_projection" function tchambersB__ref___projection
+ 
+ meta "inline : no" function tchambersB__ref___projection
+ 
+ val tchambersB__havoc 
+   (x : tchambersB__ref) : unit
+  writes {x}
+
+end
+
+(* Module for axiomatizing type "chambers" defined at submarine.ads:34, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__chambers
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__torpeadobay
+ use        Array__Int__Submarine__torpeadobay
+
+ type component_type =
+  Submarine__torpeadobay.torpeadobay
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  4
+ 
+ clone export "ada__model".Constr_Array with
+ type map = Array__Int__Submarine__torpeadobay.map, 
+ function array_bool_eq = Array__Int__Submarine__torpeadobay.bool_eq, 
+ function first = first, 
+ function last = last, 
+ type index_rep_type = int
+
+end
+
+(* Module for axiomatizing type "openclose" defined at submarine.ads:37, created in Gnat2Why.Types.Translate_Type *)
 module Submarine__openclose
  use import "_gnatprove_standard".Main
  use import "int".Int
@@ -2058,7 +2635,7 @@ module Submarine__openclose
 
 end
 
-(* Module defining to_rep/of_rep for type "openclose" defined at submarine.ads:19, created in Gnat2Why.Types.Translate_Type *)
+(* Module defining to_rep/of_rep for type "openclose" defined at submarine.ads:37, created in Gnat2Why.Types.Translate_Type *)
 module Submarine__openclose__rep
  use        Submarine__openclose
  use import "_gnatprove_standard".Main
@@ -2073,7 +2650,7 @@ module Submarine__openclose__rep
 
 end
 
-(* Module for axiomatizing type "lock" defined at submarine.ads:20, created in Gnat2Why.Types.Translate_Type *)
+(* Module for axiomatizing type "lock" defined at submarine.ads:38, created in Gnat2Why.Types.Translate_Type *)
 module Submarine__lock
  use import "_gnatprove_standard".Main
  use import "int".Int
@@ -2115,7 +2692,7 @@ module Submarine__lock
 
 end
 
-(* Module defining to_rep/of_rep for type "lock" defined at submarine.ads:20, created in Gnat2Why.Types.Translate_Type *)
+(* Module defining to_rep/of_rep for type "lock" defined at submarine.ads:38, created in Gnat2Why.Types.Translate_Type *)
 module Submarine__lock__rep
  use        Submarine__lock
  use import "_gnatprove_standard".Main
@@ -2130,7 +2707,64 @@ module Submarine__lock__rep
 
 end
 
-(* Module for axiomatizing the record theory associated to type "door" defined at submarine.ads:22, created in Why.Gen.Records.Create_Rep_Record_Theory_If_Needed *)
+(* Module for axiomatizing type "onoff" defined at submarine.ads:39, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__onoff
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type onoff 
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  1
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = onoff, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type onoff__ref =
+  { mutable onoff__content "model_trace:" "name:" : onoff }
+ 
+ function onoff__ref___projection 
+   (a : onoff__ref) : onoff =
+  a.onoff__content
+ 
+ meta "model_projection" function onoff__ref___projection
+ 
+ meta "inline : no" function onoff__ref___projection
+ 
+ val onoff__havoc 
+   (x : onoff__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "onoff" defined at submarine.ads:39, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__onoff__rep
+ use        Submarine__onoff
+ use import "_gnatprove_standard".Main
+
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Submarine__onoff.onoff, 
+ predicate in_range = Submarine__onoff.in_range
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing the record theory associated to type "door" defined at submarine.ads:43, created in Why.Gen.Records.Create_Rep_Record_Theory_If_Needed *)
 module Submarine__door__rep
  use import "_gnatprove_standard".Main
  use        Submarine__openclose
@@ -2139,9 +2773,9 @@ module Submarine__door__rep
  use        Submarine__lock__rep
 
  type __split_fields =
-  { rec__submarine__door__open_close "model_trace:.2645" "name:open_close" : Submarine__openclose.openclose; rec__submarine__door__locked_unlocked "model_trace:.2655" "name:locked_unlocked" : Submarine__lock.lock }
+  { rec__submarine__door__open_close "model_trace:.3078" "name:open_close" : Submarine__openclose.openclose; rec__submarine__door__locked_unlocked "model_trace:.3088" "name:locked_unlocked" : Submarine__lock.lock }
  
- function __split_fields_open_close__projection "model_trace:.2645" "name:open_close" 
+ function __split_fields_open_close__projection "model_trace:.3078" "name:open_close" 
    (a : __split_fields) : Submarine__openclose.openclose =
   a.rec__submarine__door__open_close
  
@@ -2149,7 +2783,7 @@ module Submarine__door__rep
  
  meta "inline : no" function __split_fields_open_close__projection
  
- function __split_fields_locked_unlocked__projection "model_trace:.2655" "name:locked_unlocked" 
+ function __split_fields_locked_unlocked__projection "model_trace:.3088" "name:locked_unlocked" 
    (a : __split_fields) : Submarine__lock.lock =
   a.rec__submarine__door__locked_unlocked
  
@@ -2217,7 +2851,7 @@ module Submarine__door__rep
 
 end
 
-(* Module for axiomatizing type "door" defined at submarine.ads:22, created in Gnat2Why.Types.Translate_Type *)
+(* Module for axiomatizing type "door" defined at submarine.ads:43, created in Gnat2Why.Types.Translate_Type *)
 module Submarine__door
  use export Submarine__door__rep
  use import "_gnatprove_standard".Main
@@ -2310,11 +2944,470 @@ module Submarine__door
   writes {x}
 
 end
+
+(* Module for axiomatizing the record theory associated to type "warning" defined at submarine.ads:55, created in Why.Gen.Records.Create_Rep_Record_Theory_If_Needed *)
+module Submarine__warning__rep
+ use import "_gnatprove_standard".Main
+ use        Submarine__onoff
+ use        Submarine__onoff__rep
+
+ type __split_fields =
+  { rec__submarine__warning__on_off "model_trace:.3142" "name:on_Off" : Submarine__onoff.onoff }
+ 
+ function __split_fields_on_Off__projection "model_trace:.3142" "name:on_Off" 
+   (a : __split_fields) : Submarine__onoff.onoff =
+  a.rec__submarine__warning__on_off
+ 
+ meta "model_projection" function __split_fields_on_Off__projection
+ 
+ meta "inline : no" function __split_fields_on_Off__projection
+ 
+ type __split_fields__ref =
+  { mutable __split_fields__content "model_trace:" "name:" : __split_fields }
+ 
+ function __split_fields__ref___2__projection 
+   (a : __split_fields__ref) : __split_fields =
+  a.__split_fields__content
+ 
+ meta "model_projection" function __split_fields__ref___2__projection
+ 
+ meta "inline : no" function __split_fields__ref___2__projection
+ 
+ val __split_fields__havoc 
+   (x : __split_fields__ref) : unit
+  writes {x}
+ 
+ type __rep =
+  { __split_fields "model_trace:" "name:" : __split_fields }
+ 
+ function __rep___2__projection 
+   (a : __rep) : __split_fields =
+  a.__split_fields
+ 
+ meta "model_projection" function __rep___2__projection
+ 
+ meta "inline : no" function __rep___2__projection
+ 
+ function to_base 
+   (a : __rep) : __rep =
+  a
+ 
+ function of_base 
+   (a : __rep) : __rep =
+  a
+ 
+ predicate submarine__warning__on_off__pred 
+   (a : __rep)  =
+  true
+ 
+ val rec__submarine__warning__on_off_ 
+   (a : __rep) : Submarine__onoff.onoff
+  requires {  (submarine__warning__on_off__pred a) }
+  ensures {  (result = a.__split_fields.rec__submarine__warning__on_off) }
+ 
+ function bool_eq 
+   (a : __rep) (b : __rep) : bool =
+  (if (((Submarine__onoff__rep.to_rep a.__split_fields.rec__submarine__warning__on_off) = (Submarine__onoff__rep.to_rep b.__split_fields.rec__submarine__warning__on_off))) then (
+   True) else (
+   False))
+
+end
+
+(* Module for axiomatizing type "warning" defined at submarine.ads:55, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__warning
+ use export Submarine__warning__rep
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type warning =
+  __rep
+ 
+ function value__size 
+   : int
+ 
+ function object__size 
+   (a : warning) : int
+ 
+ function value__alignment 
+   : int
+ 
+ function object__alignment 
+   (a : warning) : int
+ 
+ axiom value__size_axiom :
+  ((value__size ) >= 0)
+ 
+ axiom object__size_axiom :
+  (forall a   : warning.
+   ((object__size a) >= 0))
+ 
+ axiom value__alignment_axiom :
+  ((value__alignment ) >= 0)
+ 
+ axiom object__alignment_axiom :
+  (forall a   : warning.
+   ((object__alignment a) >= 0))
+ 
+ function submarine__warning__on_off__first__bit 
+   : int
+ 
+ function submarine__warning__on_off__last__bit 
+   : int
+ 
+ function submarine__warning__on_off__position 
+   : int
+ 
+ axiom submarine__warning__on_off__first__bit_axiom :
+  ((submarine__warning__on_off__first__bit ) >= 0)
+ 
+ axiom submarine__warning__on_off__last__bit_axiom :
+  ((submarine__warning__on_off__last__bit ) > (submarine__warning__on_off__first__bit ))
+ 
+ axiom submarine__warning__on_off__position_axiom :
+  ((submarine__warning__on_off__position ) >= 0)
+ 
+ function user_eq 
+   (a : warning) (b : warning) : bool
+ 
+ function dummy 
+   : warning
+ 
+ type warning__ref =
+  { mutable warning__content "model_trace:" "name:" : warning }
+ 
+ function warning__ref___projection 
+   (a : warning__ref) : warning =
+  a.warning__content
+ 
+ meta "model_projection" function warning__ref___projection
+ 
+ meta "inline : no" function warning__ref___projection
+ 
+ val warning__havoc 
+   (x : warning__ref) : unit
+  writes {x}
+
+end
+
+(* Module for axiomatizing type "T26s" defined at submarine.ads:142, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__loadtorpeado__L25s__T26s
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type t26s =
+  < range 0 25 >
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  25
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = t26s, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type t26s__ref =
+  { mutable t26s__content "model_trace:" "name:" : t26s }
+ 
+ function t26s__ref___projection 
+   (a : t26s__ref) : t26s =
+  a.t26s__content
+ 
+ meta "model_projection" function t26s__ref___projection
+ 
+ meta "inline : no" function t26s__ref___projection
+ 
+ val t26s__havoc 
+   (x : t26s__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "T26s" defined at submarine.ads:142, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__loadtorpeado__L25s__T26s__rep
+ use        Submarine__loadtorpeado__L25s__T26s
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Submarine__loadtorpeado__L25s__T26s.t26s) : int =
+  (Submarine__loadtorpeado__L25s__T26s.t26s'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Submarine__loadtorpeado__L25s__T26s.t26s, 
+ predicate in_range = Submarine__loadtorpeado__L25s__T26s.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "T28s" defined at submarine.ads:143, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__loadtorpeado__L27s__T28s
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type t28s =
+  < range 0 4 >
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  4
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = t28s, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type t28s__ref =
+  { mutable t28s__content "model_trace:" "name:" : t28s }
+ 
+ function t28s__ref___projection 
+   (a : t28s__ref) : t28s =
+  a.t28s__content
+ 
+ meta "model_projection" function t28s__ref___projection
+ 
+ meta "inline : no" function t28s__ref___projection
+ 
+ val t28s__havoc 
+   (x : t28s__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "T28s" defined at submarine.ads:143, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__loadtorpeado__L27s__T28s__rep
+ use        Submarine__loadtorpeado__L27s__T28s
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Submarine__loadtorpeado__L27s__T28s.t28s) : int =
+  (Submarine__loadtorpeado__L27s__T28s.t28s'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Submarine__loadtorpeado__L27s__T28s.t28s, 
+ predicate in_range = Submarine__loadtorpeado__L27s__T28s.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "T30s" defined at submarine.ads:144, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__loadtorpeado__L29s__T30s
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type t30s =
+  < range 0 4 >
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  4
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = t30s, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type t30s__ref =
+  { mutable t30s__content "model_trace:" "name:" : t30s }
+ 
+ function t30s__ref___projection 
+   (a : t30s__ref) : t30s =
+  a.t30s__content
+ 
+ meta "model_projection" function t30s__ref___projection
+ 
+ meta "inline : no" function t30s__ref___projection
+ 
+ val t30s__havoc 
+   (x : t30s__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "T30s" defined at submarine.ads:144, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__loadtorpeado__L29s__T30s__rep
+ use        Submarine__loadtorpeado__L29s__T30s
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Submarine__loadtorpeado__L29s__T30s.t30s) : int =
+  (Submarine__loadtorpeado__L29s__T30s.t30s'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Submarine__loadtorpeado__L29s__T30s.t30s, 
+ predicate in_range = Submarine__loadtorpeado__L29s__T30s.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "T32s" defined at submarine.ads:147, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__firetorpeado__L31s__T32s
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type t32s =
+  < range 0 4 >
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  4
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = t32s, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type t32s__ref =
+  { mutable t32s__content "model_trace:" "name:" : t32s }
+ 
+ function t32s__ref___projection 
+   (a : t32s__ref) : t32s =
+  a.t32s__content
+ 
+ meta "model_projection" function t32s__ref___projection
+ 
+ meta "inline : no" function t32s__ref___projection
+ 
+ val t32s__havoc 
+   (x : t32s__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "T32s" defined at submarine.ads:147, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__firetorpeado__L31s__T32s__rep
+ use        Submarine__firetorpeado__L31s__T32s
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Submarine__firetorpeado__L31s__T32s.t32s) : int =
+  (Submarine__firetorpeado__L31s__T32s.t32s'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Submarine__firetorpeado__L31s__T32s.t32s, 
+ predicate in_range = Submarine__firetorpeado__L31s__T32s.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
+
+(* Module for axiomatizing type "T34s" defined at submarine.ads:148, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__firetorpeado__L33s__T34s
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+
+ type t34s =
+  < range 0 4 >
+ 
+ function first 
+   : int =
+  0
+ 
+ function last 
+   : int =
+  4
+ 
+ predicate in_range 
+   (x : int)  =
+  ( (first <= x) /\ (x <= last) )
+ 
+ clone export "ada__model".Static_Discrete with
+ type t = t34s, 
+ function first = first, 
+ function last = last, 
+ predicate in_range = in_range
+ 
+ type t34s__ref =
+  { mutable t34s__content "model_trace:" "name:" : t34s }
+ 
+ function t34s__ref___projection 
+   (a : t34s__ref) : t34s =
+  a.t34s__content
+ 
+ meta "model_projection" function t34s__ref___projection
+ 
+ meta "inline : no" function t34s__ref___projection
+ 
+ val t34s__havoc 
+   (x : t34s__ref) : unit
+  writes {x}
+
+end
+
+(* Module defining to_rep/of_rep for type "T34s" defined at submarine.ads:148, created in Gnat2Why.Types.Translate_Type *)
+module Submarine__firetorpeado__L33s__T34s__rep
+ use        Submarine__firetorpeado__L33s__T34s
+ use import "_gnatprove_standard".Main
+
+ function to_rep 
+   (x : Submarine__firetorpeado__L33s__T34s.t34s) : int =
+  (Submarine__firetorpeado__L33s__T34s.t34s'int x)
+ 
+ clone export "ada__model".Rep_Proj_Int with
+ type t = Submarine__firetorpeado__L33s__T34s.t34s, 
+ predicate in_range = Submarine__firetorpeado__L33s__T34s.in_range, 
+ function to_rep = to_rep
+ 
+ meta "model_projection" function to_rep
+ 
+ meta "inline : no" function to_rep
+
+end
 (* Module for defining a ref holding the value of variable "currentdepth" defined at submarine.ads:7, created in Gnat2Why.Decls.Translate_Variable *)
 module Submarine__currentdepth
  use import "_gnatprove_standard".Main
 
- val currentdepth #"submarine.ads" 7 0 0#"model_projected" "model_trace:2511" "name:CurrentDepth"  : int__ref 
+ val currentdepth #"submarine.ads" 7 0 0#"model_projected" "model_trace:2792" "name:CurrentDepth"  : int__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
@@ -2328,93 +3421,332 @@ module Submarine__currentdepth___axiom
 
 end
 
-(* Module for defining a ref holding the value of variable "oxygenlevel" defined at submarine.ads:11, created in Gnat2Why.Decls.Translate_Variable *)
-module Submarine__oxygenlevel
+(* Module for defining a ref holding the value of variable "maxdepth" defined at submarine.ads:8, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__maxdepth
  use import "_gnatprove_standard".Main
 
- val oxygenlevel #"submarine.ads" 11 0 0#"model_projected" "model_trace:2536" "name:OxygenLevel"  : int__ref 
+ val maxdepth #"submarine.ads" 8 0 0#"model_projected" "model_trace:2806" "name:maxDepth"  : int__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
 
 end
 
-(* Module giving an empty axiom for the entity "oxygenlevel" defined at submarine.ads:11, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+(* Module giving an empty axiom for the entity "maxdepth" defined at submarine.ads:8, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__maxdepth___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "oxygenlevel" defined at submarine.ads:13, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__oxygenlevel
+ use import "_gnatprove_standard".Main
+
+ val oxygenlevel #"submarine.ads" 13 0 0#"model_projected" "model_trace:2829" "name:OxygenLevel"  : int__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "oxygenlevel" defined at submarine.ads:13, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
 module Submarine__oxygenlevel___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for defining a ref holding the value of variable "warninglevel" defined at submarine.ads:12, created in Gnat2Why.Decls.Translate_Variable *)
+(* Module for defining a ref holding the value of variable "warninglevel" defined at submarine.ads:14, created in Gnat2Why.Decls.Translate_Variable *)
 module Submarine__warninglevel
  use import "_gnatprove_standard".Main
 
- val warninglevel #"submarine.ads" 12 0 0#"model_projected" "model_trace:2548" "name:warningLevel"  : int__ref 
+ val warninglevel #"submarine.ads" 14 0 0#"model_projected" "model_trace:2841" "name:warningLevel"  : int__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
 
 end
 
-(* Module giving an empty axiom for the entity "warninglevel" defined at submarine.ads:12, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+(* Module giving an empty axiom for the entity "warninglevel" defined at submarine.ads:14, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
 module Submarine__warninglevel___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for defining a ref holding the value of variable "emptyoxygen" defined at submarine.ads:13, created in Gnat2Why.Decls.Translate_Variable *)
+(* Module for defining a ref holding the value of variable "emptyoxygen" defined at submarine.ads:15, created in Gnat2Why.Decls.Translate_Variable *)
 module Submarine__emptyoxygen
  use import "_gnatprove_standard".Main
 
- val emptyoxygen #"submarine.ads" 13 0 0#"model_projected" "model_trace:2564" "name:EmptyOxygen"  : int__ref 
+ val emptyoxygen #"submarine.ads" 15 0 0#"model_projected" "model_trace:2857" "name:EmptyOxygen"  : int__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
 
 end
 
-(* Module giving an empty axiom for the entity "emptyoxygen" defined at submarine.ads:13, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+(* Module giving an empty axiom for the entity "emptyoxygen" defined at submarine.ads:15, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
 module Submarine__emptyoxygen___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for defining a ref holding the value of variable "doorinner" defined at submarine.ads:28, created in Gnat2Why.Decls.Translate_Variable *)
-module Submarine__doorinner
+(* Module for defining a ref holding the value of variable "currenttemp" defined at submarine.ads:20, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__currenttemp
  use import "_gnatprove_standard".Main
- use        Submarine__door
 
- val doorinner__split_fields #"submarine.ads" 28 0 0#"model_projected" "model_trace:2667" "name:DoorInner"  : Submarine__door.__split_fields__ref 
+ val currenttemp #"submarine.ads" 20 0 0#"model_projected" "model_trace:2880" "name:currentTemp"  : int__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
 
 end
 
-(* Module giving an empty axiom for the entity "doorinner" defined at submarine.ads:28, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+(* Module giving an empty axiom for the entity "currenttemp" defined at submarine.ads:20, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__currenttemp___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "maxsafetemp" defined at submarine.ads:21, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__maxsafetemp
+ use import "_gnatprove_standard".Main
+
+ val maxsafetemp #"submarine.ads" 21 0 0#"model_projected" "model_trace:2894" "name:maxSafeTemp"  : int__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "maxsafetemp" defined at submarine.ads:21, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__maxsafetemp___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "warningtemp" defined at submarine.ads:22, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__warningtemp
+ use import "_gnatprove_standard".Main
+
+ val warningtemp #"submarine.ads" 22 0 0#"model_projected" "model_trace:2910" "name:warningTemp"  : int__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "warningtemp" defined at submarine.ads:22, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__warningtemp___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "doorinner" defined at submarine.ads:50, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__doorinner
+ use import "_gnatprove_standard".Main
+ use        Submarine__door
+
+ val doorinner__split_fields #"submarine.ads" 50 0 0#"model_projected" "model_trace:3100" "name:DoorInner"  : Submarine__door.__split_fields__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "doorinner" defined at submarine.ads:50, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
 module Submarine__doorinner___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for defining a ref holding the value of variable "doorouter" defined at submarine.ads:29, created in Gnat2Why.Decls.Translate_Variable *)
+(* Module for defining a ref holding the value of variable "doorouter" defined at submarine.ads:51, created in Gnat2Why.Decls.Translate_Variable *)
 module Submarine__doorouter
  use import "_gnatprove_standard".Main
  use        Submarine__door
 
- val doorouter__split_fields #"submarine.ads" 29 0 0#"model_projected" "model_trace:2683" "name:DoorOuter"  : Submarine__door.__split_fields__ref 
+ val doorouter__split_fields #"submarine.ads" 51 0 0#"model_projected" "model_trace:3116" "name:DoorOuter"  : Submarine__door.__split_fields__ref 
  
  function attr__ATTRIBUTE_ADDRESS 
    : int
 
 end
 
-(* Module giving an empty axiom for the entity "doorouter" defined at submarine.ads:29, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+(* Module giving an empty axiom for the entity "doorouter" defined at submarine.ads:51, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
 module Submarine__doorouter___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "o2warning" defined at submarine.ads:61, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__o2warning
+ use import "_gnatprove_standard".Main
+ use        Submarine__warning
+
+ val o2warning__split_fields #"submarine.ads" 61 0 0#"model_projected" "model_trace:3154" "name:O2Warning"  : Submarine__warning.__split_fields__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "o2warning" defined at submarine.ads:61, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__o2warning___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "tempwarning" defined at submarine.ads:62, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__tempwarning
+ use import "_gnatprove_standard".Main
+ use        Submarine__warning
+
+ val tempwarning__split_fields #"submarine.ads" 62 0 0#"model_projected" "model_trace:3167" "name:TempWarning"  : Submarine__warning.__split_fields__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "tempwarning" defined at submarine.ads:62, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__tempwarning___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "a" defined at submarine.ads:141, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__loadtorpeado__a
+ use import "_gnatprove_standard".Main
+ use        Array__Int__Submarine__torpeadobay
+
+ val a #"submarine.ads" 141 0 0#"model_projected" "model_trace:3524" "name:A"  : Array__Int__Submarine__torpeadobay.map__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "a" defined at submarine.ads:141, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__loadtorpeado__a___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "c" defined at submarine.ads:141, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__loadtorpeado__c
+ use import "_gnatprove_standard".Main
+ use        Array__Int__Submarine__torpeadobay
+
+ val c #"submarine.ads" 141 0 0#"model_projected" "model_trace:3533" "name:C"  : Array__Int__Submarine__torpeadobay.map__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "c" defined at submarine.ads:141, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__loadtorpeado__c___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "c" defined at submarine.ads:146, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__firetorpeado__c
+ use import "_gnatprove_standard".Main
+ use        Array__Int__Submarine__torpeadobay
+
+ val c #"submarine.ads" 146 0 0#"model_projected" "name:C" "model_trace:3607"  : Array__Int__Submarine__torpeadobay.map__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "c" defined at submarine.ads:146, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__firetorpeado__c___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "i" defined at submarine.adb:148, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__loadtorpeado__i
+ use import "_gnatprove_standard".Main
+
+ val i #"submarine.adb" 148 0 0#"model_projected" "model_trace:2592" "name:i"  : int__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "i" defined at submarine.adb:148, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__loadtorpeado__i___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "j" defined at submarine.adb:149, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__loadtorpeado__j
+ use import "_gnatprove_standard".Main
+
+ val j #"submarine.adb" 149 0 0#"model_projected" "model_trace:2604" "name:j"  : int__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "j" defined at submarine.adb:149, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__loadtorpeado__j___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "firsttorpeadoindex" defined at submarine.adb:151, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__loadtorpeado__firsttorpeadoindex
+ use import "_gnatprove_standard".Main
+
+ val firsttorpeadoindex #"submarine.adb" 151 0 0#"model_projected" "model_trace:2616" "name:FirstTorpeadoindex"  : int__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "firsttorpeadoindex" defined at submarine.adb:151, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__loadtorpeado__firsttorpeadoindex___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining a ref holding the value of variable "i" defined at submarine.adb:175, created in Gnat2Why.Decls.Translate_Variable *)
+module Submarine__firetorpeado__i
+ use import "_gnatprove_standard".Main
+
+ val i #"submarine.adb" 175 0 0#"model_projected" "name:i" "model_trace:2692"  : int__ref 
+ 
+ function attr__ATTRIBUTE_ADDRESS 
+   : int
+
+end
+
+(* Module giving an empty axiom for the entity "i" defined at submarine.adb:175, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__firetorpeado__i___axiom
  use import "_gnatprove_standard".Main
 
 
@@ -2782,58 +4114,160 @@ module Standard__universal_integer___axiom
 
 end
 
-(* Module for possibly declaring a logic function for "openinnerdoor" defined at submarine.ads:32, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+(* Module for possibly declaring a logic function for "openinnerdoor" defined at submarine.ads:66, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
 module Submarine__openinnerdoor
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for possibly declaring a logic function for "closeinnerdoor" defined at submarine.ads:38, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+(* Module for possibly declaring a logic function for "closeinnerdoor" defined at submarine.ads:73, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
 module Submarine__closeinnerdoor
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for possibly declaring a logic function for "openouterdoor" defined at submarine.ads:45, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+(* Module for possibly declaring a logic function for "openouterdoor" defined at submarine.ads:80, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
 module Submarine__openouterdoor
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for possibly declaring a logic function for "closeouterdoor" defined at submarine.ads:51, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+(* Module for possibly declaring a logic function for "closeouterdoor" defined at submarine.ads:87, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
 module Submarine__closeouterdoor
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for possibly declaring a logic function for "checkoxygen" defined at submarine.ads:58, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+(* Module for possibly declaring a logic function for "initiateo2warning" defined at submarine.ads:100, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+module Submarine__initiateo2warning
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for possibly declaring a logic function for "checkoxygen" defined at submarine.ads:105, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
 module Submarine__checkoxygen
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for possibly declaring a logic function for "emergancysurface" defined at submarine.ads:62, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
-module Submarine__emergancysurface
+(* Module for possibly declaring a logic function for "initiatetempwarning" defined at submarine.ads:109, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+module Submarine__initiatetempwarning
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module for defining the loop exit exception for the loop "L_1" defined at submarine.adb:93, created in Gnat2Why.Decls.Translate_Loop_Entity *)
-module Submarine__emergancysurface__L_1
+(* Module for possibly declaring a logic function for "checkrectortemp" defined at submarine.ads:114, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+module Submarine__checkrectortemp
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for possibly declaring a logic function for "surface" defined at submarine.ads:124, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+module Submarine__surface
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for possibly declaring a logic function for "dive" defined at submarine.ads:130, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+module Submarine__dive
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for possibly declaring a logic function for "loadtorpeado" defined at submarine.ads:141, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+module Submarine__loadtorpeado
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for possibly declaring a logic function for "firetorpeado" defined at submarine.ads:146, created in Gnat2Why.Subprograms.Translate_Subprogram_Spec *)
+module Submarine__firetorpeado
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining the loop exit exception for the loop "L_1" defined at submarine.adb:124, created in Gnat2Why.Decls.Translate_Loop_Entity *)
+module Submarine__surface__L_1
  use import "_gnatprove_standard".Main
 
  exception L_1
 
 end
 
-(* Module giving an empty axiom for the entity "L_1" defined at submarine.adb:93, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
-module Submarine__emergancysurface__L_1___axiom
+(* Module giving an empty axiom for the entity "L_1" defined at submarine.adb:124, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__surface__L_1___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining the loop exit exception for the loop "L_2" defined at submarine.adb:136, created in Gnat2Why.Decls.Translate_Loop_Entity *)
+module Submarine__dive__L_2
+ use import "_gnatprove_standard".Main
+
+ exception L_2
+
+end
+
+(* Module giving an empty axiom for the entity "L_2" defined at submarine.adb:136, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__dive__L_2___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining the loop exit exception for the loop "L_3" defined at submarine.adb:155, created in Gnat2Why.Decls.Translate_Loop_Entity *)
+module Submarine__loadtorpeado__L_3
+ use import "_gnatprove_standard".Main
+
+ exception L_3
+
+end
+
+(* Module giving an empty axiom for the entity "L_3" defined at submarine.adb:155, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__loadtorpeado__L_3___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining the loop exit exception for the loop "L_4" defined at submarine.adb:164, created in Gnat2Why.Decls.Translate_Loop_Entity *)
+module Submarine__loadtorpeado__L_4
+ use import "_gnatprove_standard".Main
+
+ exception L_4
+
+end
+
+(* Module giving an empty axiom for the entity "L_4" defined at submarine.adb:164, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__loadtorpeado__L_4___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module for defining the loop exit exception for the loop "L_5" defined at submarine.adb:178, created in Gnat2Why.Decls.Translate_Loop_Entity *)
+module Submarine__firetorpeado__L_5
+ use import "_gnatprove_standard".Main
+
+ exception L_5
+
+end
+
+(* Module giving an empty axiom for the entity "L_5" defined at submarine.adb:178, created in Gnat2Why.Driver.Translate_Entity.Generate_Empty_Axiom_Theory *)
+module Submarine__firetorpeado__L_5___axiom
  use import "_gnatprove_standard".Main
 
 
@@ -2853,113 +4287,291 @@ module Submarine__depth___axiom
  use        Submarine__depth
 
  predicate dynamic_invariant "inline" 
-   (temp___expr_158 : int) (temp___is_init_154 : bool) (temp___skip_constant_155 : bool) (temp___do_toplevel_156 : bool) (temp___do_typ_inv_157 : bool)  =
-  (if (( temp___is_init_154 \/ (Submarine__depth.first <= Submarine__depth.last) )) then (
-   (Submarine__depth.dynamic_property Submarine__depth.first Submarine__depth.last temp___expr_158)) else true)
+   (temp___expr_159 : int) (temp___is_init_155 : bool) (temp___skip_constant_156 : bool) (temp___do_toplevel_157 : bool) (temp___do_typ_inv_158 : bool)  =
+  (if (( temp___is_init_155 \/ (Submarine__depth.first <= Submarine__depth.last) )) then (
+   (Submarine__depth.dynamic_property Submarine__depth.first Submarine__depth.last temp___expr_159)) else true)
  
  predicate default_initial_assumption "inline" 
-   (temp___expr_159 : int) (temp___skip_top_level_160 : bool)  =
+   (temp___expr_160 : int) (temp___skip_top_level_161 : bool)  =
   true
 
 end
 
-(* Module giving axioms for type "ToxygenB" defined at submarine.ads:10, created in Gnat2Why.Types.Generate_Type_Completion *)
+(* Module giving axioms for type "ToxygenB" defined at submarine.ads:12, created in Gnat2Why.Types.Generate_Type_Completion *)
 module Submarine__ToxygenB___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module giving axioms for type "oxygen" defined at submarine.ads:10, created in Gnat2Why.Types.Generate_Type_Completion *)
+(* Module giving axioms for type "oxygen" defined at submarine.ads:12, created in Gnat2Why.Types.Generate_Type_Completion *)
 module Submarine__oxygen___axiom
  use import "_gnatprove_standard".Main
  use import "int".Int
  use        Submarine__oxygen
 
  predicate dynamic_invariant "inline" 
-   (temp___expr_165 : int) (temp___is_init_161 : bool) (temp___skip_constant_162 : bool) (temp___do_toplevel_163 : bool) (temp___do_typ_inv_164 : bool)  =
-  (if (( temp___is_init_161 \/ (Submarine__oxygen.first <= Submarine__oxygen.last) )) then (
-   (Submarine__oxygen.dynamic_property Submarine__oxygen.first Submarine__oxygen.last temp___expr_165)) else true)
+   (temp___expr_166 : int) (temp___is_init_162 : bool) (temp___skip_constant_163 : bool) (temp___do_toplevel_164 : bool) (temp___do_typ_inv_165 : bool)  =
+  (if (( temp___is_init_162 \/ (Submarine__oxygen.first <= Submarine__oxygen.last) )) then (
+   (Submarine__oxygen.dynamic_property Submarine__oxygen.first Submarine__oxygen.last temp___expr_166)) else true)
  
  predicate default_initial_assumption "inline" 
-   (temp___expr_166 : int) (temp___skip_top_level_167 : bool)  =
+   (temp___expr_167 : int) (temp___skip_top_level_168 : bool)  =
   true
 
 end
 
-(* Module giving axioms for type "Ttorpeado_storeB" defined at submarine.ads:16, created in Gnat2Why.Types.Generate_Type_Completion *)
-module Submarine__Ttorpeado_storeB___axiom
+(* Module giving axioms for type "TtemperatureB" defined at submarine.ads:19, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__TtemperatureB___axiom
  use import "_gnatprove_standard".Main
 
 
 end
 
-(* Module giving axioms for type "torpeado_store" defined at submarine.ads:16, created in Gnat2Why.Types.Generate_Type_Completion *)
-module Submarine__torpeado_store___axiom
+(* Module giving axioms for type "temperature" defined at submarine.ads:19, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__temperature___axiom
  use import "_gnatprove_standard".Main
  use import "int".Int
- use        Submarine__torpeado_store
+ use        Submarine__temperature
 
  predicate dynamic_invariant "inline" 
-   (temp___expr_172 : int) (temp___is_init_168 : bool) (temp___skip_constant_169 : bool) (temp___do_toplevel_170 : bool) (temp___do_typ_inv_171 : bool)  =
-  (if (( temp___is_init_168 \/ (Submarine__torpeado_store.first <= Submarine__torpeado_store.last) )) then (
-   (Submarine__torpeado_store.dynamic_property Submarine__torpeado_store.first Submarine__torpeado_store.last temp___expr_172)) else true)
+   (temp___expr_173 : int) (temp___is_init_169 : bool) (temp___skip_constant_170 : bool) (temp___do_toplevel_171 : bool) (temp___do_typ_inv_172 : bool)  =
+  (if (( temp___is_init_169 \/ (Submarine__temperature.first <= Submarine__temperature.last) )) then (
+   (Submarine__temperature.dynamic_property Submarine__temperature.first Submarine__temperature.last temp___expr_173)) else true)
  
  predicate default_initial_assumption "inline" 
-   (temp___expr_173 : int) (temp___skip_top_level_174 : bool)  =
+   (temp___expr_174 : int) (temp___skip_top_level_175 : bool)  =
   true
 
 end
 
-(* Module giving axioms for type "openclose" defined at submarine.ads:19, created in Gnat2Why.Types.Generate_Type_Completion *)
+(* Module giving axioms for type "torpeadobay" defined at submarine.ads:25, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__torpeadobay___axiom
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__torpeadobay
+
+ predicate dynamic_invariant "inline" 
+   (temp___expr_180 : int) (temp___is_init_176 : bool) (temp___skip_constant_177 : bool) (temp___do_toplevel_178 : bool) (temp___do_typ_inv_179 : bool)  =
+  (if (( temp___is_init_176 \/ (Submarine__torpeadobay.first <= Submarine__torpeadobay.last) )) then (
+   (Submarine__torpeadobay.dynamic_property Submarine__torpeadobay.first Submarine__torpeadobay.last temp___expr_180)) else true)
+ 
+ predicate default_initial_assumption "inline" 
+   (temp___expr_181 : int) (temp___skip_top_level_182 : bool)  =
+  true
+
+end
+
+(* Module giving axioms for type "Tas_indexB" defined at submarine.ads:29, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__Tas_indexB___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "as_index" defined at submarine.ads:29, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__as_index___axiom
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__as_index
+
+ predicate dynamic_invariant "inline" 
+   (temp___expr_187 : int) (temp___is_init_183 : bool) (temp___skip_constant_184 : bool) (temp___do_toplevel_185 : bool) (temp___do_typ_inv_186 : bool)  =
+  (if (( temp___is_init_183 \/ (Submarine__as_index.first <= Submarine__as_index.last) )) then (
+   (Submarine__as_index.dynamic_property Submarine__as_index.first Submarine__as_index.last temp___expr_187)) else true)
+ 
+ predicate default_initial_assumption "inline" 
+   (temp___expr_188 : int) (temp___skip_top_level_189 : bool)  =
+  true
+
+end
+
+(* Module giving axioms for type "TammostoreB" defined at submarine.ads:30, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__TammostoreB___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "ammostore" defined at submarine.ads:30, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__ammostore___axiom
+ use import "_gnatprove_standard".Main
+ use        Array__Int__Submarine__torpeadobay
+ use        Array__Int__Submarine__torpeadobay
+
+ predicate dynamic_invariant "inline" 
+   (temp___expr_194 : Array__Int__Submarine__torpeadobay.map) (temp___is_init_190 : bool) (temp___skip_constant_191 : bool) (temp___do_toplevel_192 : bool) (temp___do_typ_inv_193 : bool)  =
+  true
+ 
+ predicate default_initial_assumption "inline" 
+   (temp___expr_196 : Array__Int__Submarine__torpeadobay.map) (temp___skip_top_level_197 : bool)  =
+  true
+
+end
+
+(* Module giving axioms for type "Tchambered_indexB" defined at submarine.ads:33, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__Tchambered_indexB___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "chambered_index" defined at submarine.ads:33, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__chambered_index___axiom
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__chambered_index
+
+ predicate dynamic_invariant "inline" 
+   (temp___expr_204 : int) (temp___is_init_200 : bool) (temp___skip_constant_201 : bool) (temp___do_toplevel_202 : bool) (temp___do_typ_inv_203 : bool)  =
+  (if (( temp___is_init_200 \/ (Submarine__chambered_index.first <= Submarine__chambered_index.last) )) then (
+   (Submarine__chambered_index.dynamic_property Submarine__chambered_index.first Submarine__chambered_index.last temp___expr_204)) else true)
+ 
+ predicate default_initial_assumption "inline" 
+   (temp___expr_205 : int) (temp___skip_top_level_206 : bool)  =
+  true
+
+end
+
+(* Module giving axioms for type "TchambersB" defined at submarine.ads:34, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__TchambersB___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "chambers" defined at submarine.ads:34, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__chambers___axiom
+ use import "_gnatprove_standard".Main
+ use        Array__Int__Submarine__torpeadobay
+ use        Array__Int__Submarine__torpeadobay
+
+ predicate dynamic_invariant "inline" 
+   (temp___expr_211 : Array__Int__Submarine__torpeadobay.map) (temp___is_init_207 : bool) (temp___skip_constant_208 : bool) (temp___do_toplevel_209 : bool) (temp___do_typ_inv_210 : bool)  =
+  true
+ 
+ predicate default_initial_assumption "inline" 
+   (temp___expr_213 : Array__Int__Submarine__torpeadobay.map) (temp___skip_top_level_214 : bool)  =
+  true
+
+end
+
+(* Module giving axioms for type "openclose" defined at submarine.ads:37, created in Gnat2Why.Types.Generate_Type_Completion *)
 module Submarine__openclose___axiom
  use import "_gnatprove_standard".Main
  use import "int".Int
  use        Submarine__openclose
 
  predicate dynamic_invariant "inline" 
-   (temp___expr_179 : int) (temp___is_init_175 : bool) (temp___skip_constant_176 : bool) (temp___do_toplevel_177 : bool) (temp___do_typ_inv_178 : bool)  =
-  (if (( temp___is_init_175 \/ (Submarine__openclose.first <= Submarine__openclose.last) )) then (
-   (Submarine__openclose.dynamic_property Submarine__openclose.first Submarine__openclose.last temp___expr_179)) else true)
+   (temp___expr_221 : int) (temp___is_init_217 : bool) (temp___skip_constant_218 : bool) (temp___do_toplevel_219 : bool) (temp___do_typ_inv_220 : bool)  =
+  (if (( temp___is_init_217 \/ (Submarine__openclose.first <= Submarine__openclose.last) )) then (
+   (Submarine__openclose.dynamic_property Submarine__openclose.first Submarine__openclose.last temp___expr_221)) else true)
  
  predicate default_initial_assumption "inline" 
-   (temp___expr_180 : int) (temp___skip_top_level_181 : bool)  =
+   (temp___expr_222 : int) (temp___skip_top_level_223 : bool)  =
   true
 
 end
 
-(* Module giving axioms for type "lock" defined at submarine.ads:20, created in Gnat2Why.Types.Generate_Type_Completion *)
+(* Module giving axioms for type "lock" defined at submarine.ads:38, created in Gnat2Why.Types.Generate_Type_Completion *)
 module Submarine__lock___axiom
  use import "_gnatprove_standard".Main
  use import "int".Int
  use        Submarine__lock
 
  predicate dynamic_invariant "inline" 
-   (temp___expr_186 : int) (temp___is_init_182 : bool) (temp___skip_constant_183 : bool) (temp___do_toplevel_184 : bool) (temp___do_typ_inv_185 : bool)  =
-  (if (( temp___is_init_182 \/ (Submarine__lock.first <= Submarine__lock.last) )) then (
-   (Submarine__lock.dynamic_property Submarine__lock.first Submarine__lock.last temp___expr_186)) else true)
+   (temp___expr_228 : int) (temp___is_init_224 : bool) (temp___skip_constant_225 : bool) (temp___do_toplevel_226 : bool) (temp___do_typ_inv_227 : bool)  =
+  (if (( temp___is_init_224 \/ (Submarine__lock.first <= Submarine__lock.last) )) then (
+   (Submarine__lock.dynamic_property Submarine__lock.first Submarine__lock.last temp___expr_228)) else true)
  
  predicate default_initial_assumption "inline" 
-   (temp___expr_187 : int) (temp___skip_top_level_188 : bool)  =
+   (temp___expr_229 : int) (temp___skip_top_level_230 : bool)  =
   true
 
 end
 
-(* Module giving axioms for type "door" defined at submarine.ads:22, created in Gnat2Why.Types.Generate_Type_Completion *)
+(* Module giving axioms for type "onoff" defined at submarine.ads:39, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__onoff___axiom
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__onoff
+
+ predicate dynamic_invariant "inline" 
+   (temp___expr_235 : int) (temp___is_init_231 : bool) (temp___skip_constant_232 : bool) (temp___do_toplevel_233 : bool) (temp___do_typ_inv_234 : bool)  =
+  (if (( temp___is_init_231 \/ (Submarine__onoff.first <= Submarine__onoff.last) )) then (
+   (Submarine__onoff.dynamic_property Submarine__onoff.first Submarine__onoff.last temp___expr_235)) else true)
+ 
+ predicate default_initial_assumption "inline" 
+   (temp___expr_236 : int) (temp___skip_top_level_237 : bool)  =
+  true
+
+end
+
+(* Module giving axioms for type "door" defined at submarine.ads:43, created in Gnat2Why.Types.Generate_Type_Completion *)
 module Submarine__door___axiom
  use import "_gnatprove_standard".Main
  use        Submarine__door
 
  predicate dynamic_invariant "inline" 
-   (temp___expr_193 : Submarine__door.door) (temp___is_init_189 : bool) (temp___skip_constant_190 : bool) (temp___do_toplevel_191 : bool) (temp___do_typ_inv_192 : bool)  =
+   (temp___expr_242 : Submarine__door.door) (temp___is_init_238 : bool) (temp___skip_constant_239 : bool) (temp___do_toplevel_240 : bool) (temp___do_typ_inv_241 : bool)  =
   true
  
  predicate default_initial_assumption "inline" 
-   (temp___expr_194 : Submarine__door.door) (temp___skip_top_level_195 : bool)  =
+   (temp___expr_243 : Submarine__door.door) (temp___skip_top_level_244 : bool)  =
   true
 
 end
-(* Module for declaring a program function (and possibly an axiom) for "openinnerdoor" defined at submarine.ads:32, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+
+(* Module giving axioms for type "warning" defined at submarine.ads:55, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__warning___axiom
+ use import "_gnatprove_standard".Main
+ use        Submarine__warning
+
+ predicate dynamic_invariant "inline" 
+   (temp___expr_251 : Submarine__warning.warning) (temp___is_init_247 : bool) (temp___skip_constant_248 : bool) (temp___do_toplevel_249 : bool) (temp___do_typ_inv_250 : bool)  =
+  true
+ 
+ predicate default_initial_assumption "inline" 
+   (temp___expr_252 : Submarine__warning.warning) (temp___skip_top_level_253 : bool)  =
+  true
+
+end
+
+(* Module giving axioms for type "T26s" defined at submarine.ads:142, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__loadtorpeado__L25s__T26s___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "T28s" defined at submarine.ads:143, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__loadtorpeado__L27s__T28s___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "T30s" defined at submarine.ads:144, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__loadtorpeado__L29s__T30s___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "T32s" defined at submarine.ads:147, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__firetorpeado__L31s__T32s___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+
+(* Module giving axioms for type "T34s" defined at submarine.ads:148, created in Gnat2Why.Types.Generate_Type_Completion *)
+module Submarine__firetorpeado__L33s__T34s___axiom
+ use import "_gnatprove_standard".Main
+
+
+end
+(* Module for declaring a program function (and possibly an axiom) for "openinnerdoor" defined at submarine.ads:66, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
 module Submarine__openinnerdoor___axiom
  use        Submarine__doorinner
  use        Submarine__doorouter
@@ -2983,7 +4595,7 @@ module Submarine__openinnerdoor___axiom
 
 end
 
-(* Module for declaring a program function (and possibly an axiom) for "closeinnerdoor" defined at submarine.ads:38, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+(* Module for declaring a program function (and possibly an axiom) for "closeinnerdoor" defined at submarine.ads:73, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
 module Submarine__closeinnerdoor___axiom
  use        Submarine__doorinner
  use import "_gnatprove_standard".Main
@@ -3005,7 +4617,7 @@ module Submarine__closeinnerdoor___axiom
 
 end
 
-(* Module for declaring a program function (and possibly an axiom) for "openouterdoor" defined at submarine.ads:45, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+(* Module for declaring a program function (and possibly an axiom) for "openouterdoor" defined at submarine.ads:80, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
 module Submarine__openouterdoor___axiom
  use        Submarine__doorinner
  use        Submarine__doorouter
@@ -3029,7 +4641,7 @@ module Submarine__openouterdoor___axiom
 
 end
 
-(* Module for declaring a program function (and possibly an axiom) for "closeouterdoor" defined at submarine.ads:51, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+(* Module for declaring a program function (and possibly an axiom) for "closeouterdoor" defined at submarine.ads:87, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
 module Submarine__closeouterdoor___axiom
  use        Submarine__doorouter
  use import "_gnatprove_standard".Main
@@ -3051,38 +4663,174 @@ module Submarine__closeouterdoor___axiom
 
 end
 
-(* Module for declaring a program function (and possibly an axiom) for "checkoxygen" defined at submarine.ads:58, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
-module Submarine__checkoxygen___axiom
- use        Submarine__warninglevel
- use        Submarine__emptyoxygen
- use        Submarine__oxygenlevel
+(* Module for declaring a program function (and possibly an axiom) for "initiateo2warning" defined at submarine.ads:100, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+module Submarine__initiateo2warning___axiom
+ use        Submarine__o2warning
  use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__onoff
+ use        Submarine__onoff__rep
+ use        Submarine__warning
+ use        Submarine__warning___axiom
+ use        Submarine__o2warning
+
+ val initiateo2warning 
+   (__void_param : unit) : unit
+  requires {  ((Submarine__onoff__rep.to_rep (Submarine__warning.rec__submarine__warning__on_off (Submarine__warning.__split_fields { Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content }))) = 1) }
+  ensures {  ( ((Submarine__onoff__rep.to_rep (Submarine__warning.rec__submarine__warning__on_off (Submarine__warning.__split_fields { Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content }))) = 0) /\ (Submarine__warning___axiom.dynamic_invariant { Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content } True True True True) ) }
+  reads {Submarine__o2warning.o2warning__split_fields}
+  writes {Submarine__o2warning.o2warning__split_fields}
+
+end
+
+(* Module for declaring a program function (and possibly an axiom) for "checkoxygen" defined at submarine.ads:105, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+module Submarine__checkoxygen___axiom
+ use        Submarine__oxygenlevel
+ use        Submarine__o2warning
+ use        Submarine__warninglevel
+ use        Submarine__currentdepth
+ use        Submarine__emptyoxygen
+ use import "_gnatprove_standard".Main
+ use        Submarine__depth___axiom
+ use        Submarine__currentdepth
  use        Submarine__oxygenlevel
  use        Submarine__warninglevel
  use        Submarine__emptyoxygen
+ use        Submarine__warning
+ use        Submarine__warning___axiom
+ use        Submarine__o2warning
 
  val checkoxygen 
    (__void_param : unit) : unit
   requires {  true }
-  ensures {  true }
-  reads {Submarine__oxygenlevel.oxygenlevel, Submarine__warninglevel.warninglevel, Submarine__emptyoxygen.emptyoxygen}
+  ensures {  ( (Submarine__warning___axiom.dynamic_invariant { Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content } True True True True) /\ (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True True True True) ) }
+  reads {Submarine__currentdepth.currentdepth, Submarine__oxygenlevel.oxygenlevel, Submarine__warninglevel.warninglevel, Submarine__emptyoxygen.emptyoxygen, Submarine__o2warning.o2warning__split_fields}
+  writes {Submarine__currentdepth.currentdepth, Submarine__o2warning.o2warning__split_fields}
 
 end
 
-(* Module for declaring a program function (and possibly an axiom) for "emergancysurface" defined at submarine.ads:62, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
-module Submarine__emergancysurface___axiom
+(* Module for declaring a program function (and possibly an axiom) for "initiatetempwarning" defined at submarine.ads:109, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+module Submarine__initiatetempwarning___axiom
+ use        Submarine__tempwarning
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__onoff
+ use        Submarine__onoff__rep
+ use        Submarine__warning
+ use        Submarine__warning___axiom
+ use        Submarine__tempwarning
+
+ val initiatetempwarning 
+   (__void_param : unit) : unit
+  requires {  ((Submarine__onoff__rep.to_rep (Submarine__warning.rec__submarine__warning__on_off (Submarine__warning.__split_fields { Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content }))) = 1) }
+  ensures {  ( ((Submarine__onoff__rep.to_rep (Submarine__warning.rec__submarine__warning__on_off (Submarine__warning.__split_fields { Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content }))) = 0) /\ (Submarine__warning___axiom.dynamic_invariant { Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content } True True True True) ) }
+  reads {Submarine__tempwarning.tempwarning__split_fields}
+  writes {Submarine__tempwarning.tempwarning__split_fields}
+
+end
+
+(* Module for declaring a program function (and possibly an axiom) for "checkrectortemp" defined at submarine.ads:114, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+module Submarine__checkrectortemp___axiom
+ use        Submarine__currenttemp
+ use        Submarine__maxsafetemp
+ use        Submarine__currentdepth
+ use        Submarine__tempwarning
+ use        Submarine__warningtemp
+ use import "_gnatprove_standard".Main
+ use        Submarine__depth___axiom
+ use        Submarine__currentdepth
+ use        Submarine__currenttemp
+ use        Submarine__maxsafetemp
+ use        Submarine__warningtemp
+ use        Submarine__warning
+ use        Submarine__warning___axiom
+ use        Submarine__tempwarning
+
+ val checkrectortemp 
+   (__void_param : unit) : unit
+  requires {  true }
+  ensures {  ( (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True True True True) /\ (Submarine__warning___axiom.dynamic_invariant { Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content } True True True True) ) }
+  reads {Submarine__currentdepth.currentdepth, Submarine__currenttemp.currenttemp, Submarine__maxsafetemp.maxsafetemp, Submarine__warningtemp.warningtemp, Submarine__tempwarning.tempwarning__split_fields}
+  writes {Submarine__currentdepth.currentdepth, Submarine__tempwarning.tempwarning__split_fields}
+
+end
+
+(* Module for declaring a program function (and possibly an axiom) for "surface" defined at submarine.ads:124, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+module Submarine__surface___axiom
  use        Submarine__currentdepth
  use import "_gnatprove_standard".Main
  use import "int".Int
  use        Submarine__depth___axiom
  use        Submarine__currentdepth
 
- val emergancysurface 
+ val surface 
    (__void_param : unit) : unit
-  requires {  (Submarine__currentdepth.currentdepth.int__content > 0) }
-  ensures {  ( (Submarine__currentdepth.currentdepth.int__content = 0) /\ (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True True True True) ) }
+  requires {  (Submarine__currentdepth.currentdepth.int__content >= 0) }
+  ensures {  ( (Submarine__currentdepth.currentdepth.int__content <= 0) /\ (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True True True True) ) }
   reads {Submarine__currentdepth.currentdepth}
   writes {Submarine__currentdepth.currentdepth}
+
+end
+
+(* Module for declaring a program function (and possibly an axiom) for "dive" defined at submarine.ads:130, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+module Submarine__dive___axiom
+ use        Submarine__currentdepth
+ use        Submarine__maxdepth
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__depth___axiom
+ use        Submarine__currentdepth
+ use        Submarine__maxdepth
+
+ val dive 
+   (__void_param : unit) : unit
+  requires {  (Submarine__currentdepth.currentdepth.int__content <= Submarine__maxdepth.maxdepth.int__content) }
+  ensures {  ( (Submarine__currentdepth.currentdepth.int__content <= Submarine__maxdepth.maxdepth.int__content) /\ (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True True True True) ) }
+  reads {Submarine__currentdepth.currentdepth, Submarine__maxdepth.maxdepth}
+  writes {Submarine__currentdepth.currentdepth}
+
+end
+
+(* Module for declaring a program function (and possibly an axiom) for "loadtorpeado" defined at submarine.ads:141, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+module Submarine__loadtorpeado___axiom
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__torpeadobay
+ use        Submarine__torpeadobay__rep
+ use        Array__Int__Submarine__torpeadobay
+ use        Submarine__ammostore___axiom
+ use        Submarine__chambers___axiom
+ use        Array__Int__Submarine__torpeadobay
+ use        Array__Int__Submarine__torpeadobay
+
+ val loadtorpeado 
+   (a : Array__Int__Submarine__torpeadobay.map__ref) (c : Array__Int__Submarine__torpeadobay.map__ref) : unit
+  requires {  ( (exists j  : int.
+   ( ( (0 <= j) /\ (j <= 25) ) /\ ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get a.Array__Int__Submarine__torpeadobay.map__content j)) = 0) )) /\ (exists k  : int.
+   ( ( (0 <= k) /\ (k <= 4) ) /\ ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get c.Array__Int__Submarine__torpeadobay.map__content k)) = 1) )) ) }
+  ensures {  ( (exists i  : int.
+   ( ( (0 <= i) /\ (i <= 4) ) /\ ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get c.Array__Int__Submarine__torpeadobay.map__content i)) = 0) )) /\ ( (Submarine__ammostore___axiom.dynamic_invariant a.Array__Int__Submarine__torpeadobay.map__content True True True True) /\ (Submarine__chambers___axiom.dynamic_invariant c.Array__Int__Submarine__torpeadobay.map__content True True True True) ) ) }
+  writes {a, c}
+
+end
+
+(* Module for declaring a program function (and possibly an axiom) for "firetorpeado" defined at submarine.ads:146, created in Gnat2Why.Subprograms.Generate_Subprogram_Completion *)
+module Submarine__firetorpeado___axiom
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__torpeadobay
+ use        Submarine__torpeadobay__rep
+ use        Array__Int__Submarine__torpeadobay
+ use        Submarine__chambers___axiom
+ use        Array__Int__Submarine__torpeadobay
+
+ val firetorpeado 
+   (c : Array__Int__Submarine__torpeadobay.map__ref) : unit
+  requires {  (exists i  : int.
+   ( ( (0 <= i) /\ (i <= 4) ) /\ ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get c.Array__Int__Submarine__torpeadobay.map__content i)) = 0) )) }
+  ensures {  ( (forall j   "model" "name:j" "model_trace:3641"  : int.
+   ( ( (0 <= j) /\ (j <= 4) ) -> ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get c.Array__Int__Submarine__torpeadobay.map__content j)) = 1) )) /\ (Submarine__chambers___axiom.dynamic_invariant c.Array__Int__Submarine__torpeadobay.map__content True True True True) ) }
+  writes {c}
 
 end
 
@@ -3092,29 +4840,49 @@ module Submarine__package_def
  use import "int".Int
  use        Submarine__depth___axiom
  use        Submarine__currentdepth
+ use        Submarine__maxdepth
  use        Submarine__oxygen___axiom
  use        Submarine__oxygenlevel
  use        Submarine__warninglevel
  use        Submarine__emptyoxygen
+ use        Submarine__temperature___axiom
+ use        Submarine__currenttemp
+ use        Submarine__maxsafetemp
+ use        Submarine__warningtemp
  use        Submarine__openclose
  use        Submarine__openclose__rep
  use        Submarine__lock
  use        Submarine__lock__rep
+ use        Submarine__onoff
+ use        Submarine__onoff__rep
  use        Submarine__door
  use        Submarine__door___axiom
  use        Submarine__doorinner
  use        Submarine__doorouter
+ use        Submarine__warning
+ use        Submarine__warning___axiom
+ use        Submarine__o2warning
+ use        Submarine__tempwarning
  use        Submarine__depth___axiom
  use        Submarine__currentdepth___axiom
+ use        Submarine__maxdepth___axiom
  use        Submarine__oxygen___axiom
  use        Submarine__oxygenlevel___axiom
  use        Submarine__warninglevel___axiom
  use        Submarine__emptyoxygen___axiom
+ use        Submarine__temperature___axiom
+ use        Submarine__currenttemp___axiom
+ use        Submarine__maxsafetemp___axiom
+ use        Submarine__warningtemp___axiom
  use        Submarine__openclose___axiom
  use        Submarine__lock___axiom
+ use        Submarine__onoff___axiom
  use        Submarine__door___axiom
  use        Submarine__doorinner___axiom
  use        Submarine__doorouter___axiom
+ use        Submarine__warning___axiom
+ use        Submarine__o2warning___axiom
+ use        Submarine__tempwarning___axiom
 
  let def #"submarine.ads" 1 0 0#"GP_Subp:submarine.ads:1" "W:diverges:N" 
    (__void_param : unit)
@@ -3127,65 +4895,127 @@ module Submarine__package_def
   (#"submarine.ads" 7 0 0# ());
   (#"submarine.ads" 7 0 0# ( #"submarine.ads" 7 0 0# Submarine__currentdepth.currentdepth.int__content <- ( 500 );
   #"submarine.ads" 7 0 0# assume { #"submarine.ads" 7 0 0# (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True False True True) } ));
-  (#"submarine.ads" 10 0 0# ());
-  (#"submarine.ads" 11 0 0# ());
-  (#"submarine.ads" 11 0 0# ());
-  (#"submarine.ads" 11 0 0# ( #"submarine.ads" 11 0 0# Submarine__oxygenlevel.oxygenlevel.int__content <- ( 100 );
-  #"submarine.ads" 11 0 0# assume { #"submarine.ads" 11 0 0# (Submarine__oxygen___axiom.dynamic_invariant Submarine__oxygenlevel.oxygenlevel.int__content True False True True) } ));
-  (#"submarine.ads" 12 0 0# ( #"submarine.ads" 12 0 0# Submarine__warninglevel.warninglevel.int__content <- ( 10 );
-  #"submarine.ads" 12 0 0# assume { #"submarine.ads" 12 0 0# (Submarine__oxygen___axiom.dynamic_invariant Submarine__warninglevel.warninglevel.int__content True False True True) } ));
-  (#"submarine.ads" 13 0 0# ( #"submarine.ads" 13 0 0# Submarine__emptyoxygen.emptyoxygen.int__content <- ( 0 );
-  #"submarine.ads" 13 0 0# assume { #"submarine.ads" 13 0 0# (Submarine__oxygen___axiom.dynamic_invariant Submarine__emptyoxygen.emptyoxygen.int__content True False True True) } ));
-  (#"submarine.ads" 16 0 0# ());
+  (#"submarine.ads" 8 0 0# ( #"submarine.ads" 8 0 0# Submarine__maxdepth.maxdepth.int__content <- ( 1000 );
+  #"submarine.ads" 8 0 0# assume { #"submarine.ads" 8 0 0# (Submarine__depth___axiom.dynamic_invariant Submarine__maxdepth.maxdepth.int__content True False True True) } ));
+  (#"submarine.ads" 12 0 0# ());
+  (#"submarine.ads" 13 0 0# ());
+  (#"submarine.ads" 13 0 0# ());
+  (#"submarine.ads" 13 0 0# ( #"submarine.ads" 13 0 0# Submarine__oxygenlevel.oxygenlevel.int__content <- ( 100 );
+  #"submarine.ads" 13 0 0# assume { #"submarine.ads" 13 0 0# (Submarine__oxygen___axiom.dynamic_invariant Submarine__oxygenlevel.oxygenlevel.int__content True False True True) } ));
+  (#"submarine.ads" 14 0 0# ( #"submarine.ads" 14 0 0# Submarine__warninglevel.warninglevel.int__content <- ( 10 );
+  #"submarine.ads" 14 0 0# assume { #"submarine.ads" 14 0 0# (Submarine__oxygen___axiom.dynamic_invariant Submarine__warninglevel.warninglevel.int__content True False True True) } ));
+  (#"submarine.ads" 15 0 0# ( #"submarine.ads" 15 0 0# Submarine__emptyoxygen.emptyoxygen.int__content <- ( 0 );
+  #"submarine.ads" 15 0 0# assume { #"submarine.ads" 15 0 0# (Submarine__oxygen___axiom.dynamic_invariant Submarine__emptyoxygen.emptyoxygen.int__content True False True True) } ));
   (#"submarine.ads" 19 0 0# ());
   (#"submarine.ads" 20 0 0# ());
-  (#"submarine.ads" 22 0 0# ());
-  (#"submarine.ads" 28 0 0# ());
-  (#"submarine.ads" 28 0 0# ());
-  (#"submarine.ads" 28 0 0# ());
-  (#"submarine.ads" 28 0 0# ( (let submarine__doorinner__assume = { Submarine__door.__split_fields = { Submarine__door.rec__submarine__door__open_close = (Submarine__openclose__rep.of_rep(1)); Submarine__door.rec__submarine__door__locked_unlocked = (Submarine__lock__rep.of_rep(0)) } } in (
-   #"submarine.ads" 28 0 0# Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(submarine__doorinner__assume)) )))
-  ;
-  #"submarine.ads" 28 0 0# assume { #"submarine.ads" 28 0 0# (Submarine__door___axiom.dynamic_invariant { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } True False True True) } ));
-  (#"submarine.ads" 29 0 0# ( (let submarine__doorouter__assume = { Submarine__door.__split_fields = { Submarine__door.rec__submarine__door__open_close = (Submarine__openclose__rep.of_rep(1)); Submarine__door.rec__submarine__door__locked_unlocked = (Submarine__lock__rep.of_rep(0)) } } in (
-   #"submarine.ads" 29 0 0# Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(submarine__doorouter__assume)) )))
-  ;
-  #"submarine.ads" 29 0 0# assume { #"submarine.ads" 29 0 0# (Submarine__door___axiom.dynamic_invariant { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } True False True True) } ));
-  (#"submarine.ads" 32 0 0# ());
-  (#"submarine.ads" 35 0 0# ());
-  (#"submarine.ads" 34 0 0# ());
+  (#"submarine.ads" 20 0 0# ());
+  (#"submarine.ads" 20 0 0# ( #"submarine.ads" 20 0 0# Submarine__currenttemp.currenttemp.int__content <- ( 1000 );
+  #"submarine.ads" 20 0 0# assume { #"submarine.ads" 20 0 0# (Submarine__temperature___axiom.dynamic_invariant Submarine__currenttemp.currenttemp.int__content True False True True) } ));
+  (#"submarine.ads" 21 0 0# ( #"submarine.ads" 21 0 0# Submarine__maxsafetemp.maxsafetemp.int__content <- ( 1800 );
+  #"submarine.ads" 21 0 0# assume { #"submarine.ads" 21 0 0# (Submarine__temperature___axiom.dynamic_invariant Submarine__maxsafetemp.maxsafetemp.int__content True False True True) } ));
+  (#"submarine.ads" 22 0 0# ( #"submarine.ads" 22 0 0# Submarine__warningtemp.warningtemp.int__content <- ( 1600 );
+  #"submarine.ads" 22 0 0# assume { #"submarine.ads" 22 0 0# (Submarine__temperature___axiom.dynamic_invariant Submarine__warningtemp.warningtemp.int__content True False True True) } ));
+  (#"submarine.ads" 25 0 0# ());
+  (#"submarine.ads" 29 0 0# ());
+  (#"submarine.ads" 30 0 0# ());
   (#"submarine.ads" 33 0 0# ());
+  (#"submarine.ads" 34 0 0# ());
+  (#"submarine.ads" 37 0 0# ());
   (#"submarine.ads" 38 0 0# ());
-  (#"submarine.ads" 41 0 0# ());
-  (#"submarine.ads" 40 0 0# ());
   (#"submarine.ads" 39 0 0# ());
-  (#"submarine.ads" 45 0 0# ());
-  (#"submarine.ads" 48 0 0# ());
-  (#"submarine.ads" 47 0 0# ());
-  (#"submarine.ads" 46 0 0# ());
-  (#"submarine.ads" 51 0 0# ());
-  (#"submarine.ads" 54 0 0# ());
-  (#"submarine.ads" 53 0 0# ());
-  (#"submarine.ads" 52 0 0# ());
-  (#"submarine.ads" 58 0 0# ());
-  (#"submarine.ads" 59 0 0# ());
-  (#"submarine.ads" 62 0 0# ());
-  (#"submarine.ads" 65 0 0# ());
-  (#"submarine.ads" 64 0 0# ());
-  (#"submarine.ads" 63 0 0# ());
-  (#"submarine.ads" 63 0 0# ());
-  (#"submarine.ads" 63 0 0# ());
+  (#"submarine.ads" 43 0 0# ());
+  (#"submarine.ads" 50 0 0# ());
+  (#"submarine.ads" 50 0 0# ());
+  (#"submarine.ads" 50 0 0# ());
+  (#"submarine.ads" 50 0 0# ( (let submarine__doorinner__assume = { Submarine__door.__split_fields = { Submarine__door.rec__submarine__door__open_close = (Submarine__openclose__rep.of_rep(1)); Submarine__door.rec__submarine__door__locked_unlocked = (Submarine__lock__rep.of_rep(0)) } } in (
+   #"submarine.ads" 50 0 0# Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(submarine__doorinner__assume)) )))
+  ;
+  #"submarine.ads" 50 0 0# assume { #"submarine.ads" 50 0 0# (Submarine__door___axiom.dynamic_invariant { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } True False True True) } ));
+  (#"submarine.ads" 51 0 0# ( (let submarine__doorouter__assume = { Submarine__door.__split_fields = { Submarine__door.rec__submarine__door__open_close = (Submarine__openclose__rep.of_rep(1)); Submarine__door.rec__submarine__door__locked_unlocked = (Submarine__lock__rep.of_rep(0)) } } in (
+   #"submarine.ads" 51 0 0# Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(submarine__doorouter__assume)) )))
+  ;
+  #"submarine.ads" 51 0 0# assume { #"submarine.ads" 51 0 0# (Submarine__door___axiom.dynamic_invariant { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } True False True True) } ));
+  (#"submarine.ads" 55 0 0# ());
+  (#"submarine.ads" 61 0 0# ());
+  (#"submarine.ads" 61 0 0# ());
+  (#"submarine.ads" 61 0 0# ( (let submarine__o2warning__assume = { Submarine__warning.__split_fields = { Submarine__warning.rec__submarine__warning__on_off = (Submarine__onoff__rep.of_rep(1)) } } in (
+   #"submarine.ads" 61 0 0# Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content <- ( (Submarine__warning.__split_fields(submarine__o2warning__assume)) )))
+  ;
+  #"submarine.ads" 61 0 0# assume { #"submarine.ads" 61 0 0# (Submarine__warning___axiom.dynamic_invariant { Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content } True False True True) } ));
+  (#"submarine.ads" 62 0 0# ( (let submarine__tempwarning__assume = { Submarine__warning.__split_fields = { Submarine__warning.rec__submarine__warning__on_off = (Submarine__onoff__rep.of_rep(1)) } } in (
+   #"submarine.ads" 62 0 0# Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content <- ( (Submarine__warning.__split_fields(submarine__tempwarning__assume)) )))
+  ;
+  #"submarine.ads" 62 0 0# assume { #"submarine.ads" 62 0 0# (Submarine__warning___axiom.dynamic_invariant { Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content } True False True True) } ));
+  (#"submarine.ads" 66 0 0# ());
+  (#"submarine.ads" 69 0 0# ());
+  (#"submarine.ads" 68 0 0# ());
+  (#"submarine.ads" 67 0 0# ());
+  (#"submarine.ads" 73 0 0# ());
+  (#"submarine.ads" 76 0 0# ());
+  (#"submarine.ads" 75 0 0# ());
+  (#"submarine.ads" 74 0 0# ());
+  (#"submarine.ads" 80 0 0# ());
+  (#"submarine.ads" 83 0 0# ());
+  (#"submarine.ads" 82 0 0# ());
+  (#"submarine.ads" 81 0 0# ());
+  (#"submarine.ads" 87 0 0# ());
+  (#"submarine.ads" 90 0 0# ());
+  (#"submarine.ads" 89 0 0# ());
+  (#"submarine.ads" 88 0 0# ());
+  (#"submarine.ads" 100 0 0# ());
+  (#"submarine.ads" 103 0 0# ());
+  (#"submarine.ads" 102 0 0# ());
+  (#"submarine.ads" 101 0 0# ());
+  (#"submarine.ads" 105 0 0# ());
+  (#"submarine.ads" 106 0 0# ());
+  (#"submarine.ads" 109 0 0# ());
+  (#"submarine.ads" 112 0 0# ());
+  (#"submarine.ads" 111 0 0# ());
+  (#"submarine.ads" 110 0 0# ());
+  (#"submarine.ads" 114 0 0# ());
+  (#"submarine.ads" 115 0 0# ());
+  (#"submarine.ads" 124 0 0# ());
+  (#"submarine.ads" 127 0 0# ());
+  (#"submarine.ads" 126 0 0# ());
+  (#"submarine.ads" 125 0 0# ());
+  (#"submarine.ads" 130 0 0# ());
+  (#"submarine.ads" 133 0 0# ());
+  (#"submarine.ads" 132 0 0# ());
+  (#"submarine.ads" 131 0 0# ());
+  (#"submarine.ads" 141 0 0# ());
+  (#"submarine.ads" 144 0 0# ());
+  (#"submarine.ads" 142 0 0# ());
+  (#"submarine.ads" 146 0 0# ());
+  (#"submarine.ads" 148 0 0# ());
+  (#"submarine.ads" 147 0 0# ());
+  (#"submarine.ads" 147 0 0# ());
+  (#"submarine.ads" 147 0 0# ());
+  (#"submarine.ads" 147 0 0# ());
+  (#"submarine.ads" 147 0 0# ());
+  (#"submarine.ads" 147 0 0# ());
+  (#"submarine.ads" 147 0 0# ());
+  (#"submarine.ads" 147 0 0# ());
+  (#"submarine.ads" 147 0 0# ());
+  (#"submarine.ads" 147 0 0# ());
+  (#"submarine.ads" 147 0 0# ());
+  (#"submarine.ads" 147 0 0# ());
   (#"submarine.adb" 2 0 0# ());
-  (#"submarine.adb" 6 0 0# ());
-  (#"submarine.adb" 28 0 0# ());
-  (#"submarine.adb" 41 0 0# ());
-  (#"submarine.adb" 64 0 0# ());
-  (#"submarine.adb" 75 0 0# ());
-  (#"submarine.adb" 90 0 0# ());
-  ( "GP_Sloc:submarine.adb:99:1" (#"submarine.adb" 99 0 0# ()) ) )
+  (#"submarine.adb" 7 0 0# ());
+  (#"submarine.adb" 29 0 0# ());
+  (#"submarine.adb" 38 0 0# ());
+  (#"submarine.adb" 61 0 0# ());
+  (#"submarine.adb" 72 0 0# ());
+  (#"submarine.adb" 89 0 0# ());
+  (#"submarine.adb" 105 0 0# ());
+  (#"submarine.adb" 111 0 0# ());
+  (#"submarine.adb" 121 0 0# ());
+  (#"submarine.adb" 133 0 0# ());
+  (#"submarine.adb" 146 0 0# ());
+  (#"submarine.adb" 174 0 0# ());
+  ( "GP_Sloc:submarine.adb:189:1" (#"submarine.adb" 189 0 0# ()) ) )
 end
 
-(* Module for checking contracts and absence of run-time errors in subprogram "openinnerdoor" defined at submarine.ads:32, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+(* Module for checking contracts and absence of run-time errors in subprogram "openinnerdoor" defined at submarine.ads:66, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
 module Submarine__openinnerdoor__subprogram_def
  use import "_gnatprove_standard".Main
  use import "int".Int
@@ -3206,54 +5036,54 @@ module Submarine__openinnerdoor__subprogram_def
  use        Submarine__doorouter___axiom
  use        Submarine__closeouterdoor___axiom
 
- let def #"submarine.ads" 32 0 0#"W:diverges:N" "GP_Subp:submarine.ads:32" 
+ let def #"submarine.ads" 66 0 0#"W:diverges:N" "GP_Subp:submarine.ads:66" 
    (__void_param : unit)
-  requires { #"submarine.ads" 32 0 0# true }
-  ensures { #"submarine.ads" 32 0 0# (#"submarine.ads" 35 0 0# ( "model_vc_post" "keep_on_simp" "GP_Sloc:submarine.ads:35:14" "GP_Reason:VC_POSTCONDITION" "GP_Id:1" "comment:     Post => DoorInner.open_close = open and DoorOuter.open_close = closed
-             ^ submarine.ads:35:14:VC_POSTCONDITION" "GP_Shape:pragargs__and" ( ( ( "GP_Pretty_Ada:2731" "GP_Sloc:submarine.ads:35:14" ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content }))) = 0) ) /\ ( "GP_Pretty_Ada:2737" "GP_Sloc:submarine.ads:35:46" ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content }))) = 1) ) ) /\ ( "GP_Pretty_Ada:2743" "GP_Sloc:submarine.ads:36:10" ((Submarine__lock__rep.to_rep (Submarine__door.rec__submarine__door__locked_unlocked (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content }))) = 1) ) ) )) }
+  requires { #"submarine.ads" 66 0 0# true }
+  ensures { #"submarine.ads" 66 0 0# (#"submarine.ads" 69 0 0# ( "model_vc_post" "keep_on_simp" "GP_Sloc:submarine.ads:69:14" "GP_Reason:VC_POSTCONDITION" "GP_Id:1" "comment:     Post => DoorInner.open_close = open and DoorOuter.open_close = closed
+             ^ submarine.ads:69:14:VC_POSTCONDITION" "GP_Shape:pragargs__and" ( ( ( "GP_Pretty_Ada:3212" "GP_Sloc:submarine.ads:69:14" ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content }))) = 0) ) /\ ( "GP_Pretty_Ada:3218" "GP_Sloc:submarine.ads:69:46" ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content }))) = 1) ) ) /\ ( "GP_Pretty_Ada:3224" "GP_Sloc:submarine.ads:70:10" ((Submarine__lock__rep.to_rep (Submarine__door.rec__submarine__door__locked_unlocked (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content }))) = 1) ) ) )) }
    =
-  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:32 *)
+  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:66 *)
   ;
    assume {  (Submarine__door___axiom.dynamic_invariant { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } True False True True) };
    assume {  (Submarine__door___axiom.dynamic_invariant { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } True False True True) };
    assume {  true };
-  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:32 *)
+  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:66 *)
   ;
-  () (* Check for RTE in the Pre of the subprogram submarine.ads:32 *)
+  () (* Check for RTE in the Pre of the subprogram submarine.ads:66 *)
   ;
    abstract ensures {true}(let _ = ((Submarine__openclose__rep.to_rep((Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields({ Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content })))))) = 1) in (
    ()))
    end ;
-  () (* Assume Pre of the subprogram submarine.ads:32 *)
+  () (* Assume Pre of the subprogram submarine.ads:66 *)
   ;
    assume {  ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content }))) = 1) };
    try
-   ( ( "GP_Sloc:submarine.adb:9:10" (#"submarine.adb" 9 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:9:7" (#"submarine.adb" 9 0 0# (if (((Submarine__openclose__rep.to_rep((Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields({ Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content })))))) = 0)) then (
-    ( ( "GP_Sloc:submarine.adb:11:10" (#"submarine.adb" 11 0 0# ()) );
-    ( "GP_Sloc:submarine.adb:11:10" (#"submarine.adb" 11 0 0# ( (#"submarine.adb" 11 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:submarine.adb:11:10" "GP_Reason:VC_PRECONDITION" "GP_Id:0" "comment:         closeOuterDoor;
-         ^ submarine.adb:11:10:VC_PRECONDITION" "GP_Shape:if__call_closeouterdoor" (Submarine__closeouterdoor___axiom.closeouterdoor(())) )) )) ) )) else (
+   ( ( "GP_Sloc:submarine.adb:10:10" (#"submarine.adb" 10 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:10:7" (#"submarine.adb" 10 0 0# (if (((Submarine__openclose__rep.to_rep((Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields({ Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content })))))) = 0)) then (
+    ( ( "GP_Sloc:submarine.adb:12:10" (#"submarine.adb" 12 0 0# ()) );
+    ( "GP_Sloc:submarine.adb:12:10" (#"submarine.adb" 12 0 0# ( (#"submarine.adb" 12 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:submarine.adb:12:10" "GP_Reason:VC_PRECONDITION" "GP_Id:0" "comment:         closeOuterDoor;
+         ^ submarine.adb:12:10:VC_PRECONDITION" "GP_Shape:if__call_closeouterdoor" (Submarine__closeouterdoor___axiom.closeouterdoor(())) )) )) ) )) else (
     ()))) );
-   ( "GP_Sloc:submarine.adb:15:10" (#"submarine.adb" 15 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:15:7" (#"submarine.adb" 15 0 0# (if (((Submarine__lock__rep.to_rep((Submarine__door.rec__submarine__door__locked_unlocked((Submarine__door.__split_fields({ Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content })))))) = 0)) then (
-    ( ( "GP_Sloc:submarine.adb:17:10" (#"submarine.adb" 17 0 0# ()) );
-    ( "GP_Sloc:submarine.adb:17:36" (#"submarine.adb" 17 0 0# (let temp___199 = (let temp___198 = { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } in (
-     ( #"submarine.adb" 17 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__locked_unlocked((Submarine__door.__split_fields(temp___198)))) in (
+   ( "GP_Sloc:submarine.adb:16:10" (#"submarine.adb" 16 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:16:7" (#"submarine.adb" 16 0 0# (if (((Submarine__lock__rep.to_rep((Submarine__door.rec__submarine__door__locked_unlocked((Submarine__door.__split_fields({ Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content })))))) = 0)) then (
+    ( ( "GP_Sloc:submarine.adb:18:10" (#"submarine.adb" 18 0 0# ()) );
+    ( "GP_Sloc:submarine.adb:18:36" (#"submarine.adb" 18 0 0# (let temp___262 = (let temp___261 = { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } in (
+     ( #"submarine.adb" 18 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__locked_unlocked((Submarine__door.__split_fields(temp___261)))) in (
       ()))
       end ;
-     { ( temp___198 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___198)) ) with Submarine__door.rec__submarine__door__locked_unlocked = (Submarine__lock__rep.of_rep(1)) } } )))
+     { ( temp___261 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___261)) ) with Submarine__door.rec__submarine__door__locked_unlocked = (Submarine__lock__rep.of_rep(1)) } } )))
      in (
-     #"submarine.adb" 17 0 0# Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___199)) )))
+     #"submarine.adb" 18 0 0# Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___262)) )))
     ) ) )) else (
     ()))) );
-   ( "GP_Sloc:submarine.adb:21:7" (#"submarine.adb" 21 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:21:28" (#"submarine.adb" 21 0 0# (let temp___201 = (let temp___200 = { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } in (
-    ( #"submarine.adb" 21 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields(temp___200)))) in (
+   ( "GP_Sloc:submarine.adb:22:7" (#"submarine.adb" 22 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:22:28" (#"submarine.adb" 22 0 0# (let temp___264 = (let temp___263 = { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } in (
+    ( #"submarine.adb" 22 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields(temp___263)))) in (
      ()))
      end ;
-    { ( temp___200 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___200)) ) with Submarine__door.rec__submarine__door__open_close = (Submarine__openclose__rep.of_rep(0)) } } )))
+    { ( temp___263 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___263)) ) with Submarine__door.rec__submarine__door__open_close = (Submarine__openclose__rep.of_rep(0)) } } )))
     in (
-    #"submarine.adb" 21 0 0# Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___201)) )))
+    #"submarine.adb" 22 0 0# Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___264)) )))
    ) );
     raise Return__exc )
   with
@@ -3264,7 +5094,7 @@ module Submarine__openinnerdoor__subprogram_def
    end  )
 end
 
-(* Module for checking contracts and absence of run-time errors in subprogram "closeinnerdoor" defined at submarine.ads:38, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+(* Module for checking contracts and absence of run-time errors in subprogram "closeinnerdoor" defined at submarine.ads:73, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
 module Submarine__closeinnerdoor__subprogram_def
  use import "_gnatprove_standard".Main
  use import "int".Int
@@ -3281,44 +5111,44 @@ module Submarine__closeinnerdoor__subprogram_def
  use        Submarine__door___axiom
  use        Submarine__doorinner___axiom
 
- let def #"submarine.ads" 38 0 0#"W:diverges:N" "GP_Subp:submarine.ads:38" 
+ let def #"submarine.ads" 73 0 0#"W:diverges:N" "GP_Subp:submarine.ads:73" 
    (__void_param : unit)
-  requires { #"submarine.ads" 38 0 0# true }
-  ensures { #"submarine.ads" 38 0 0# (#"submarine.ads" 41 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Shape:pragargs__and" "GP_Sloc:submarine.ads:41:14" "GP_Id:2" "comment:     Post => DoorInner.open_close = closed
-             ^ submarine.ads:41:14:VC_POSTCONDITION" ( ( "GP_Pretty_Ada:2774" "GP_Sloc:submarine.ads:41:14" ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content }))) = 1) ) /\ ( "GP_Pretty_Ada:2780" "GP_Sloc:submarine.ads:42:11" ((Submarine__lock__rep.to_rep (Submarine__door.rec__submarine__door__locked_unlocked (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content }))) = 0) ) ) )) }
+  requires { #"submarine.ads" 73 0 0# true }
+  ensures { #"submarine.ads" 73 0 0# (#"submarine.ads" 76 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Shape:pragargs__and" "GP_Sloc:submarine.ads:76:14" "GP_Id:2" "comment:     Post => DoorInner.open_close = closed
+             ^ submarine.ads:76:14:VC_POSTCONDITION" ( ( "GP_Pretty_Ada:3255" "GP_Sloc:submarine.ads:76:14" ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content }))) = 1) ) /\ ( "GP_Pretty_Ada:3261" "GP_Sloc:submarine.ads:77:11" ((Submarine__lock__rep.to_rep (Submarine__door.rec__submarine__door__locked_unlocked (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content }))) = 0) ) ) )) }
    =
-  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:38 *)
+  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:73 *)
   ;
    assume {  (Submarine__door___axiom.dynamic_invariant { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } True False True True) };
    assume {  true };
-  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:38 *)
+  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:73 *)
   ;
-  () (* Check for RTE in the Pre of the subprogram submarine.ads:38 *)
+  () (* Check for RTE in the Pre of the subprogram submarine.ads:73 *)
   ;
    abstract ensures {true}(let _ = ((Submarine__openclose__rep.to_rep((Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields({ Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content })))))) = 0) in (
    ()))
    end ;
-  () (* Assume Pre of the subprogram submarine.ads:38 *)
+  () (* Assume Pre of the subprogram submarine.ads:73 *)
   ;
    assume {  ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content }))) = 0) };
    try
-   ( ( "GP_Sloc:submarine.adb:31:7" (#"submarine.adb" 31 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:31:28" (#"submarine.adb" 31 0 0# (let temp___203 = (let temp___202 = { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } in (
-    ( #"submarine.adb" 31 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields(temp___202)))) in (
+   ( ( "GP_Sloc:submarine.adb:32:7" (#"submarine.adb" 32 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:32:28" (#"submarine.adb" 32 0 0# (let temp___266 = (let temp___265 = { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } in (
+    ( #"submarine.adb" 32 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields(temp___265)))) in (
      ()))
      end ;
-    { ( temp___202 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___202)) ) with Submarine__door.rec__submarine__door__open_close = (Submarine__openclose__rep.of_rep(1)) } } )))
+    { ( temp___265 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___265)) ) with Submarine__door.rec__submarine__door__open_close = (Submarine__openclose__rep.of_rep(1)) } } )))
     in (
-    #"submarine.adb" 31 0 0# Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___203)) )))
+    #"submarine.adb" 32 0 0# Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___266)) )))
    ) );
-   ( "GP_Sloc:submarine.adb:32:7" (#"submarine.adb" 32 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:32:33" (#"submarine.adb" 32 0 0# (let temp___205 = (let temp___204 = { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } in (
-    ( #"submarine.adb" 32 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__locked_unlocked((Submarine__door.__split_fields(temp___204)))) in (
+   ( "GP_Sloc:submarine.adb:33:7" (#"submarine.adb" 33 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:33:33" (#"submarine.adb" 33 0 0# (let temp___268 = (let temp___267 = { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } in (
+    ( #"submarine.adb" 33 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__locked_unlocked((Submarine__door.__split_fields(temp___267)))) in (
      ()))
      end ;
-    { ( temp___204 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___204)) ) with Submarine__door.rec__submarine__door__locked_unlocked = (Submarine__lock__rep.of_rep(0)) } } )))
+    { ( temp___267 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___267)) ) with Submarine__door.rec__submarine__door__locked_unlocked = (Submarine__lock__rep.of_rep(0)) } } )))
     in (
-    #"submarine.adb" 32 0 0# Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___205)) )))
+    #"submarine.adb" 33 0 0# Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___268)) )))
    ) );
     raise Return__exc )
   with
@@ -3329,7 +5159,7 @@ module Submarine__closeinnerdoor__subprogram_def
    end  )
 end
 
-(* Module for checking contracts and absence of run-time errors in subprogram "openouterdoor" defined at submarine.ads:45, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+(* Module for checking contracts and absence of run-time errors in subprogram "openouterdoor" defined at submarine.ads:80, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
 module Submarine__openouterdoor__subprogram_def
  use import "_gnatprove_standard".Main
  use import "int".Int
@@ -3350,54 +5180,54 @@ module Submarine__openouterdoor__subprogram_def
  use        Submarine__doorouter___axiom
  use        Submarine__closeinnerdoor___axiom
 
- let def #"submarine.ads" 45 0 0#"W:diverges:N" "GP_Subp:submarine.ads:45" 
+ let def #"submarine.ads" 80 0 0#"W:diverges:N" "GP_Subp:submarine.ads:80" 
    (__void_param : unit)
-  requires { #"submarine.ads" 45 0 0# true }
-  ensures { #"submarine.ads" 45 0 0# (#"submarine.ads" 48 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Shape:pragargs__and" "GP_Sloc:submarine.ads:48:14" "GP_Id:4" "comment:     Post => DoorOuter.open_close = open and DoorInner.open_close = closed
-             ^ submarine.ads:48:14:VC_POSTCONDITION" ( ( ( "GP_Pretty_Ada:2813" "GP_Sloc:submarine.ads:48:14" ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content }))) = 0) ) /\ ( "GP_Pretty_Ada:2819" "GP_Sloc:submarine.ads:48:46" ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content }))) = 1) ) ) /\ ( "GP_Pretty_Ada:2825" "GP_Sloc:submarine.ads:49:10" ((Submarine__lock__rep.to_rep (Submarine__door.rec__submarine__door__locked_unlocked (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content }))) = 1) ) ) )) }
+  requires { #"submarine.ads" 80 0 0# true }
+  ensures { #"submarine.ads" 80 0 0# (#"submarine.ads" 83 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Shape:pragargs__and" "GP_Sloc:submarine.ads:83:14" "GP_Id:4" "comment:     Post => DoorOuter.open_close = open and DoorInner.open_close = closed
+             ^ submarine.ads:83:14:VC_POSTCONDITION" ( ( ( "GP_Pretty_Ada:3294" "GP_Sloc:submarine.ads:83:14" ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content }))) = 0) ) /\ ( "GP_Pretty_Ada:3300" "GP_Sloc:submarine.ads:83:46" ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content }))) = 1) ) ) /\ ( "GP_Pretty_Ada:3306" "GP_Sloc:submarine.ads:84:10" ((Submarine__lock__rep.to_rep (Submarine__door.rec__submarine__door__locked_unlocked (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content }))) = 1) ) ) )) }
    =
-  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:45 *)
+  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:80 *)
   ;
    assume {  (Submarine__door___axiom.dynamic_invariant { Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content } True False True True) };
    assume {  (Submarine__door___axiom.dynamic_invariant { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } True False True True) };
    assume {  true };
-  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:45 *)
+  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:80 *)
   ;
-  () (* Check for RTE in the Pre of the subprogram submarine.ads:45 *)
+  () (* Check for RTE in the Pre of the subprogram submarine.ads:80 *)
   ;
    abstract ensures {true}(let _ = ((Submarine__openclose__rep.to_rep((Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields({ Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content })))))) = 1) in (
    ()))
    end ;
-  () (* Assume Pre of the subprogram submarine.ads:45 *)
+  () (* Assume Pre of the subprogram submarine.ads:80 *)
   ;
    assume {  ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content }))) = 1) };
    try
-   ( ( "GP_Sloc:submarine.adb:44:10" (#"submarine.adb" 44 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:44:7" (#"submarine.adb" 44 0 0# (if (((Submarine__openclose__rep.to_rep((Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields({ Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content })))))) = 0)) then (
-    ( ( "GP_Sloc:submarine.adb:46:10" (#"submarine.adb" 46 0 0# ()) );
-    ( "GP_Sloc:submarine.adb:46:10" (#"submarine.adb" 46 0 0# ( (#"submarine.adb" 46 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_PRECONDITION" "GP_Sloc:submarine.adb:46:10" "GP_Id:3" "comment:         closeInnerDoor;
-         ^ submarine.adb:46:10:VC_PRECONDITION" "GP_Shape:if__call_closeinnerdoor" (Submarine__closeinnerdoor___axiom.closeinnerdoor(())) )) )) ) )) else (
+   ( ( "GP_Sloc:submarine.adb:41:10" (#"submarine.adb" 41 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:41:7" (#"submarine.adb" 41 0 0# (if (((Submarine__openclose__rep.to_rep((Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields({ Submarine__door.__split_fields = Submarine__doorinner.doorinner__split_fields.Submarine__door.__split_fields__content })))))) = 0)) then (
+    ( ( "GP_Sloc:submarine.adb:43:10" (#"submarine.adb" 43 0 0# ()) );
+    ( "GP_Sloc:submarine.adb:43:10" (#"submarine.adb" 43 0 0# ( (#"submarine.adb" 43 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_PRECONDITION" "GP_Sloc:submarine.adb:43:10" "GP_Id:3" "comment:         closeInnerDoor;
+         ^ submarine.adb:43:10:VC_PRECONDITION" "GP_Shape:if__call_closeinnerdoor" (Submarine__closeinnerdoor___axiom.closeinnerdoor(())) )) )) ) )) else (
     ()))) );
-   ( "GP_Sloc:submarine.adb:50:10" (#"submarine.adb" 50 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:50:7" (#"submarine.adb" 50 0 0# (if (((Submarine__lock__rep.to_rep((Submarine__door.rec__submarine__door__locked_unlocked((Submarine__door.__split_fields({ Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content })))))) = 0)) then (
-    ( ( "GP_Sloc:submarine.adb:52:10" (#"submarine.adb" 52 0 0# ()) );
-    ( "GP_Sloc:submarine.adb:52:36" (#"submarine.adb" 52 0 0# (let temp___207 = (let temp___206 = { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } in (
-     ( #"submarine.adb" 52 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__locked_unlocked((Submarine__door.__split_fields(temp___206)))) in (
+   ( "GP_Sloc:submarine.adb:47:10" (#"submarine.adb" 47 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:47:7" (#"submarine.adb" 47 0 0# (if (((Submarine__lock__rep.to_rep((Submarine__door.rec__submarine__door__locked_unlocked((Submarine__door.__split_fields({ Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content })))))) = 0)) then (
+    ( ( "GP_Sloc:submarine.adb:49:10" (#"submarine.adb" 49 0 0# ()) );
+    ( "GP_Sloc:submarine.adb:49:36" (#"submarine.adb" 49 0 0# (let temp___270 = (let temp___269 = { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } in (
+     ( #"submarine.adb" 49 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__locked_unlocked((Submarine__door.__split_fields(temp___269)))) in (
       ()))
       end ;
-     { ( temp___206 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___206)) ) with Submarine__door.rec__submarine__door__locked_unlocked = (Submarine__lock__rep.of_rep(1)) } } )))
+     { ( temp___269 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___269)) ) with Submarine__door.rec__submarine__door__locked_unlocked = (Submarine__lock__rep.of_rep(1)) } } )))
      in (
-     #"submarine.adb" 52 0 0# Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___207)) )))
+     #"submarine.adb" 49 0 0# Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___270)) )))
     ) ) )) else (
     ()))) );
-   ( "GP_Sloc:submarine.adb:57:7" (#"submarine.adb" 57 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:57:28" (#"submarine.adb" 57 0 0# (let temp___209 = (let temp___208 = { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } in (
-    ( #"submarine.adb" 57 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields(temp___208)))) in (
+   ( "GP_Sloc:submarine.adb:54:7" (#"submarine.adb" 54 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:54:28" (#"submarine.adb" 54 0 0# (let temp___272 = (let temp___271 = { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } in (
+    ( #"submarine.adb" 54 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields(temp___271)))) in (
      ()))
      end ;
-    { ( temp___208 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___208)) ) with Submarine__door.rec__submarine__door__open_close = (Submarine__openclose__rep.of_rep(0)) } } )))
+    { ( temp___271 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___271)) ) with Submarine__door.rec__submarine__door__open_close = (Submarine__openclose__rep.of_rep(0)) } } )))
     in (
-    #"submarine.adb" 57 0 0# Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___209)) )))
+    #"submarine.adb" 54 0 0# Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___272)) )))
    ) );
     raise Return__exc )
   with
@@ -3408,7 +5238,7 @@ module Submarine__openouterdoor__subprogram_def
    end  )
 end
 
-(* Module for checking contracts and absence of run-time errors in subprogram "closeouterdoor" defined at submarine.ads:51, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+(* Module for checking contracts and absence of run-time errors in subprogram "closeouterdoor" defined at submarine.ads:87, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
 module Submarine__closeouterdoor__subprogram_def
  use import "_gnatprove_standard".Main
  use import "int".Int
@@ -3425,44 +5255,44 @@ module Submarine__closeouterdoor__subprogram_def
  use        Submarine__door___axiom
  use        Submarine__doorouter___axiom
 
- let def #"submarine.ads" 51 0 0#"W:diverges:N" "GP_Subp:submarine.ads:51" 
+ let def #"submarine.ads" 87 0 0#"W:diverges:N" "GP_Subp:submarine.ads:87" 
    (__void_param : unit)
-  requires { #"submarine.ads" 51 0 0# true }
-  ensures { #"submarine.ads" 51 0 0# (#"submarine.ads" 54 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Shape:pragargs__and" "GP_Sloc:submarine.ads:54:14" "GP_Id:5" "comment:     Post => DoorOuter.open_close = closed
-             ^ submarine.ads:54:14:VC_POSTCONDITION" ( ( "GP_Pretty_Ada:2856" "GP_Sloc:submarine.ads:54:14" ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content }))) = 1) ) /\ ( "GP_Pretty_Ada:2862" "GP_Sloc:submarine.ads:55:10" ((Submarine__lock__rep.to_rep (Submarine__door.rec__submarine__door__locked_unlocked (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content }))) = 0) ) ) )) }
+  requires { #"submarine.ads" 87 0 0# true }
+  ensures { #"submarine.ads" 87 0 0# (#"submarine.ads" 90 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Shape:pragargs__and" "GP_Sloc:submarine.ads:90:14" "GP_Id:5" "comment:     Post => DoorOuter.open_close = closed
+             ^ submarine.ads:90:14:VC_POSTCONDITION" ( ( "GP_Pretty_Ada:3337" "GP_Sloc:submarine.ads:90:14" ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content }))) = 1) ) /\ ( "GP_Pretty_Ada:3343" "GP_Sloc:submarine.ads:91:10" ((Submarine__lock__rep.to_rep (Submarine__door.rec__submarine__door__locked_unlocked (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content }))) = 0) ) ) )) }
    =
-  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:51 *)
+  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:87 *)
   ;
    assume {  (Submarine__door___axiom.dynamic_invariant { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } True False True True) };
    assume {  true };
-  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:51 *)
+  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:87 *)
   ;
-  () (* Check for RTE in the Pre of the subprogram submarine.ads:51 *)
+  () (* Check for RTE in the Pre of the subprogram submarine.ads:87 *)
   ;
    abstract ensures {true}(let _ = ((Submarine__openclose__rep.to_rep((Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields({ Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content })))))) = 0) in (
    ()))
    end ;
-  () (* Assume Pre of the subprogram submarine.ads:51 *)
+  () (* Assume Pre of the subprogram submarine.ads:87 *)
   ;
    assume {  ((Submarine__openclose__rep.to_rep (Submarine__door.rec__submarine__door__open_close (Submarine__door.__split_fields { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content }))) = 0) };
    try
-   ( ( "GP_Sloc:submarine.adb:67:7" (#"submarine.adb" 67 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:67:28" (#"submarine.adb" 67 0 0# (let temp___211 = (let temp___210 = { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } in (
-    ( #"submarine.adb" 67 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields(temp___210)))) in (
+   ( ( "GP_Sloc:submarine.adb:64:7" (#"submarine.adb" 64 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:64:28" (#"submarine.adb" 64 0 0# (let temp___274 = (let temp___273 = { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } in (
+    ( #"submarine.adb" 64 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__open_close((Submarine__door.__split_fields(temp___273)))) in (
      ()))
      end ;
-    { ( temp___210 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___210)) ) with Submarine__door.rec__submarine__door__open_close = (Submarine__openclose__rep.of_rep(1)) } } )))
+    { ( temp___273 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___273)) ) with Submarine__door.rec__submarine__door__open_close = (Submarine__openclose__rep.of_rep(1)) } } )))
     in (
-    #"submarine.adb" 67 0 0# Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___211)) )))
+    #"submarine.adb" 64 0 0# Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___274)) )))
    ) );
-   ( "GP_Sloc:submarine.adb:68:7" (#"submarine.adb" 68 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:68:33" (#"submarine.adb" 68 0 0# (let temp___213 = (let temp___212 = { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } in (
-    ( #"submarine.adb" 68 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__locked_unlocked((Submarine__door.__split_fields(temp___212)))) in (
+   ( "GP_Sloc:submarine.adb:65:7" (#"submarine.adb" 65 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:65:33" (#"submarine.adb" 65 0 0# (let temp___276 = (let temp___275 = { Submarine__door.__split_fields = Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content } in (
+    ( #"submarine.adb" 65 0 0# abstract ensures {true}(let _ = (Submarine__door.rec__submarine__door__locked_unlocked((Submarine__door.__split_fields(temp___275)))) in (
      ()))
      end ;
-    { ( temp___212 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___212)) ) with Submarine__door.rec__submarine__door__locked_unlocked = (Submarine__lock__rep.of_rep(0)) } } )))
+    { ( temp___275 ) with Submarine__door.__split_fields = { ( (Submarine__door.__split_fields(temp___275)) ) with Submarine__door.rec__submarine__door__locked_unlocked = (Submarine__lock__rep.of_rep(0)) } } )))
     in (
-    #"submarine.adb" 68 0 0# Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___213)) )))
+    #"submarine.adb" 65 0 0# Submarine__doorouter.doorouter__split_fields.Submarine__door.__split_fields__content <- ( (Submarine__door.__split_fields(temp___276)) )))
    ) );
     raise Return__exc )
   with
@@ -3473,50 +5303,126 @@ module Submarine__closeouterdoor__subprogram_def
    end  )
 end
 
-(* Module for checking contracts and absence of run-time errors in subprogram "checkoxygen" defined at submarine.ads:58, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+(* Module for checking contracts and absence of run-time errors in subprogram "initiateo2warning" defined at submarine.ads:100, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+module Submarine__initiateo2warning__subprogram_def
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__onoff
+ use        Submarine__onoff__rep
+ use        Submarine__warning
+ use        Submarine__warning___axiom
+ use        Submarine__o2warning
+ use        Submarine__onoff___axiom
+ use        Submarine__warning___axiom
+ use        Submarine__o2warning___axiom
+
+ let def #"submarine.ads" 100 0 0#"W:diverges:N" "GP_Subp:submarine.ads:100" 
+   (__void_param : unit)
+  requires { #"submarine.ads" 100 0 0# true }
+  ensures { #"submarine.ads" 100 0 0# (#"submarine.ads" 103 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Sloc:submarine.ads:103:14" "GP_Id:6" "comment:     Post => O2Warning.on_Off = On;
+             ^ submarine.ads:103:14:VC_POSTCONDITION" "GP_Shape:pragargs__cmp" ( "GP_Pretty_Ada:4098" "GP_Sloc:submarine.ads:103:14" ((Submarine__onoff__rep.to_rep (Submarine__warning.rec__submarine__warning__on_off (Submarine__warning.__split_fields { Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content }))) = 0) ) )) }
+   =
+  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:100 *)
+  ;
+   assume {  (Submarine__warning___axiom.dynamic_invariant { Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content } True False True True) };
+   assume {  true };
+  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:100 *)
+  ;
+  () (* Check for RTE in the Pre of the subprogram submarine.ads:100 *)
+  ;
+   abstract ensures {true}(let _ = ((Submarine__onoff__rep.to_rep((Submarine__warning.rec__submarine__warning__on_off((Submarine__warning.__split_fields({ Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content })))))) = 1) in (
+   ()))
+   end ;
+  () (* Assume Pre of the subprogram submarine.ads:100 *)
+  ;
+   assume {  ((Submarine__onoff__rep.to_rep (Submarine__warning.rec__submarine__warning__on_off (Submarine__warning.__split_fields { Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content }))) = 1) };
+   try
+   ( ( "GP_Sloc:submarine.adb:107:7" (#"submarine.adb" 107 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:107:24" (#"submarine.adb" 107 0 0# (let temp___278 = (let temp___277 = { Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content } in (
+    ( #"submarine.adb" 107 0 0# abstract ensures {true}(let _ = (Submarine__warning.rec__submarine__warning__on_off((Submarine__warning.__split_fields(temp___277)))) in (
+     ()))
+     end ;
+    { ( temp___277 ) with Submarine__warning.__split_fields = { ( (Submarine__warning.__split_fields(temp___277)) ) with Submarine__warning.rec__submarine__warning__on_off = (Submarine__onoff__rep.of_rep(0)) } } )))
+    in (
+    #"submarine.adb" 107 0 0# Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content <- ( (Submarine__warning.__split_fields(temp___278)) )))
+   ) );
+    raise Return__exc )
+  with
+   Return__exc -> ()
+  end;
+   abstract ensures {true}(let _ = ((Submarine__onoff__rep.to_rep((Submarine__warning.rec__submarine__warning__on_off((Submarine__warning.__split_fields({ Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content })))))) = 0) in (
+   ()))
+   end  )
+end
+
+(* Module for checking contracts and absence of run-time errors in subprogram "checkoxygen" defined at submarine.ads:105, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
 module Submarine__checkoxygen__subprogram_def
  use import "_gnatprove_standard".Main
  use import "int".Int
+ use        "_gnatprove_standard".Boolean
+ use        Submarine__initiateo2warning___axiom
+ use        Submarine__surface___axiom
+ use        Submarine__depth___axiom
+ use        Submarine__currentdepth
  use        Submarine__oxygen___axiom
  use        Submarine__oxygenlevel
  use        Submarine__warninglevel
  use        Submarine__emptyoxygen
+ use        Submarine__onoff
+ use        Submarine__onoff__rep
+ use        Submarine__warning
+ use        Submarine__warning___axiom
+ use        Submarine__o2warning
+ use        Submarine__depth___axiom
+ use        Submarine__currentdepth___axiom
  use        Submarine__oxygen___axiom
  use        Submarine__oxygenlevel___axiom
  use        Submarine__warninglevel___axiom
  use        Submarine__emptyoxygen___axiom
+ use        Submarine__onoff___axiom
+ use        Submarine__warning___axiom
+ use        Submarine__o2warning___axiom
+ use        Submarine__initiateo2warning___axiom
+ use        Submarine__surface___axiom
 
- let def #"submarine.ads" 58 0 0#"W:diverges:N" "GP_Subp:submarine.ads:58" 
+ let def #"submarine.ads" 105 0 0#"W:diverges:N" "GP_Subp:submarine.ads:105" 
    (__void_param : unit)
-  requires { #"submarine.ads" 58 0 0# true }
-  ensures { #"submarine.ads" 58 0 0# true }
+  requires { #"submarine.ads" 105 0 0# true }
+  ensures { #"submarine.ads" 105 0 0# true }
    =
-  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:58 *)
+  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:105 *)
   ;
-  #"submarine.ads" 58 0 0# assume { #"submarine.ads" 58 0 0# (Submarine__oxygen___axiom.dynamic_invariant Submarine__oxygenlevel.oxygenlevel.int__content True False True True) };
-  #"submarine.ads" 58 0 0# assume { #"submarine.ads" 58 0 0# (Submarine__oxygen___axiom.dynamic_invariant Submarine__warninglevel.warninglevel.int__content True False True True) };
-  #"submarine.ads" 58 0 0# assume { #"submarine.ads" 58 0 0# (Submarine__oxygen___axiom.dynamic_invariant Submarine__emptyoxygen.emptyoxygen.int__content True False True True) };
-  #"submarine.ads" 58 0 0# assume { #"submarine.ads" 58 0 0# true };
-  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:58 *)
+  #"submarine.ads" 105 0 0# assume { #"submarine.ads" 105 0 0# (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True False True True) };
+  #"submarine.ads" 105 0 0# assume { #"submarine.ads" 105 0 0# (Submarine__oxygen___axiom.dynamic_invariant Submarine__oxygenlevel.oxygenlevel.int__content True False True True) };
+  #"submarine.ads" 105 0 0# assume { #"submarine.ads" 105 0 0# (Submarine__oxygen___axiom.dynamic_invariant Submarine__warninglevel.warninglevel.int__content True False True True) };
+  #"submarine.ads" 105 0 0# assume { #"submarine.ads" 105 0 0# (Submarine__oxygen___axiom.dynamic_invariant Submarine__emptyoxygen.emptyoxygen.int__content True False True True) };
+  #"submarine.ads" 105 0 0# assume { #"submarine.ads" 105 0 0# (Submarine__warning___axiom.dynamic_invariant { Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content } True False True True) };
+  #"submarine.ads" 105 0 0# assume { #"submarine.ads" 105 0 0# true };
+  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:105 *)
   ;
-  () (* Check for RTE in the Pre of the subprogram submarine.ads:58 *)
+  () (* Check for RTE in the Pre of the subprogram submarine.ads:105 *)
   ;
-  #"submarine.ads" 58 0 0# abstract ensures {true}(let _ = True in (
+  #"submarine.ads" 105 0 0# abstract ensures {true}(let _ = True in (
    ()))
    end ;
-  () (* Assume Pre of the subprogram submarine.ads:58 *)
+  () (* Assume Pre of the subprogram submarine.ads:105 *)
   ;
-  #"submarine.ads" 58 0 0# assume { #"submarine.ads" 58 0 0# true };
-  #"submarine.ads" 58 0 0# try
-   ( ( "GP_Sloc:submarine.adb:77:11" (#"submarine.adb" 77 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:77:26" (#"submarine.adb" 77 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:77:7" (#"submarine.adb" 77 0 0# (if ((Submarine__oxygenlevel.oxygenlevel.int__content <= Submarine__warninglevel.warninglevel.int__content)) then (
-    ( "GP_Sloc:submarine.adb:78:10" (#"submarine.adb" 78 0 0# ()) )) else (
+  #"submarine.ads" 105 0 0# assume { #"submarine.ads" 105 0 0# true };
+  #"submarine.ads" 105 0 0# try
+   ( ( "GP_Sloc:submarine.adb:74:11" (#"submarine.adb" 74 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:74:26" (#"submarine.adb" 74 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:74:43" (#"submarine.adb" 74 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:74:7" (#"submarine.adb" 74 0 0# (if ((Boolean.andb((Submarine__oxygenlevel.oxygenlevel.int__content <= Submarine__warninglevel.warninglevel.int__content)) (((Submarine__onoff__rep.to_rep((Submarine__warning.rec__submarine__warning__on_off((Submarine__warning.__split_fields({ Submarine__warning.__split_fields = Submarine__o2warning.o2warning__split_fields.Submarine__warning.__split_fields__content })))))) = 1)))) then (
+    ( ( "GP_Sloc:submarine.adb:76:10" (#"submarine.adb" 76 0 0# ()) );
+    ( "GP_Sloc:submarine.adb:76:10" (#"submarine.adb" 76 0 0# ( (#"submarine.adb" 76 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_PRECONDITION" "GP_Sloc:submarine.adb:76:10" "GP_Id:7" "comment:         initiateO2Warning;
+         ^ submarine.adb:76:10:VC_PRECONDITION" "GP_Shape:if__call_initiateo2warning" (Submarine__initiateo2warning___axiom.initiateo2warning(())) )) )) ) )) else (
     ()))) );
-   ( "GP_Sloc:submarine.adb:82:10" (#"submarine.adb" 82 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:82:25" (#"submarine.adb" 82 0 0# ()) );
-   ( "GP_Sloc:submarine.adb:82:7" (#"submarine.adb" 82 0 0# (if ((Submarine__oxygenlevel.oxygenlevel.int__content <= Submarine__emptyoxygen.emptyoxygen.int__content)) then (
-    ( "GP_Sloc:submarine.adb:83:10" (#"submarine.adb" 83 0 0# ()) )) else (
+   ( "GP_Sloc:submarine.adb:80:10" (#"submarine.adb" 80 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:80:24" (#"submarine.adb" 80 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:80:7" (#"submarine.adb" 80 0 0# (if ((Submarine__oxygenlevel.oxygenlevel.int__content = Submarine__emptyoxygen.emptyoxygen.int__content)) then (
+    ( ( "GP_Sloc:submarine.adb:82:10" (#"submarine.adb" 82 0 0# ()) );
+    ( "GP_Sloc:submarine.adb:82:10" (#"submarine.adb" 82 0 0# ( (#"submarine.adb" 82 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_PRECONDITION" "GP_Sloc:submarine.adb:82:10" "GP_Id:8" "comment:         Surface;
+         ^ submarine.adb:82:10:VC_PRECONDITION" "GP_Shape:if__call_surface" (Submarine__surface___axiom.surface(())) )) )) ) )) else (
     ()))) );
     raise Return__exc )
   with
@@ -3527,81 +5433,610 @@ module Submarine__checkoxygen__subprogram_def
    end  )
 end
 
-(* Module for checking contracts and absence of run-time errors in subprogram "emergancysurface" defined at submarine.ads:62, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
-module Submarine__emergancysurface__subprogram_def
+(* Module for checking contracts and absence of run-time errors in subprogram "initiatetempwarning" defined at submarine.ads:109, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+module Submarine__initiatetempwarning__subprogram_def
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        Submarine__onoff
+ use        Submarine__onoff__rep
+ use        Submarine__warning
+ use        Submarine__warning___axiom
+ use        Submarine__tempwarning
+ use        Submarine__onoff___axiom
+ use        Submarine__warning___axiom
+ use        Submarine__tempwarning___axiom
+
+ let def #"submarine.ads" 109 0 0#"W:diverges:N" "GP_Subp:submarine.ads:109" 
+   (__void_param : unit)
+  requires { #"submarine.ads" 109 0 0# true }
+  ensures { #"submarine.ads" 109 0 0# (#"submarine.ads" 112 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Shape:pragargs__cmp" "GP_Sloc:submarine.ads:112:14" "GP_Id:9" "comment:     Post => TempWarning.on_Off = On;
+             ^ submarine.ads:112:14:VC_POSTCONDITION" ( "GP_Pretty_Ada:4164" "GP_Sloc:submarine.ads:112:14" ((Submarine__onoff__rep.to_rep (Submarine__warning.rec__submarine__warning__on_off (Submarine__warning.__split_fields { Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content }))) = 0) ) )) }
+   =
+  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:109 *)
+  ;
+   assume {  (Submarine__warning___axiom.dynamic_invariant { Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content } True False True True) };
+   assume {  true };
+  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:109 *)
+  ;
+  () (* Check for RTE in the Pre of the subprogram submarine.ads:109 *)
+  ;
+   abstract ensures {true}(let _ = ((Submarine__onoff__rep.to_rep((Submarine__warning.rec__submarine__warning__on_off((Submarine__warning.__split_fields({ Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content })))))) = 1) in (
+   ()))
+   end ;
+  () (* Assume Pre of the subprogram submarine.ads:109 *)
+  ;
+   assume {  ((Submarine__onoff__rep.to_rep (Submarine__warning.rec__submarine__warning__on_off (Submarine__warning.__split_fields { Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content }))) = 1) };
+   try
+   ( ( "GP_Sloc:submarine.adb:113:7" (#"submarine.adb" 113 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:113:26" (#"submarine.adb" 113 0 0# (let temp___280 = (let temp___279 = { Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content } in (
+    ( #"submarine.adb" 113 0 0# abstract ensures {true}(let _ = (Submarine__warning.rec__submarine__warning__on_off((Submarine__warning.__split_fields(temp___279)))) in (
+     ()))
+     end ;
+    { ( temp___279 ) with Submarine__warning.__split_fields = { ( (Submarine__warning.__split_fields(temp___279)) ) with Submarine__warning.rec__submarine__warning__on_off = (Submarine__onoff__rep.of_rep(0)) } } )))
+    in (
+    #"submarine.adb" 113 0 0# Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content <- ( (Submarine__warning.__split_fields(temp___280)) )))
+   ) );
+    raise Return__exc )
+  with
+   Return__exc -> ()
+  end;
+   abstract ensures {true}(let _ = ((Submarine__onoff__rep.to_rep((Submarine__warning.rec__submarine__warning__on_off((Submarine__warning.__split_fields({ Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content })))))) = 0) in (
+   ()))
+   end  )
+end
+
+(* Module for checking contracts and absence of run-time errors in subprogram "checkrectortemp" defined at submarine.ads:114, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+module Submarine__checkrectortemp__subprogram_def
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        "_gnatprove_standard".Boolean
+ use        Submarine__initiatetempwarning___axiom
+ use        Submarine__surface___axiom
+ use        Submarine__depth___axiom
+ use        Submarine__currentdepth
+ use        Submarine__temperature___axiom
+ use        Submarine__currenttemp
+ use        Submarine__maxsafetemp
+ use        Submarine__warningtemp
+ use        Submarine__onoff
+ use        Submarine__onoff__rep
+ use        Submarine__warning
+ use        Submarine__warning___axiom
+ use        Submarine__tempwarning
+ use        Submarine__depth___axiom
+ use        Submarine__currentdepth___axiom
+ use        Submarine__temperature___axiom
+ use        Submarine__currenttemp___axiom
+ use        Submarine__maxsafetemp___axiom
+ use        Submarine__warningtemp___axiom
+ use        Submarine__onoff___axiom
+ use        Submarine__warning___axiom
+ use        Submarine__tempwarning___axiom
+ use        Submarine__initiatetempwarning___axiom
+ use        Submarine__surface___axiom
+
+ let def #"submarine.ads" 114 0 0#"W:diverges:N" "GP_Subp:submarine.ads:114" 
+   (__void_param : unit)
+  requires { #"submarine.ads" 114 0 0# true }
+  ensures { #"submarine.ads" 114 0 0# true }
+   =
+  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:114 *)
+  ;
+  #"submarine.ads" 114 0 0# assume { #"submarine.ads" 114 0 0# (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True False True True) };
+  #"submarine.ads" 114 0 0# assume { #"submarine.ads" 114 0 0# (Submarine__temperature___axiom.dynamic_invariant Submarine__currenttemp.currenttemp.int__content True False True True) };
+  #"submarine.ads" 114 0 0# assume { #"submarine.ads" 114 0 0# (Submarine__temperature___axiom.dynamic_invariant Submarine__maxsafetemp.maxsafetemp.int__content True False True True) };
+  #"submarine.ads" 114 0 0# assume { #"submarine.ads" 114 0 0# (Submarine__temperature___axiom.dynamic_invariant Submarine__warningtemp.warningtemp.int__content True False True True) };
+  #"submarine.ads" 114 0 0# assume { #"submarine.ads" 114 0 0# (Submarine__warning___axiom.dynamic_invariant { Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content } True False True True) };
+  #"submarine.ads" 114 0 0# assume { #"submarine.ads" 114 0 0# true };
+  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:114 *)
+  ;
+  () (* Check for RTE in the Pre of the subprogram submarine.ads:114 *)
+  ;
+  #"submarine.ads" 114 0 0# abstract ensures {true}(let _ = True in (
+   ()))
+   end ;
+  () (* Assume Pre of the subprogram submarine.ads:114 *)
+  ;
+  #"submarine.ads" 114 0 0# assume { #"submarine.ads" 114 0 0# true };
+  #"submarine.ads" 114 0 0# try
+   ( ( "GP_Sloc:submarine.adb:91:11" (#"submarine.adb" 91 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:91:26" (#"submarine.adb" 91 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:91:42" (#"submarine.adb" 91 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:91:7" (#"submarine.adb" 91 0 0# (if ((Boolean.andb((Submarine__currenttemp.currenttemp.int__content >= Submarine__warningtemp.warningtemp.int__content)) (((Submarine__onoff__rep.to_rep((Submarine__warning.rec__submarine__warning__on_off((Submarine__warning.__split_fields({ Submarine__warning.__split_fields = Submarine__tempwarning.tempwarning__split_fields.Submarine__warning.__split_fields__content })))))) = 1)))) then (
+    ( ( "GP_Sloc:submarine.adb:93:10" (#"submarine.adb" 93 0 0# ()) );
+    ( "GP_Sloc:submarine.adb:93:10" (#"submarine.adb" 93 0 0# ( (#"submarine.adb" 93 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_PRECONDITION" "GP_Sloc:submarine.adb:93:10" "GP_Id:10" "comment:         initiateTempWarning;
+         ^ submarine.adb:93:10:VC_PRECONDITION" "GP_Shape:if__call_initiatetempwarning" (Submarine__initiatetempwarning___axiom.initiatetempwarning(())) )) )) ) )) else (
+    ()))) );
+   ( "GP_Sloc:submarine.adb:97:10" (#"submarine.adb" 97 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:97:25" (#"submarine.adb" 97 0 0# ()) );
+   ( "GP_Sloc:submarine.adb:97:7" (#"submarine.adb" 97 0 0# (if ((Submarine__currenttemp.currenttemp.int__content >= Submarine__maxsafetemp.maxsafetemp.int__content)) then (
+    ( ( "GP_Sloc:submarine.adb:99:10" (#"submarine.adb" 99 0 0# ()) );
+    ( "GP_Sloc:submarine.adb:99:10" (#"submarine.adb" 99 0 0# ( (#"submarine.adb" 99 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_PRECONDITION" "GP_Shape:if__call_surface" "GP_Sloc:submarine.adb:99:10" "GP_Id:11" "comment:         Surface;
+         ^ submarine.adb:99:10:VC_PRECONDITION" (Submarine__surface___axiom.surface(())) )) )) ) )) else (
+    ()))) );
+    raise Return__exc )
+  with
+   Return__exc -> ()
+  end;
+   abstract ensures {true}(let _ = True in (
+   ()))
+   end  )
+end
+
+(* Module for checking contracts and absence of run-time errors in subprogram "surface" defined at submarine.ads:124, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+module Submarine__surface__subprogram_def
  use import "_gnatprove_standard".Main
  use import "int".Int
  use        "_gnatprove_standard".Boolean
  use        Submarine__depth
  use        Submarine__depth___axiom
  use        Submarine__currentdepth
- use        Submarine__emergancysurface__L_1
- use        Submarine__emergancysurface__L_1___axiom
+ use        Submarine__surface__L_1
+ use        Submarine__surface__L_1___axiom
  use        Submarine__depth___axiom
  use        Submarine__currentdepth___axiom
 
- let def #"submarine.ads" 62 0 0#"W:diverges:N" "GP_Subp:submarine.ads:62" 
+ let def #"submarine.ads" 124 0 0#"W:diverges:N" "GP_Subp:submarine.ads:124" 
    (__void_param : unit)
-  requires { #"submarine.ads" 62 0 0# true }
-  ensures { #"submarine.ads" 62 0 0# (#"submarine.ads" 65 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Sloc:submarine.ads:65:14" "GP_Id:7" "comment:     Post => CurrentDepth = Depth'First;
-             ^ submarine.ads:65:14:VC_POSTCONDITION" "GP_Shape:pragargs__cmp" ( "GP_Pretty_Ada:3256" "GP_Sloc:submarine.ads:65:14" (Submarine__currentdepth.currentdepth.int__content = 0) ) )) }
+  requires { #"submarine.ads" 124 0 0# true }
+  ensures { #"submarine.ads" 124 0 0# (#"submarine.ads" 127 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Shape:pragargs__cmp" "GP_Sloc:submarine.ads:127:14" "GP_Id:13" "comment:     Post => CurrentDepth <= Depth'First;
+             ^ submarine.ads:127:14:VC_POSTCONDITION" ( "GP_Pretty_Ada:4228" "GP_Sloc:submarine.ads:127:14" (Submarine__currentdepth.currentdepth.int__content <= 0) ) )) }
    =
-  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:62 *)
+  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:124 *)
   ;
    assume {  (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True False True True) };
    assume {  true };
-  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:62 *)
+  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:124 *)
   ;
-  () (* Check for RTE in the Pre of the subprogram submarine.ads:62 *)
+  () (* Check for RTE in the Pre of the subprogram submarine.ads:124 *)
   ;
-   abstract ensures {true}(let _ = (Submarine__currentdepth.currentdepth.int__content > 0) in (
+   abstract ensures {true}(let _ = (Submarine__currentdepth.currentdepth.int__content >= 0) in (
    ()))
    end ;
-  () (* Assume Pre of the subprogram submarine.ads:62 *)
+  () (* Assume Pre of the subprogram submarine.ads:124 *)
   ;
-   assume {  (Submarine__currentdepth.currentdepth.int__content > 0) };
+   assume {  (Submarine__currentdepth.currentdepth.int__content >= 0) };
    try
-   ( (#"submarine.adb" 93 0 0# ());
-   ( "GP_Sloc:submarine.adb:93:40" (#"submarine.adb" 93 0 0# ( () (* Translation of an Ada loop from submarine.adb:93 *)
+   ( (#"submarine.adb" 124 0 0# ());
+   ( "GP_Sloc:submarine.adb:124:40" (#"submarine.adb" 124 0 0# ( () (* Translation of an Ada loop from submarine.adb:124 *)
    ;
    (if ((Submarine__currentdepth.currentdepth.int__content > 0)) then (
-    #"submarine.adb" 93 0 0# try
-     ( #"submarine.adb" 93 0 0# abstract ensures {true}(let _ = Submarine__currentdepth.currentdepth.int__content in (
+    #"submarine.adb" 124 0 0# try
+     ( #"submarine.adb" 124 0 0# abstract ensures {true}(let _ = Submarine__currentdepth.currentdepth.int__content in (
       ()))
       end ;
-     (let temp___214 = #"submarine.adb" 93 0 0# (any int
-     ensures {#"submarine.adb" 93 0 0# (result = Submarine__currentdepth.currentdepth.int__content)} 
+     (let temp___281 = #"submarine.adb" 124 0 0# (any int
+     ensures {#"submarine.adb" 124 0 0# (result = Submarine__currentdepth.currentdepth.int__content)} 
      ) in (
-      ( () (* First unroling of the loop statements appearing before the loop invariant of loop submarine.adb:93 *)
+      ( () (* First unroling of the loop statements appearing before the loop invariant of loop submarine.adb:124 *)
       ;
-      () (* While loop translating the Ada loop from submarine.adb:93 *)
+      () (* While loop translating the Ada loop from submarine.adb:124 *)
       ;
-      #"submarine.adb" 93 0 0# while True do
-       ( () (* Assume implicit invariants from the loop submarine.adb:93 *)
+      #"submarine.adb" 124 0 0# while True do
+       ( () (* Assume implicit invariants from the loop submarine.adb:124 *)
        ;
-       #"submarine.adb" 93 0 0# assume { #"submarine.adb" 93 0 0# (Boolean.andb(( ( true /\ (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True True True True) ) /\ true )) ((Submarine__currentdepth.currentdepth.int__content > 0))) };
-       () (* Check for absence of RTE in the invariant of loop submarine.adb:93 *)
+       #"submarine.adb" 124 0 0# assume { #"submarine.adb" 124 0 0# (Boolean.andb(( ( true /\ (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True True True True) ) /\ true )) ((Submarine__currentdepth.currentdepth.int__content > 0))) };
+       () (* Check for absence of RTE in the invariant of loop submarine.adb:124 *)
        ;
-       () (* Loop statements appearing after the loop invariant of loop submarine.adb:93 *)
+       () (* Loop statements appearing after the loop invariant of loop submarine.adb:124 *)
        ;
-       ( "GP_Sloc:submarine.adb:94:10" (#"submarine.adb" 94 0 0# ()) );
-       ( "GP_Sloc:submarine.adb:94:26" (#"submarine.adb" 94 0 0# ()) );
-       ( "GP_Sloc:submarine.adb:94:23" (#"submarine.adb" 94 0 0# #"submarine.adb" 94 0 0# Submarine__currentdepth.currentdepth.int__content <- ( (#"submarine.adb" 94 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:submarine.adb:94:39" "GP_Reason:VC_RANGE_CHECK" "GP_Id:6" "comment:         CurrentDepth := CurrentDepth - 1;
-                                      ^ submarine.adb:94:39:VC_RANGE_CHECK" "GP_Shape:L_1_while__currentdepth_assign__sub" (Submarine__depth.range_check_((Submarine__currentdepth.currentdepth.int__content - 1))) )) )) );
-       () (* Check for the exit condition and loop statements appearing before the loop invariant of loop submarine.adb:93 *)
+       ( "GP_Sloc:submarine.adb:126:10" (#"submarine.adb" 126 0 0# ()) );
+       ( "GP_Sloc:submarine.adb:126:26" (#"submarine.adb" 126 0 0# ()) );
+       ( "GP_Sloc:submarine.adb:126:23" (#"submarine.adb" 126 0 0# #"submarine.adb" 126 0 0# Submarine__currentdepth.currentdepth.int__content <- ( (#"submarine.adb" 126 0 0# ( "model_vc" "keep_on_simp" "GP_Sloc:submarine.adb:126:39" "GP_Reason:VC_RANGE_CHECK" "GP_Id:12" "comment:         CurrentDepth := CurrentDepth - 1;
+                                      ^ submarine.adb:126:39:VC_RANGE_CHECK" "GP_Shape:L_1_while__currentdepth_assign__sub" (Submarine__depth.range_check_((Submarine__currentdepth.currentdepth.int__content - 1))) )) )) );
+       () (* Check for the exit condition and loop statements appearing before the loop invariant of loop submarine.adb:124 *)
        ;
        (if (not ( (Submarine__currentdepth.currentdepth.int__content > 0) )) then (
-         raise Submarine__emergancysurface__L_1.L_1)) )
+         raise Submarine__surface__L_1.L_1)) )
       done )))
       )
     with
-     Submarine__emergancysurface__L_1.L_1 -> ()
+     Submarine__surface__L_1.L_1 -> ()
     end)) )) );
     raise Return__exc )
   with
    Return__exc -> ()
   end;
-   abstract ensures {true}(let _ = (Submarine__currentdepth.currentdepth.int__content = 0) in (
+   abstract ensures {true}(let _ = (Submarine__currentdepth.currentdepth.int__content <= 0) in (
+   ()))
+   end  )
+end
+
+(* Module for checking contracts and absence of run-time errors in subprogram "dive" defined at submarine.ads:130, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+module Submarine__dive__subprogram_def
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        "_gnatprove_standard".Boolean
+ use        Submarine__depth
+ use        Submarine__depth___axiom
+ use        Submarine__currentdepth
+ use        Submarine__maxdepth
+ use        Submarine__dive__L_2
+ use        Submarine__dive__L_2___axiom
+ use        Submarine__depth___axiom
+ use        Submarine__currentdepth___axiom
+ use        Submarine__maxdepth___axiom
+
+ let def #"submarine.ads" 130 0 0#"W:diverges:N" "GP_Subp:submarine.ads:130" 
+   (__void_param : unit)
+  requires { #"submarine.ads" 130 0 0# true }
+  ensures { #"submarine.ads" 130 0 0# (#"submarine.ads" 133 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Shape:pragargs__cmp" "GP_Sloc:submarine.ads:133:14" "GP_Id:15" "comment:     Post => CurrentDepth <= maxDepth;
+             ^ submarine.ads:133:14:VC_POSTCONDITION" ( "GP_Pretty_Ada:4275" "GP_Sloc:submarine.ads:133:14" (Submarine__currentdepth.currentdepth.int__content <= Submarine__maxdepth.maxdepth.int__content) ) )) }
+   =
+  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:130 *)
+  ;
+   assume {  (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True False True True) };
+   assume {  (Submarine__depth___axiom.dynamic_invariant Submarine__maxdepth.maxdepth.int__content True False True True) };
+   assume {  true };
+  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:130 *)
+  ;
+  () (* Check for RTE in the Pre of the subprogram submarine.ads:130 *)
+  ;
+   abstract ensures {true}(let _ = (Submarine__currentdepth.currentdepth.int__content <= Submarine__maxdepth.maxdepth.int__content) in (
+   ()))
+   end ;
+  () (* Assume Pre of the subprogram submarine.ads:130 *)
+  ;
+   assume {  (Submarine__currentdepth.currentdepth.int__content <= Submarine__maxdepth.maxdepth.int__content) };
+   try
+   ( (#"submarine.adb" 136 0 0# ());
+   ( "GP_Sloc:submarine.adb:136:37" (#"submarine.adb" 136 0 0# ( () (* Translation of an Ada loop from submarine.adb:136 *)
+   ;
+   (if ((Submarine__currentdepth.currentdepth.int__content < Submarine__maxdepth.maxdepth.int__content)) then (
+    #"submarine.adb" 136 0 0# try
+     ( #"submarine.adb" 136 0 0# abstract ensures {true}(let _ = Submarine__currentdepth.currentdepth.int__content in (
+      ()))
+      end ;
+     (let temp___282 = #"submarine.adb" 136 0 0# (any int
+     ensures {#"submarine.adb" 136 0 0# (result = Submarine__currentdepth.currentdepth.int__content)} 
+     ) in (
+      ( () (* First unroling of the loop statements appearing before the loop invariant of loop submarine.adb:136 *)
+      ;
+      () (* While loop translating the Ada loop from submarine.adb:136 *)
+      ;
+      #"submarine.adb" 136 0 0# while True do
+       ( () (* Assume implicit invariants from the loop submarine.adb:136 *)
+       ;
+       #"submarine.adb" 136 0 0# assume { #"submarine.adb" 136 0 0# (Boolean.andb(( ( true /\ (Submarine__depth___axiom.dynamic_invariant Submarine__currentdepth.currentdepth.int__content True True True True) ) /\ true )) ((Submarine__currentdepth.currentdepth.int__content < Submarine__maxdepth.maxdepth.int__content))) };
+       () (* Check for absence of RTE in the invariant of loop submarine.adb:136 *)
+       ;
+       () (* Loop statements appearing after the loop invariant of loop submarine.adb:136 *)
+       ;
+       ( "GP_Sloc:submarine.adb:138:10" (#"submarine.adb" 138 0 0# ()) );
+       ( "GP_Sloc:submarine.adb:138:26" (#"submarine.adb" 138 0 0# ()) );
+       ( "GP_Sloc:submarine.adb:138:23" (#"submarine.adb" 138 0 0# #"submarine.adb" 138 0 0# Submarine__currentdepth.currentdepth.int__content <- ( (#"submarine.adb" 138 0 0# ( "model_vc" "keep_on_simp" "GP_Reason:VC_RANGE_CHECK" "GP_Sloc:submarine.adb:138:39" "GP_Id:14" "comment:         CurrentDepth := CurrentDepth + 1;
+                                      ^ submarine.adb:138:39:VC_RANGE_CHECK" "GP_Shape:L_2_while__currentdepth_assign__add" (Submarine__depth.range_check_((Submarine__currentdepth.currentdepth.int__content + 1))) )) )) );
+       () (* Check for the exit condition and loop statements appearing before the loop invariant of loop submarine.adb:136 *)
+       ;
+       (if (not ( (Submarine__currentdepth.currentdepth.int__content < Submarine__maxdepth.maxdepth.int__content) )) then (
+         raise Submarine__dive__L_2.L_2)) )
+      done )))
+      )
+    with
+     Submarine__dive__L_2.L_2 -> ()
+    end)) )) );
+    raise Return__exc )
+  with
+   Return__exc -> ()
+  end;
+   abstract ensures {true}(let _ = (Submarine__currentdepth.currentdepth.int__content <= Submarine__maxdepth.maxdepth.int__content) in (
+   ()))
+   end  )
+end
+
+(* Module for checking contracts and absence of run-time errors in subprogram "loadtorpeado" defined at submarine.ads:141, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+module Submarine__loadtorpeado__subprogram_def
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        "_gnatprove_standard".Boolean
+ use        Submarine__torpeadobay
+ use        Submarine__torpeadobay__rep
+ use        Submarine__as_index
+ use        Submarine__as_index___axiom
+ use        Array__Int__Submarine__torpeadobay
+ use        Submarine__ammostore___axiom
+ use        Submarine__chambered_index
+ use        Submarine__chambered_index___axiom
+ use        Submarine__chambers___axiom
+ use        Array__Int__Submarine__torpeadobay
+ use        Submarine__loadtorpeado__a
+ use        Array__Int__Submarine__torpeadobay
+ use        Submarine__loadtorpeado__c
+ use        Submarine__loadtorpeado__i
+ use        Submarine__loadtorpeado__j
+ use        Submarine__loadtorpeado__firsttorpeadoindex
+ use        Submarine__loadtorpeado__L_3
+ use        Submarine__loadtorpeado__L_4
+ use        Submarine__loadtorpeado__i___axiom
+ use        Submarine__loadtorpeado__j___axiom
+ use        Submarine__loadtorpeado__firsttorpeadoindex___axiom
+ use        Submarine__loadtorpeado__L_3___axiom
+ use        Submarine__loadtorpeado__L_4___axiom
+ use        Submarine__torpeadobay___axiom
+ use        Submarine__as_index___axiom
+ use        Submarine__ammostore___axiom
+ use        Submarine__chambered_index___axiom
+ use        Submarine__chambers___axiom
+ use        Submarine__loadtorpeado__a___axiom
+ use        Submarine__loadtorpeado__c___axiom
+
+ let def #"submarine.ads" 141 0 0#"W:diverges:N" "GP_Subp:submarine.ads:141" 
+   (__void_param : unit)
+  requires { #"submarine.ads" 141 0 0# true }
+  ensures { #"submarine.ads" 141 0 0# (#"submarine.ads" 144 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Sloc:submarine.ads:144:14" "GP_Id:16" "comment:     Post => (for some i in C'Range => C(i) = Loaded);
+             ^ submarine.ads:144:14:VC_POSTCONDITION" "GP_Shape:pragargs__forsome" (exists i  : int.
+   ( ( (0 <= i) /\ (i <= 4) ) /\ ( "GP_Pretty_Ada:3599" "GP_Sloc:submarine.ads:144:40" ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content i)) = 0) ) )) )) }
+   =
+  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:141 *)
+  ;
+   assume {  (Submarine__ammostore___axiom.dynamic_invariant Submarine__loadtorpeado__a.a.Array__Int__Submarine__torpeadobay.map__content True False True True) };
+   assume {  (Submarine__chambers___axiom.dynamic_invariant Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content True False True True) };
+   assume {  true };
+  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:141 *)
+  ;
+  () (* Check for RTE in the Pre of the subprogram submarine.ads:141 *)
+  ;
+   abstract ensures {true}(let _ = (Boolean.andb(( (let j =  (any int
+  ) in (
+   (if ((Boolean.andb((0 <= j)) ((j <= 25)))) then (
+     abstract ensures {true}(let _ = ((Submarine__torpeadobay__rep.to_rep((Array__Int__Submarine__torpeadobay.get(Submarine__loadtorpeado__a.a.Array__Int__Submarine__torpeadobay.map__content) (j)))) = 0) in (
+     ()))
+     end ))))
+  ;
+   (any bool
+  requires { true} 
+  ensures { ( (result = True) <-> (exists j  : int.
+   ( ( (0 <= j) /\ (j <= 25) ) /\ ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get Submarine__loadtorpeado__a.a.Array__Int__Submarine__torpeadobay.map__content j)) = 0) )) )} 
+  ) )) (( (let k =  (any int
+  ) in (
+   (if ((Boolean.andb((0 <= k)) ((k <= 4)))) then (
+     abstract ensures {true}(let _ = ((Submarine__torpeadobay__rep.to_rep((Array__Int__Submarine__torpeadobay.get(Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content) (k)))) = 1) in (
+     ()))
+     end ))))
+  ;
+   (any bool
+  requires { true} 
+  ensures { ( (result = True) <-> (exists k  : int.
+   ( ( (0 <= k) /\ (k <= 4) ) /\ ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content k)) = 1) )) )} 
+  ) ))) in (
+   ()))
+   end ;
+  () (* Assume Pre of the subprogram submarine.ads:141 *)
+  ;
+   assume {  ( (exists j  : int.
+   ( ( (0 <= j) /\ (j <= 25) ) /\ ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get Submarine__loadtorpeado__a.a.Array__Int__Submarine__torpeadobay.map__content j)) = 0) )) /\ (exists k  : int.
+   ( ( (0 <= k) /\ (k <= 4) ) /\ ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content k)) = 1) )) ) };
+   try
+   ( (#"submarine.adb" 148 0 0# ( #"submarine.adb" 148 0 0# Submarine__loadtorpeado__i.i.int__content <- ( 0 );
+   #"submarine.adb" 148 0 0# assume { #"submarine.adb" 148 0 0# (Submarine__as_index___axiom.dynamic_invariant Submarine__loadtorpeado__i.i.int__content True False True True) } ));
+   (#"submarine.adb" 149 0 0# ( #"submarine.adb" 149 0 0# Submarine__loadtorpeado__j.j.int__content <- ( 0 );
+   #"submarine.adb" 149 0 0# assume { #"submarine.adb" 149 0 0# (Submarine__chambered_index___axiom.dynamic_invariant Submarine__loadtorpeado__j.j.int__content True False True True) } ));
+   (#"submarine.adb" 151 0 0# ( #"submarine.adb" 151 0 0# Submarine__loadtorpeado__firsttorpeadoindex.firsttorpeadoindex.int__content <- ( 0 );
+   #"submarine.adb" 151 0 0# assume { #"submarine.adb" 151 0 0# (Submarine__as_index___axiom.dynamic_invariant Submarine__loadtorpeado__firsttorpeadoindex.firsttorpeadoindex.int__content True False True True) } ));
+   (#"submarine.adb" 155 0 0# ());
+   (#"submarine.adb" 164 0 0# ());
+   ( "GP_Sloc:submarine.adb:155:24" (#"submarine.adb" 155 0 0# ( () (* Translation of an Ada loop from submarine.adb:155 *)
+   ;
+   (if ((Submarine__loadtorpeado__i.i.int__content < 25)) then (
+    #"submarine.adb" 155 0 0# try
+     ( #"submarine.adb" 155 0 0# abstract ensures {true}(let _ = Submarine__loadtorpeado__firsttorpeadoindex.firsttorpeadoindex.int__content in (
+      ()))
+      end ;
+     (let temp___283 = #"submarine.adb" 155 0 0# (any int
+     ensures {#"submarine.adb" 155 0 0# (result = Submarine__loadtorpeado__firsttorpeadoindex.firsttorpeadoindex.int__content)} 
+     ) in (
+      ( () (* First unroling of the loop statements appearing before the loop invariant of loop submarine.adb:155 *)
+      ;
+      () (* While loop translating the Ada loop from submarine.adb:155 *)
+      ;
+      #"submarine.adb" 155 0 0# while True do
+       ( () (* Assume implicit invariants from the loop submarine.adb:155 *)
+       ;
+       #"submarine.adb" 155 0 0# assume { #"submarine.adb" 155 0 0# (Boolean.andb(( ( true /\ (Submarine__as_index___axiom.dynamic_invariant Submarine__loadtorpeado__firsttorpeadoindex.firsttorpeadoindex.int__content False True True True) ) /\ true )) ((Submarine__loadtorpeado__i.i.int__content < 25))) };
+       () (* Check for absence of RTE in the invariant of loop submarine.adb:155 *)
+       ;
+       () (* Loop statements appearing after the loop invariant of loop submarine.adb:155 *)
+       ;
+       ( "GP_Sloc:submarine.adb:156:15" (#"submarine.adb" 156 0 0# ()) );
+       ( "GP_Sloc:submarine.adb:156:10" (#"submarine.adb" 156 0 0# (if (((Submarine__torpeadobay__rep.to_rep((Array__Int__Submarine__torpeadobay.get(Submarine__loadtorpeado__a.a.Array__Int__Submarine__torpeadobay.map__content) (Submarine__loadtorpeado__i.i.int__content)))) = 0)) then (
+        ( ( "GP_Sloc:submarine.adb:157:13" (#"submarine.adb" 157 0 0# ()) );
+        ( "GP_Sloc:submarine.adb:157:35" (#"submarine.adb" 157 0 0# ()) );
+        ( "GP_Sloc:submarine.adb:157:32" (#"submarine.adb" 157 0 0# #"submarine.adb" 157 0 0# Submarine__loadtorpeado__firsttorpeadoindex.firsttorpeadoindex.int__content <- ( Submarine__loadtorpeado__i.i.int__content )) ) )) else (
+        ()))) );
+       () (* Check for the exit condition and loop statements appearing before the loop invariant of loop submarine.adb:155 *)
+       ;
+       (if (not ( (Submarine__loadtorpeado__i.i.int__content < 25) )) then (
+         raise Submarine__loadtorpeado__L_3.L_3)) )
+      done )))
+      )
+    with
+     Submarine__loadtorpeado__L_3.L_3 -> ()
+    end)) )) );
+   ( "GP_Sloc:submarine.adb:164:25" (#"submarine.adb" 164 0 0# ( () (* Translation of an Ada loop from submarine.adb:164 *)
+   ;
+   (if ((Submarine__loadtorpeado__j.j.int__content < 4)) then (
+    #"submarine.adb" 164 0 0# try
+     ( #"submarine.adb" 164 0 0# abstract ensures {true}(let _ = Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content in (
+      ()))
+      end ;
+     (let temp___286 = #"submarine.adb" 164 0 0# (any Array__Int__Submarine__torpeadobay.map
+     ensures {#"submarine.adb" 164 0 0# (result = Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content)} 
+     ) in (
+      ( #"submarine.adb" 164 0 0# abstract ensures {true}(let _ = Submarine__loadtorpeado__a.a.Array__Int__Submarine__torpeadobay.map__content in (
+       ()))
+       end ;
+      (let temp___284 = #"submarine.adb" 164 0 0# (any Array__Int__Submarine__torpeadobay.map
+      ensures {#"submarine.adb" 164 0 0# (result = Submarine__loadtorpeado__a.a.Array__Int__Submarine__torpeadobay.map__content)} 
+      ) in (
+       ( () (* First unroling of the loop statements appearing before the loop invariant of loop submarine.adb:164 *)
+       ;
+       () (* While loop translating the Ada loop from submarine.adb:164 *)
+       ;
+       #"submarine.adb" 164 0 0# while True do
+        ( () (* Assume implicit invariants from the loop submarine.adb:164 *)
+        ;
+        #"submarine.adb" 164 0 0# assume { #"submarine.adb" 164 0 0# (Boolean.andb(( ( ( ( true /\ (Submarine__ammostore___axiom.dynamic_invariant Submarine__loadtorpeado__a.a.Array__Int__Submarine__torpeadobay.map__content True True True True) ) /\ (forall temp___285 #"submarine.adb" 164 0 0#  : int.
+         (if (( (Submarine__as_index.first <= temp___285) /\ (temp___285 <= Submarine__as_index.last) )) then (
+          (if ((Submarine__loadtorpeado__firsttorpeadoindex.firsttorpeadoindex.int__content <> temp___285)) then (
+           ((Array__Int__Submarine__torpeadobay.get Submarine__loadtorpeado__a.a.Array__Int__Submarine__torpeadobay.map__content temp___285) = (Array__Int__Submarine__torpeadobay.get temp___284 temp___285))) else (
+           true))) else true)) ) /\ (Submarine__chambers___axiom.dynamic_invariant Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content True True True True) ) /\ (forall temp___287 #"submarine.adb" 164 0 0#  : int.
+         (if (( (Submarine__chambered_index.first <= temp___287) /\ (temp___287 <= Submarine__chambered_index.last) )) then (
+          (if ((Submarine__loadtorpeado__j.j.int__content <> temp___287)) then (
+           ((Array__Int__Submarine__torpeadobay.get Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content temp___287) = (Array__Int__Submarine__torpeadobay.get temp___286 temp___287))) else (
+           true))) else true)) )) ((Submarine__loadtorpeado__j.j.int__content < 4))) };
+        () (* Check for absence of RTE in the invariant of loop submarine.adb:164 *)
+        ;
+        () (* Loop statements appearing after the loop invariant of loop submarine.adb:164 *)
+        ;
+        ( "GP_Sloc:submarine.adb:165:16" (#"submarine.adb" 165 0 0# ()) );
+        ( "GP_Sloc:submarine.adb:165:10" (#"submarine.adb" 165 0 0# (if (((Submarine__torpeadobay__rep.to_rep((Array__Int__Submarine__torpeadobay.get(Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content) (Submarine__loadtorpeado__j.j.int__content)))) = 1)) then (
+         ( ( "GP_Sloc:submarine.adb:166:15" (#"submarine.adb" 166 0 0# ()) );
+         ( "GP_Sloc:submarine.adb:166:35" (#"submarine.adb" 166 0 0# #"submarine.adb" 166 0 0# Submarine__loadtorpeado__a.a.Array__Int__Submarine__torpeadobay.map__content <- ( (Array__Int__Submarine__torpeadobay.set(Submarine__loadtorpeado__a.a.Array__Int__Submarine__torpeadobay.map__content) (Submarine__loadtorpeado__firsttorpeadoindex.firsttorpeadoindex.int__content) ((Submarine__torpeadobay__rep.of_rep(1)))) )) );
+         ( "GP_Sloc:submarine.adb:167:15" (#"submarine.adb" 167 0 0# ()) );
+         ( "GP_Sloc:submarine.adb:167:18" (#"submarine.adb" 167 0 0# #"submarine.adb" 167 0 0# Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content <- ( (Array__Int__Submarine__torpeadobay.set(Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content) (Submarine__loadtorpeado__j.j.int__content) ((Submarine__torpeadobay__rep.of_rep(0)))) )) ) )) else (
+         ()))) );
+        () (* Check for the exit condition and loop statements appearing before the loop invariant of loop submarine.adb:164 *)
+        ;
+        (if (not ( (Submarine__loadtorpeado__j.j.int__content < 4) )) then (
+          raise Submarine__loadtorpeado__L_4.L_4)) )
+       done )))
+       )))
+      )
+    with
+     Submarine__loadtorpeado__L_4.L_4 -> ()
+    end)) )) );
+    raise Return__exc )
+  with
+   Return__exc -> ()
+  end;
+   abstract ensures {true}(let _ = ( (let i =  (any int
+  ) in (
+   (if ((Boolean.andb((0 <= i)) ((i <= 4)))) then (
+     abstract ensures {true}(let _ = ((Submarine__torpeadobay__rep.to_rep((Array__Int__Submarine__torpeadobay.get(Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content) (i)))) = 0) in (
+     ()))
+     end ))))
+  ;
+   (any bool
+  requires { true} 
+  ensures { ( (result = True) <-> (exists i  : int.
+   ( ( (0 <= i) /\ (i <= 4) ) /\ ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get Submarine__loadtorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content i)) = 0) )) )} 
+  ) ) in (
+   ()))
+   end  )
+end
+
+(* Module for checking contracts and absence of run-time errors in subprogram "firetorpeado" defined at submarine.ads:146, created in Gnat2Why.Subprograms.Generate_VCs_For_Subprogram *)
+module Submarine__firetorpeado__subprogram_def
+ use import "_gnatprove_standard".Main
+ use import "int".Int
+ use        "_gnatprove_standard".Boolean
+ use        Submarine__torpeadobay
+ use        Submarine__torpeadobay__rep
+ use        Array__Int__Submarine__torpeadobay
+ use        Submarine__chambered_index
+ use        Submarine__chambered_index___axiom
+ use        Submarine__chambers___axiom
+ use        Array__Int__Submarine__torpeadobay
+ use        Submarine__firetorpeado__c
+ use        Submarine__firetorpeado__i
+ use        Submarine__firetorpeado__L_5
+ use        Submarine__firetorpeado__i___axiom
+ use        Submarine__firetorpeado__L_5___axiom
+ use        Submarine__torpeadobay___axiom
+ use        Submarine__chambered_index___axiom
+ use        Submarine__chambers___axiom
+ use        Submarine__firetorpeado__c___axiom
+
+ let def #"submarine.ads" 146 0 0#"W:diverges:N" "GP_Subp:submarine.ads:146" 
+   (__void_param : unit)
+  requires { #"submarine.ads" 146 0 0# true }
+  ensures { #"submarine.ads" 146 0 0# (#"submarine.ads" 148 0 0# ( "model_vc_post" "keep_on_simp" "GP_Reason:VC_POSTCONDITION" "GP_Sloc:submarine.ads:148:14" "GP_Id:17" "comment:     Post => (for all j in C'Range => C(j) = Empty);
+             ^ submarine.ads:148:14:VC_POSTCONDITION" "GP_Shape:pragargs__forall" (forall j #"submarine.ads" 148 0 0#  "model" "name:j" "model_trace:3641"  : int.
+   ( ( (0 <= j) /\ (j <= 4) ) -> ( "GP_Pretty_Ada:3655" "GP_Sloc:submarine.ads:148:39" ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content j)) = 1) ) )) )) }
+   =
+  ( () (* Assume dynamic invariants of inputs of the subprogram submarine.ads:146 *)
+  ;
+   assume {  (Submarine__chambers___axiom.dynamic_invariant Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content True False True True) };
+   assume {  true };
+  () (* Declarations introduced by the compiler at the beginning of the subprogram submarine.ads:146 *)
+  ;
+  () (* Check for RTE in the Pre of the subprogram submarine.ads:146 *)
+  ;
+   abstract ensures {true}(let _ = ( (let i =  (any int
+  ) in (
+   (if ((Boolean.andb((0 <= i)) ((i <= 4)))) then (
+     abstract ensures {true}(let _ = ((Submarine__torpeadobay__rep.to_rep((Array__Int__Submarine__torpeadobay.get(Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content) (i)))) = 0) in (
+     ()))
+     end ))))
+  ;
+   (any bool
+  requires { true} 
+  ensures { ( (result = True) <-> (exists i  : int.
+   ( ( (0 <= i) /\ (i <= 4) ) /\ ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content i)) = 0) )) )} 
+  ) ) in (
+   ()))
+   end ;
+  () (* Assume Pre of the subprogram submarine.ads:146 *)
+  ;
+   assume {  (exists i  : int.
+   ( ( (0 <= i) /\ (i <= 4) ) /\ ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content i)) = 0) )) };
+   try
+   ( (#"submarine.adb" 175 0 0# ( #"submarine.adb" 175 0 0# Submarine__firetorpeado__i.i.int__content <- ( 0 );
+   #"submarine.adb" 175 0 0# assume { #"submarine.adb" 175 0 0# (Submarine__chambered_index___axiom.dynamic_invariant Submarine__firetorpeado__i.i.int__content True False True True) } ));
+   (#"submarine.adb" 178 0 0# ());
+   ( "GP_Sloc:submarine.adb:178:25" (#"submarine.adb" 178 0 0# ( () (* Translation of an Ada loop from submarine.adb:178 *)
+   ;
+   (if ((Submarine__firetorpeado__i.i.int__content < 4)) then (
+    #"submarine.adb" 178 0 0# try
+     ( #"submarine.adb" 178 0 0# abstract ensures {true}(let _ = Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content in (
+      ()))
+      end ;
+     (let temp___292 = #"submarine.adb" 178 0 0# (any Array__Int__Submarine__torpeadobay.map
+     ensures {#"submarine.adb" 178 0 0# (result = Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content)} 
+     ) in (
+      ( () (* First unroling of the loop statements appearing before the loop invariant of loop submarine.adb:178 *)
+      ;
+      () (* While loop translating the Ada loop from submarine.adb:178 *)
+      ;
+      #"submarine.adb" 178 0 0# while True do
+       ( () (* Assume implicit invariants from the loop submarine.adb:178 *)
+       ;
+       #"submarine.adb" 178 0 0# assume { #"submarine.adb" 178 0 0# (Boolean.andb(( ( true /\ (Submarine__chambers___axiom.dynamic_invariant Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content True True True True) ) /\ (forall temp___293 #"submarine.adb" 178 0 0#  : int.
+        (if (( (Submarine__chambered_index.first <= temp___293) /\ (temp___293 <= Submarine__chambered_index.last) )) then (
+         (if ((Submarine__firetorpeado__i.i.int__content <> temp___293)) then (
+          ((Array__Int__Submarine__torpeadobay.get Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content temp___293) = (Array__Int__Submarine__torpeadobay.get temp___292 temp___293))) else (
+          true))) else true)) )) ((Submarine__firetorpeado__i.i.int__content < 4))) };
+       () (* Check for absence of RTE in the invariant of loop submarine.adb:178 *)
+       ;
+       () (* Loop statements appearing after the loop invariant of loop submarine.adb:178 *)
+       ;
+       ( "GP_Sloc:submarine.adb:179:12" (#"submarine.adb" 179 0 0# ()) );
+       ( "GP_Sloc:submarine.adb:179:15" (#"submarine.adb" 179 0 0# #"submarine.adb" 179 0 0# Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content <- ( (Array__Int__Submarine__torpeadobay.set(Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content) (Submarine__firetorpeado__i.i.int__content) ((Submarine__torpeadobay__rep.of_rep(1)))) )) );
+       () (* Check for the exit condition and loop statements appearing before the loop invariant of loop submarine.adb:178 *)
+       ;
+       (if (not ( (Submarine__firetorpeado__i.i.int__content < 4) )) then (
+         raise Submarine__firetorpeado__L_5.L_5)) )
+      done )))
+      )
+    with
+     Submarine__firetorpeado__L_5.L_5 -> ()
+    end)) )) );
+    raise Return__exc )
+  with
+   Return__exc -> ()
+  end;
+   abstract ensures {true}(let _ = ( (let j =  (any int
+  ) in (
+   (if ((Boolean.andb((0 <= j)) ((j <= 4)))) then (
+     abstract ensures {true}(let _ = ((Submarine__torpeadobay__rep.to_rep((Array__Int__Submarine__torpeadobay.get(Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content) (j)))) = 1) in (
+     ()))
+     end ))))
+  ;
+   (any bool
+  requires { true} 
+  ensures { ( (result = True) <-> (forall j   "model" "name:j" "model_trace:3641"  : int.
+   ( ( (0 <= j) /\ (j <= 4) ) -> ((Submarine__torpeadobay__rep.to_rep (Array__Int__Submarine__torpeadobay.get Submarine__firetorpeado__c.c.Array__Int__Submarine__torpeadobay.map__content j)) = 1) )) )} 
+  ) ) in (
    ()))
    end  )
 end
