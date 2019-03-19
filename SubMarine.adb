@@ -3,6 +3,79 @@ with SPARK_Mode
 is
 
 
+   procedure popAmmo (A : in out AmmoStore) is
+   begin
+
+
+         if(A(A'Last) = Loaded) then
+
+         A(A'Last) := Empty;
+
+         end if;
+--        else
+--
+--            for i in A'Range loop
+--
+--              if (A(i) = Empty)  then
+--
+--                 if (i = A'First) then
+--
+--
+--
+--                    A(i) := Empty;
+--                    exit;
+--
+--
+--                 else
+--
+--
+--                    A(i - 1) := Empty;
+--                    exit;
+--
+--
+--                 end if;
+--
+--
+--              end if;
+--
+--           end loop;
+--
+--        end if;
+--
+
+   end popAmmo;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ----- DOOR CONTROL --------------------------------------------------
    procedure openInnerDoor is
    begin
@@ -145,7 +218,7 @@ is
 
 
    ---- WEAPON CONTROLS ----------------------------------------------
-   procedure loadTorpeado (A : in out AmmoStore; C : in out chambers)
+   procedure loadAllTorpeado (A : in out AmmoStore; C : in out chambers)
    is
       i : AS_Index := A'First;
       j : Chambered_index := C'First;
@@ -170,20 +243,45 @@ is
          end if;
       end loop;
 
-   end loadTorpeado;
+   end loadAllTorpeado;
 
 
-   procedure fireTorpeado (C : in out chambers) is
+   procedure fireVolley (C : in out chambers) is
       i : Chambered_index := C'First;
    begin
 
       while(i < C'Last) loop
-         C(i) := Empty;
 
+         C(i) := Empty;
 
       end loop;
 
-   end fireTorpeado;
+   end fireVolley;
+
+
+
+   procedure fireSingleTorpeado(TI: in Chambered_index; C :in out chambers)
+   is
+   begin
+
+      C(TI) := Empty;
+
+   end fireSingleTorpeado;
+
+
+
+   procedure loadChamber (TI : in Chambered_index; C: in out chambers)
+   is
+
+   begin
+
+
+            C(TI) := Loaded;
+
+
+
+
+   end loadChamber;
 
    ---- END WEAPON CONROLS -------------------------------------------
 

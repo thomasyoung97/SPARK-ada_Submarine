@@ -46,10 +46,8 @@ is
    end record;
 
 
-
    DoorInner : door := (open_close => closed, locked_unlocked => locked);
    DoorOuter : door := (open_close => closed, locked_unlocked => locked);
-
 
 
    type Warning is record
@@ -57,9 +55,22 @@ is
    end record;
 
 
-
    O2Warning : Warning := (on_Off => Off);
    TempWarning : Warning := (on_Off => Off);
+
+
+
+   procedure popAmmo (A : in out AmmoStore) with
+     Pre => invairantA(A),
+     Post => invairantA(A);
+
+
+
+
+   function invairantA (A : in AmmoStore) return boolean is
+     (for some i in A'Range => i < A'Last
+      and A(i) /= A(i - 1) and (for all j in i..A'Last => A(j) = A(i)));
+
 
 
    ------ DOOR CONTROL ------------------------------------------
@@ -135,17 +146,32 @@ is
   ---- END DIVE CONTROLS ---------------------------------------------------
 
 
-
    ---- WEAPON CONTROLLS ---------------------------------------------------
 
-   procedure loadTorpeado (A : in out AmmoStore ; C : in out chambers) with
+   procedure loadAllTorpeado (A : in out AmmoStore ; C : in out chambers) with
      Pre => (for some j in A'Range => A(j)  = Loaded) and
      (for some k in C'Range => C(k) = Empty),
      Post => (for some i in C'Range => C(i) = Loaded);
 
-   procedure fireTorpeado (C : in out chambers) with
+   procedure fireVolley (C : in out chambers) with
      Pre => (for some i in C'Range => C(i) = Loaded),
      Post => (for all j in C'Range => C(j) = Empty);
 
-  --- WEAPON CONTROLLS ----------------------------------------------------
+
+
+
+   --takes chamberes torpeado index and fires it providing its not empty
+   procedure fireSingleTorpeado (TI : in Chambered_index; C: in out chambers) with
+     Pre => (C(TI) = Loaded),
+     Post => (C(TI) = Empty);
+
+
+   procedure loadChamber (TI : in Chambered_index; C: in out chambers) with
+     Pre => (C(TI) = empty),
+     Post => (C(TI) = Loaded);
+
+   --- WEAPON CONTROLLS ----------------------------------------------------
+
+
+
 end SubMarine;
