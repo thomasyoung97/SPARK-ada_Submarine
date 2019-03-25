@@ -1,1 +1,1 @@
-submarine.ads:66:14: medium: postcondition might fail, cannot prove invairantA(A) (e.g. when A = (23 => Empty, 25 => Empty, others => Loaded))[#0]
+submarine.adb:13:40: medium: array index check might fail (e.g. when gAmmoStore = (others => Loaded) and i = 0)[#0]

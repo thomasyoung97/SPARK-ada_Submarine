@@ -28,7 +28,7 @@ is
 
    type AS_Index is range 0..25;
    type AmmoStore is array(AS_Index) of TorpeadoBay;
-
+   gAmmoStore:AmmoStore;
 
    type Chambered_index is range  0..4;
    type chambers is array(Chambered_index) of TorpeadoBay;
@@ -38,6 +38,7 @@ is
    type lock is (locked, unlocked);
    type onoff is (On, Off);
 
+   temp:AS_Index;
 
 
    type door is record
@@ -60,21 +61,10 @@ is
 
 
 
+   procedure POPAMMO with
+     Global => (In_Out => (gAmmoStore)),
+     Post => gAmmoStore(gAmmoStore'Last) = Empty;
 
-   procedure popAmmo (A : in out AmmoStore) with
-     Pre => (invairantA(A)) or (for all i in A'Range => A(i) = Loaded),
-     Post => invairantA(A) and (for some i in A'Range => A(i) = Empty);
-
-
-
-   function GetfirstDifferent (A: in AmmoStore) return AS_index;
-
-
-
-   function invairantA (A : in AmmoStore) return boolean is
-     (for all i in GetfirstDifferent(A)..A'Last => A(i) = A(GetfirstDifferent(A)));
-     --(for some i in A'Range => i < A'Last
-      --and A(i) /= A(i - 1) and (for all j in i..A'Last => A(j) = A(i)));
 
 
 
@@ -165,13 +155,14 @@ is
 
 
 
-   --takes chamberes torpeado index and fires it providing its not empty
+   --takes chambered torpeado index and fires it providing its not empty
    procedure fireSingleTorpeado (TI : in Chambered_index; C: in out chambers) with
      Pre => (C(TI) = Loaded),
      Post => (C(TI) = Empty);
 
 
    procedure loadChamber (TI : in Chambered_index; C: in out chambers) with
+
      Pre => (C(TI) = empty),
      Post => (C(TI) = Loaded);
 

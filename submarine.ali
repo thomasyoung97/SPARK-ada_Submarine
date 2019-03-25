@@ -14,85 +14,83 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U submarine%s		submarine.ads		c46a5b93 EE OO PK
+U submarine%s		submarine.ads		e9b86aaa EE OO PK IU
 
-D submarine.ads		20190325123948 c46a5b93 submarine%s
+D submarine.ads		20190325161808 e9b86aaa submarine%s
 X 1 submarine.ads
-1K9*SubMarine 182l5 182e14
-6I9*Depth<short_integer> 7r19 7r29 8r15 8r24 142r29 143r30 146r28
-7i4*CurrentDepth{6I9} 123r39 132r41 141r27 142r13 143r14 147r27 148r13 149r14
-8i4*maxDepth{6I9} 147r51 148r29 149r30
+1K9*SubMarine 184l5 184e14
+6I9*Depth<short_integer> 7r19 7r29 8r15 8r24 144r29 145r30 148r28
+7i4*CurrentDepth{6I9} 125r39 134r41 143r27 144r13 145r14 149r27 150r13 151r14
+8i4*maxDepth{6I9} 149r51 150r29 151r30
 12I9*Oxygen<short_short_integer> 13r18 13r28 14r19 14r30 15r18 15r28
-13i4*OxygenLevel{12I9} 122r27
-14i4*warningLevel{12I9} 122r40
-15i4*EmptyOxygen{12I9} 122r53
+13i4*OxygenLevel{12I9} 124r27
+14i4*warningLevel{12I9} 124r40
+15i4*EmptyOxygen{12I9} 124r53
 19I9*Temperature<short_integer> 20r18 20r33 21r18 21r34 22r18 22r34
-20i4*currentTemp{19I9} 131r27
-21i4*maxSafeTemp{19I9} 131r51
-22i4*warningTemp{19I9} 131r39
+20i4*currentTemp{19I9} 133r27
+21i4*maxSafeTemp{19I9} 133r51
+22i4*warningTemp{19I9} 133r39
 25E9*TorpeadoBay 25e39 30r41 34r47
-25n25*Loaded{25E9} 65r65 65r109 157r47 159r47 162r46 170r22 176r23
-25n33*Empty{25E9} 66r65 158r39 163r46 171r23 175r22
-29I9*AS_Index<short_short_integer> 30r28 70r56
-30A9*AmmoStore(25E9)<29I9> 64r34 70r38 74r32 156r42
-33I9*Chambered_index<short_short_integer> 34r27 169r42 174r35
-34A9*chambers(25E9)<33I9> 156r65 161r37 169r69 174r62
-37E9*OpenClose 37e37 44r20
-37n23*Open{37E9} 85r37 91r36 99r37 105r36
-37n30*closed{37E9} 49r39 50r39 84r36 85r69 92r37 98r36 99r69 106r37
-38E9*lock 38e35 45r25
-38n18*locked{38E9} 49r66 50r66 93r39 107r38
-38n26*unlocked{38E9} 86r38 100r38
-39E9*onoff 39e27 54r17
-39n19*On{39E9} 119r33 128r35
-39n23*Off{39E9} 58r38 59r40 118r32 127r34
-43R9*door 46e14 49r16 50r16
-44e7*open_close{37E9} 49m25 50m25 84r23 85r24 85r56 91r23 92r24 98r23 99r24
-. 99r56 105r23 106r24
-45e7*locked_unlocked{38E9} 49m47 50m47 86r20 93r21 100r20 107r20
-49r4*DoorInner{43R9} 83r28 84r13 85r14 86r10 90r27 91r13 92r14 93r11 97r28
-. 99r46
-50r4*DoorOuter{43R9} 83r38 85r46 97r38 98r13 99r14 100r10 104r27 105r13 106r14
-. 107r10
-53R9*Warning 55e14 58r16 59r18
-54e7*on_Off{39E9} 58m28 59m30 118r23 119r24 127r25 128r26
-58r4*O2Warning{53R9} 117r27 118r13 119r14 123r28
-59r4*TempWarning{53R9} 126r27 127r13 128r14 132r28
-64U14*popAmmo 64=23
-64a23 A{30A9} 65r25 65r47 65r58 65r91 65r102 66r25 66r47 66r58
-65i42 i<short_short_integer> 65r60
-65i86 i<short_short_integer> 65r104
-66i42 i<short_short_integer> 66r60
-70V13*GetfirstDifferent{29I9} 70>32 75s20 75s61
-70a32 A{30A9}
-74V13*invairantA{boolean} 65s14 66s14 74>25
-74a25 A{30A9} 75r38 75r42 75r52 75r59 75r79
-75i15 i<short_short_integer> 75r54
-82U14*openInnerDoor
-89U14*closeInnerDoor
-96U14*openOuterDoor
-103U14*closeOuterDoor
-116U14*initiateO2Warning
-121U14*CheckOxygen
-125U14*initiateTempWarning
-130U14*CheckRectorTemp
-140U14*Surface
-146U14*Dive 146>21
-146i21 A{6I9}
-156U14*loadAllTorpeado 156=31 156=54
-156a31 A{30A9} 157r28 157r39
-156a54 C{34A9} 158r21 158r32 159r29 159r40
-157i23 j<short_short_integer> 157r41
-158i16 k<short_short_integer> 158r34
-159i24 i<short_short_integer> 159r42
-161U14*fireVolley 161=26
-161a26 C{34A9} 162r28 162r39 163r28 163r39
-162i23 i<short_short_integer> 162r41
-163i23 j<short_short_integer> 163r41
-169U14*fireSingleTorpeado 169>34 169=59
-169i34 TI{33I9} 170r16 171r17
-169a59 C{34A9} 170r14 171r15
-174U14*loadChamber 174>27 174=52
-174i27 TI{33I9} 175r16 176r17
-174a52 C{34A9} 175r14 176r15
+25n25*Loaded{25E9} 159r47 161r47 164r46 172r22 178r23
+25n33*Empty{25E9} 77r59 160r39 165r46 173r23 177r22
+29I9*AS_Index<short_short_integer> 30r28 41r9 72r56
+30A9*AmmoStore(25E9)<29I9> 31r15 72r38 76r32 158r42
+31a4*gAmmoStore{30A9} 65r30
+33I9*Chambered_index<short_short_integer> 34r27 171r42 176r35
+34A9*chambers(25E9)<33I9> 158r65 163r37 171r69 176r62
+37E9*OpenClose 37e37 45r20
+37n23*Open{37E9} 87r37 93r36 101r37 107r36
+37n30*closed{37E9} 50r39 51r39 86r36 87r69 94r37 100r36 101r69 108r37
+38E9*lock 38e35 46r25
+38n18*locked{38E9} 50r66 51r66 95r39 109r38
+38n26*unlocked{38E9} 88r38 102r38
+39E9*onoff 39e27 55r17
+39n19*On{39E9} 121r33 130r35
+39n23*Off{39E9} 59r38 60r40 120r32 129r34
+41i4*temp{29I9}
+44R9*door 47e14 50r16 51r16
+45e7*open_close{37E9} 50m25 51m25 86r23 87r24 87r56 93r23 94r24 100r23 101r24
+. 101r56 107r23 108r24
+46e7*locked_unlocked{38E9} 50m47 51m47 88r20 95r21 102r20 109r20
+50r4*DoorInner{44R9} 85r28 86r13 87r14 88r10 92r27 93r13 94r14 95r11 99r28
+. 101r46
+51r4*DoorOuter{44R9} 85r38 87r46 99r38 100r13 101r14 102r10 106r27 107r13
+. 108r14 109r10
+54R9*Warning 56e14 59r16 60r18
+55e7*on_Off{39E9} 59m28 60m30 120r23 121r24 129r25 130r26
+59r4*O2Warning{54R9} 119r27 120r13 121r14 125r28
+60r4*TempWarning{54R9} 128r27 129r13 130r14 134r28
+64U14*POPAMMO
+72V13*GetfirstDifferent{29I9} 72>32 77s20
+72a32 A{30A9}
+76V13*invairantA{boolean} 76>25
+76a25 A{30A9} 77r38 77r42 77r52
+77i15 i<short_short_integer> 77r54
+84U14*openInnerDoor
+91U14*closeInnerDoor
+98U14*openOuterDoor
+105U14*closeOuterDoor
+118U14*initiateO2Warning
+123U14*CheckOxygen
+127U14*initiateTempWarning
+132U14*CheckRectorTemp
+142U14*Surface
+148U14*Dive 148>21
+148i21 A{6I9}
+158U14*loadAllTorpeado 158=31 158=54
+158a31 A{30A9} 159r28 159r39
+158a54 C{34A9} 160r21 160r32 161r29 161r40
+159i23 j<short_short_integer> 159r41
+160i16 k<short_short_integer> 160r34
+161i24 i<short_short_integer> 161r42
+163U14*fireVolley 163=26
+163a26 C{34A9} 164r28 164r39 165r28 165r39
+164i23 i<short_short_integer> 164r41
+165i23 j<short_short_integer> 165r41
+171U14*fireSingleTorpeado 171>34 171=59
+171i34 TI{33I9} 172r16 173r17
+171a59 C{34A9} 172r14 173r15
+176U14*loadChamber 176>27 176=52
+176i27 TI{33I9} 177r16 178r17
+176a52 C{34A9} 177r14 178r15
 

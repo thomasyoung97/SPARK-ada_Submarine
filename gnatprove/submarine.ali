@@ -14,116 +14,103 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U submarine%b		submarine.adb		6d3a8f84 OO PK
+U submarine%b		submarine.adb		9e8113b0 OO PK IU
 
-U submarine%s		submarine.ads		7bd4eec6 OO PK
+U submarine%s		submarine.ads		f6135a4c OO PK IU
 
-D submarine.ads		20190325124210 7bd4eec6 submarine%s
-D submarine.adb		20190325123702 16ee6142 submarine%b
+D submarine.ads		20190325163208 f6135a4c submarine%s
+D submarine.adb		20190325163236 689249fc submarine%b
 D system.ads		20180524051738 32a08138 system%s
 X 1 submarine.ads
-1K9*SubMarine 182l5 182e14 2|1b14 308l5 308t14
-6I9*Depth<short_integer> 7r19 7r29 8r15 8r24 142r29 143r30 146r28 2|216r28
-. 225r27
-7i4*CurrentDepth{6I9} 123r39 132r41 141r27 142r13 143r14 147r27 148r13 149r14
-. 2|216r13 218m10 218r26 228r14 230m9 230r25
-8i4*maxDepth{6I9} 147r51 148r29 149r30 2|228r29
+1K9*SubMarine 173l5 173e14 2|1b14 229l5 229t14
+6I9*Depth<short_integer> 7r19 7r29 8r15 8r24 132r29 133r30 136r28 2|143r28
+. 152r27
+7i4*CurrentDepth{6I9} 113r39 122r41 131r27 132r13 133r14 137r27 138r13 139r14
+. 2|143r13 145m10 145r26 155r14 157m9 157r25
+8i4*maxDepth{6I9} 137r51 138r29 139r30 2|155r29
 12I9*Oxygen<short_short_integer> 13r18 13r28 14r19 14r30 15r18 15r28
-13i4*OxygenLevel{12I9} 122r27 2|166r11 172r10
-14i4*warningLevel{12I9} 122r40 2|166r26
-15i4*EmptyOxygen{12I9} 122r53 2|172r24
+13i4*OxygenLevel{12I9} 112r27 2|92r11 98r10
+14i4*warningLevel{12I9} 112r40 2|92r26
+15i4*EmptyOxygen{12I9} 112r53 2|98r24
 19I9*Temperature<short_integer> 20r18 20r33 21r18 21r34 22r18 22r34
-20i4*currentTemp{19I9} 131r27 2|183r11 189r10
-21i4*maxSafeTemp{19I9} 131r51 2|189r25
-22i4*warningTemp{19I9} 131r39 2|183r26
+20i4*currentTemp{19I9} 121r27 2|109r11 115r10
+21i4*maxSafeTemp{19I9} 121r51 2|115r25
+22i4*warningTemp{19I9} 121r39 2|109r26
 25E9*TorpeadoBay 25e39 30r41 34r47
-25n25*Loaded{25E9} 65r64 157r47 159r47 162r46 170r22 176r23 2|10r25 250r20
-. 261r21 298r22
-25n33*Empty{25E9} 66r65 158r39 163r46 171r23 175r22 2|12r23 18r26 30r33 259r21
-. 260r38 274r18 286r16
-29I9*AS_Index<short_short_integer> 30r28 70r56 2|47r52 242r11 245r28
-30A9*AmmoStore(25E9)<29I9> 64r34 70r38 74r32 156r42 2|6r34 47r34 240r42
-33I9*Chambered_index<short_short_integer> 34r27 169r42 174r35 2|243r11 269r11
-. 282r40 292r35
-34A9*chambers(25E9)<33I9> 156r65 161r37 169r69 174r62 2|240r64 268r37 282r67
-. 292r62
-37E9*OpenClose 37e37 44r20
-37n23*Open{37E9} 85r37 91r36 99r37 105r36 2|102r33 114r31 133r33 146r31
-37n30*closed{37E9} 49r39 50r39 84r36 85r69 92r37 98r36 99r69 106r37 2|124r31
-. 156r31
-38E9*lock 38e35 45r25
-38n18*locked{38E9} 49r66 50r66 93r39 107r38 2|108r38 125r36 139r38 157r36
-38n26*unlocked{38E9} 86r38 100r38 2|110r39 141r39
-39E9*onoff 39e27 54r17
-39n19*On{39E9} 119r33 128r35 2|199r27 205r29
-39n23*Off{39E9} 58r38 59r40 118r32 127r34 2|166r62 183r63
-43R9*door 46e14 49r16 50r16
-44e7*open_close{37E9} 49m25 50m25 84r23 85r24 85r56 91r23 92r24 98r23 99r24
-. 99r56 105r23 106r24 2|102r20 114m17 124m17 133r20 146m17 156m17
-45e7*locked_unlocked{38E9} 49m47 50m47 86r20 93r21 100r20 107r20 2|108r20
-. 110m20 125m17 139r20 141m20 157m17
-49r4*DoorInner{43R9} 83r28 84r13 85r14 86r10 90r27 91r13 92r14 93r11 97r28
-. 99r46 2|108r10 110m10 114m7 124m7 125m7 133r10
-50r4*DoorOuter{43R9} 83r38 85r46 97r38 98r13 99r14 100r10 104r27 105r13 106r14
-. 107r10 2|102r10 139r10 141m10 146m7 156m7 157m7
-53R9*Warning 55e14 58r16 59r18
-54e7*on_Off{39E9} 58m28 59m30 118r23 119r24 127r25 128r26 2|166r53 183r54
-. 199m17 205m19
-58r4*O2Warning{53R9} 117r27 118r13 119r14 123r28 2|166r43 199m7
-59r4*TempWarning{53R9} 126r27 127r13 128r14 132r28 2|183r42 205m7
-64U14*popAmmo 64=23 2|6b14 44l8 44t15
-64a23 A{30A9} 65r25 65r46 65r57 66r25 66r47 66r58 2|6b23 10r13 10r15 12m10
-. 12r12 16r22 18r19 21r26 30m21
-65i41 i<short_short_integer> 65r59
-66i42 i<short_short_integer> 66r60
-70V13*GetfirstDifferent{29I9} 70>32 75s20 75s61 2|47b10 67l8 67t25
-70a32 A{30A9} 2|47b28 52r16 54r13 54r21 54r23 56r16 56r24 65r14
-74V13*invairantA{boolean} 65s14 66s14 74>25
-74a25 A{30A9} 75r38 75r42 75r52 75r59 75r79
-75i15 i<short_short_integer> 75r54
-82U14*openInnerDoor 2|99b14 117l8 117t21
-89U14*closeInnerDoor 2|121b14 127l8 127t22 135s10
-96U14*openOuterDoor 2|130b14 149l8 149t21
-103U14*closeOuterDoor 2|104s10 153b14 159l8 159t22
-116U14*initiateO2Warning 2|168s10 197b14 200l8 200t25
-121U14*CheckOxygen 2|164b14 178l8 178t19
-125U14*initiateTempWarning 2|185s10 203b14 206l8 206t27
-130U14*CheckRectorTemp 2|181b14 195l8 195t23
-140U14*Surface 2|174s10 191s10 213b14 222l8 222t15
-146U14*Dive 146>21 2|225b14 234l8 234t12
-146i21 A{6I9} 2|225b20 228r10 230r40
-156U14*loadAllTorpeado 156=31 156=54 2|240b14 265l8 265t23
-156a31 A{30A9} 157r28 157r39 2|240b31 242r23 245r40 249r17 250r13 260m13
-156a54 C{34A9} 158r21 158r32 159r29 159r40 2|240b53 243r30 258r18 259r14
-. 261m13
-157i23 j<short_short_integer> 157r41
-158i16 k<short_short_integer> 158r34
-159i24 i<short_short_integer> 159r42
-161U14*fireVolley 161=26 2|268b14 278l8 278t18
-161a26 C{34A9} 162r28 162r39 163r28 163r39 2|268b26 269r30 272r17 274m10
-162i23 i<short_short_integer> 162r41
-163i23 j<short_short_integer> 163r41
-169U14*fireSingleTorpeado 169>34 169=59 2|282b14 288l8 288t26
-169i34 TI{33I9} 170r16 171r17 2|282b33 286r9
-169a59 C{34A9} 170r14 171r15 2|282b57 286m7
-174U14*loadChamber 174>27 174=52 2|292b14 303l8 303t19
-174i27 TI{33I9} 175r16 176r17 2|292b27 298r15
-174a52 C{34A9} 175r14 176r15 2|292b52 298m13
+25n25*Loaded{25E9} 147r47 149r47 152r46 160r22 167r23 2|177r20 188r21 222r20
+25n33*Empty{25E9} 66r44 148r39 153r46 161r23 166r22 2|16r38 186r21 187r38
+. 201r18 212r16
+29I9*AS_Index<short_short_integer> 30r28 41r9 2|169r11 172r28
+30A9*AmmoStore(25E9)<29I9> 31r15 146r42 2|167r42
+31a4*gAmmoStore{30A9} 65r28 66r14 66r25 2|12r16 13m10 13r27 16m7 16r18
+33I9*Chambered_index<short_short_integer> 34r27 159r42 164r35 2|170r11 196r11
+. 208r40 217r35
+34A9*chambers(25E9)<33I9> 146r65 151r37 159r69 164r62 2|167r64 195r37 208r67
+. 217r62
+37E9*OpenClose 37e37 45r20
+37n23*Open{37E9} 75r37 81r36 89r37 95r36 2|25r33 37r31 56r33 69r31
+37n30*closed{37E9} 50r39 51r39 74r36 75r69 82r37 88r36 89r69 96r37 2|47r31
+. 78r31
+38E9*lock 38e35 46r25
+38n18*locked{38E9} 50r66 51r66 83r39 97r38 2|31r38 48r36 62r38 79r36
+38n26*unlocked{38E9} 76r38 90r38 2|33r39 64r39
+39E9*onoff 39e27 55r17
+39n19*On{39E9} 109r33 118r35 2|125r27 131r29
+39n23*Off{39E9} 59r38 60r40 108r32 117r34 2|92r62 109r63
+41i4*temp{29I9}
+44R9*door 47e14 50r16 51r16
+45e7*open_close{37E9} 50m25 51m25 74r23 75r24 75r56 81r23 82r24 88r23 89r24
+. 89r56 95r23 96r24 2|25r20 37m17 47m17 56r20 69m17 78m17
+46e7*locked_unlocked{38E9} 50m47 51m47 76r20 83r21 90r20 97r20 2|31r20 33m20
+. 48m17 62r20 64m20 79m17
+50r4*DoorInner{44R9} 73r28 74r13 75r14 76r10 80r27 81r13 82r14 83r11 87r28
+. 89r46 2|31r10 33m10 37m7 47m7 48m7 56r10
+51r4*DoorOuter{44R9} 73r38 75r46 87r38 88r13 89r14 90r10 94r27 95r13 96r14
+. 97r10 2|25r10 62r10 64m10 69m7 78m7 79m7
+54R9*Warning 56e14 59r16 60r18
+55e7*on_Off{39E9} 59m28 60m30 108r23 109r24 117r25 118r26 2|92r53 109r54
+. 125m17 131m19
+59r4*O2Warning{54R9} 107r27 108r13 109r14 113r28 2|92r43 125m7
+60r4*TempWarning{54R9} 116r27 117r13 118r14 122r28 2|109r42 131m7
+64U14*POPAMMO 2|8b14 18l8 18t15 221s11
+72U14*openInnerDoor 2|22b14 40l8 40t21
+79U14*closeInnerDoor 2|44b14 50l8 50t22 58s10
+86U14*openOuterDoor 2|53b14 72l8 72t21
+93U14*closeOuterDoor 2|27s10 75b14 81l8 81t22
+106U14*initiateO2Warning 2|94s10 123b14 126l8 126t25
+111U14*CheckOxygen 2|90b14 104l8 104t19
+115U14*initiateTempWarning 2|111s10 129b14 132l8 132t27
+120U14*CheckRectorTemp 2|107b14 121l8 121t23
+130U14*Surface 2|100s10 117s10 140b14 149l8 149t15
+136U14*Dive 136>21 2|152b14 161l8 161t12
+136i21 A{6I9} 2|152b20 155r10 157r40
+146U14*loadAllTorpeado 146=31 146=54 2|167b14 192l8 192t23
+146a31 A{30A9} 147r28 147r39 2|167b31 169r23 172r40 176r17 177r13 187m13
+146a54 C{34A9} 148r21 148r32 149r29 149r40 2|167b53 170r30 185r18 186r14
+. 188m13
+147i23 j<short_short_integer> 147r41
+148i16 k<short_short_integer> 148r34
+149i24 i<short_short_integer> 149r42
+151U14*fireVolley 151=26 2|195b14 205l8 205t18
+151a26 C{34A9} 152r28 152r39 153r28 153r39 2|195b26 196r30 199r17 201m10
+152i23 i<short_short_integer> 152r41
+153i23 j<short_short_integer> 153r41
+159U14*fireSingleTorpeado 159>34 159=59 2|208b14 214l8 214t26
+159i34 TI{33I9} 160r16 161r17 2|208b33 212r9
+159a59 C{34A9} 160r14 161r15 2|208b57 212m7
+164U14*loadChamber 164>27 164=52 2|217b14 224l8 224t19
+164i27 TI{33I9} 166r16 167r17 2|217b27 222r13
+164a52 C{34A9} 166r14 167r15 2|217b52 222m11
 X 2 submarine.adb
-16i17 i<short_short_integer> 18r21 21r22 30r23
-52i11 j<short_short_integer> 54r15 56r18 56r26 58r23
-242i7 i{1|29I9} 249r13 250r15 251r35
-243i7 j{1|33I9} 258r14 259r16 261r15
-245i7 FirstTorpeadoindex{1|29I9} 251m13 260r15
-269i7 i{1|33I9} 272r13 274r12
+12i11 i<short_short_integer> 13r21 13r38
+169i7 i{1|29I9} 176r13 177r15 178r35
+170i7 j{1|33I9} 185r14 186r16 188r15
+172i7 FirstTorpeadoindex{1|29I9} 178m13 187r15
+196i7 i{1|33I9} 199r13 201r12
 
 QQ SPARKVERSION 2018 (20180523)
-GG EK_DIRECT_CALLS submarine__popammo 1 submarine__invairanta
-GG EK_GLOBALS submarine__popammo local FALSE E_PROCEDURE FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
-GG EK_DIRECT_CALLS submarine__getfirstdifferent 0
-GG EK_GLOBALS submarine__getfirstdifferent local FALSE E_FUNCTION FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
-GG EK_DIRECT_CALLS submarine__invairanta 1 submarine__getfirstdifferent
-GG EK_GLOBALS submarine__invairanta local FALSE E_FUNCTION FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
+GG EK_DIRECT_CALLS submarine__popammo 0
+GG EK_GLOBALS submarine__popammo local FALSE E_PROCEDURE FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 1 submarine__gammostore proper_output 1 submarine__gammostore refined_proof_in 0 refined_input 1 submarine__gammostore refined_output 1 submarine__gammostore calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 1 submarine__gammostore LOCKS 0
 GG EK_DIRECT_CALLS submarine__openinnerdoor 1 submarine__closeouterdoor
 GG EK_GLOBALS submarine__openinnerdoor local FALSE E_PROCEDURE FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 2 submarine__doorinner submarine__doorouter proper_output 2 submarine__doorinner submarine__doorouter refined_proof_in 0 refined_input 2 submarine__doorinner submarine__doorouter refined_output 2 submarine__doorinner submarine__doorouter calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 2 submarine__doorinner submarine__doorouter LOCKS 0
 GG EK_DIRECT_CALLS submarine__closeinnerdoor 0
@@ -150,8 +137,8 @@ GG EK_DIRECT_CALLS submarine__firevolley 0
 GG EK_GLOBALS submarine__firevolley local FALSE E_PROCEDURE FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE TRUE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
 GG EK_DIRECT_CALLS submarine__firesingletorpeado 0
 GG EK_GLOBALS submarine__firesingletorpeado local FALSE E_PROCEDURE FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
-GG EK_DIRECT_CALLS submarine__loadchamber 0
-GG EK_GLOBALS submarine__loadchamber local FALSE E_PROCEDURE FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
+GG EK_DIRECT_CALLS submarine__loadchamber 1 submarine__popammo
+GG EK_GLOBALS submarine__loadchamber local FALSE E_PROCEDURE FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 1 submarine__gammostore proper_output 1 submarine__gammostore refined_proof_in 0 refined_input 1 submarine__gammostore refined_output 1 submarine__gammostore calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE FALSE TRUE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 1 submarine__gammostore LOCKS 0
 GG EK_DIRECT_CALLS submarine 0
-GG EK_GLOBALS submarine local FALSE E_PACKAGE TRUE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 initializes 12 submarine__currentdepth submarine__maxdepth submarine__oxygenlevel submarine__warninglevel submarine__emptyoxygen submarine__currenttemp submarine__maxsafetemp submarine__warningtemp submarine__doorinner submarine__doorouter submarine__o2warning submarine__tempwarning calls_proof 0 calls 0 calls_conditional 0 local_var 12 submarine__currentdepth submarine__maxdepth submarine__oxygenlevel submarine__warninglevel submarine__emptyoxygen submarine__currenttemp submarine__maxsafetemp submarine__warningtemp submarine__doorinner submarine__doorouter submarine__o2warning submarine__tempwarning FALSE FALSE FALSE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
+GG EK_GLOBALS submarine local FALSE E_PACKAGE TRUE ORIGIN_FLOW proper_proof_in 0 proper_input 0 proper_output 0 refined_proof_in 0 refined_input 0 refined_output 0 initializes 12 submarine__currentdepth submarine__maxdepth submarine__oxygenlevel submarine__warninglevel submarine__emptyoxygen submarine__currenttemp submarine__maxsafetemp submarine__warningtemp submarine__doorinner submarine__doorouter submarine__o2warning submarine__tempwarning calls_proof 0 calls 0 calls_conditional 0 local_var 14 submarine__currentdepth submarine__maxdepth submarine__oxygenlevel submarine__warninglevel submarine__emptyoxygen submarine__currenttemp submarine__maxsafetemp submarine__warningtemp submarine__gammostore submarine__temp submarine__doorinner submarine__doorouter submarine__o2warning submarine__tempwarning FALSE FALSE FALSE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 0 LOCKS 0
 GG EK_END_MARKER

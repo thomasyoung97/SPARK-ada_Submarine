@@ -1,0 +1,2 @@
+submarine.adb:221:07: too many arguments in call to "POPAMMO"
+submarine.ads:165:37: missing ","

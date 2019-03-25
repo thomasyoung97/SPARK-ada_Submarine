@@ -3,97 +3,19 @@ with SPARK_Mode
 is
 
 
-   procedure popAmmo (A : in out AmmoStore) is
+
+
+   procedure POPAMMO is
    begin
 
--- if end of stack is loaded pop that o
-         if(A(A'Last) = Loaded) then
 
-         A(A'Last) := Empty;
-
-         end if;
-        else
-      -- if not find first empty,
-            for i in A'Range loop
-
-              if (A(i) = Empty)  then
-
-
-                 if (i = A'First) then
-
-
-                   exit; --AMMO STORE EMPTY
-
-
-                 else
-
-
-                    A(i - 1) := Empty;
-                    exit;
-
-
-                 end if;
-
-
-              end if;
-
-           end loop;
-
-        end if;
-
-
-   end popAmmo;
-
- -- returns the first index different to which the proceeding index is different
-function GetfirstDifferent(A: in AmmoStore) return AS_Index is
-
-begin
-
-
-      for j in A'Range loop
-
-         if(A(j) /= A(A'First)) then
-
-            if(A(j) /= A(j - 1)) then
-
-               return j;
-
-            end if;
-         end if;
-
+      for i in gAmmoStore'Range loop
+         gAmmoStore(i) := gAmmoStore(i - 1);
       end loop;
 
-      return A'First;
+      gAmmoStore(gAmmoStore'last) := Empty;
 
-   end GetfirstDifferent;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   end POPAMMO;
 
 
 ----- DOOR CONTROL --------------------------------------------------
@@ -150,7 +72,6 @@ begin
    end openOuterDoor;
 
 
-
    procedure closeOuterDoor is
    begin
 
@@ -160,6 +81,10 @@ begin
    end closeOuterDoor;
 
    ---- END DOOR CONTROL -----------------------------------------------------
+
+
+
+
 
    ----- SYSTEM WARNING CHECKS ---------------------------------------------
    procedure CheckOxygen is
@@ -207,6 +132,7 @@ begin
    end initiateTempWarning;
 
    ----- END SYSTEM WARNING CHECKS -------------------------------------------
+
 
 
 
@@ -279,7 +205,6 @@ begin
    end fireVolley;
 
 
-
    procedure fireSingleTorpeado(TI: in Chambered_index; C :in out chambers)
    is
    begin
@@ -289,17 +214,12 @@ begin
    end fireSingleTorpeado;
 
 
-
    procedure loadChamber (TI : in Chambered_index; C: in out chambers)
    is
 
    begin
-
-
-            C(TI) := Loaded;
-
-
-
+          POPAMMO;
+          C(TI) := Loaded;
 
    end loadChamber;
 
