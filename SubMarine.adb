@@ -6,46 +6,66 @@ is
    procedure popAmmo (A : in out AmmoStore) is
    begin
 
-
+-- if end of stack is loaded pop that o
          if(A(A'Last) = Loaded) then
 
          A(A'Last) := Empty;
 
          end if;
---        else
---
---            for i in A'Range loop
---
---              if (A(i) = Empty)  then
---
---                 if (i = A'First) then
---
---
---
---                    A(i) := Empty;
---                    exit;
---
---
---                 else
---
---
---                    A(i - 1) := Empty;
---                    exit;
---
---
---                 end if;
---
---
---              end if;
---
---           end loop;
---
---        end if;
---
+        else
+      -- if not find first empty,
+            for i in A'Range loop
+
+              if (A(i) = Empty)  then
+
+
+                 if (i = A'First) then
+
+
+                   exit; --AMMO STORE EMPTY
+
+
+                 else
+
+
+                    A(i - 1) := Empty;
+                    exit;
+
+
+                 end if;
+
+
+              end if;
+
+           end loop;
+
+        end if;
+
 
    end popAmmo;
 
+ -- returns the first index different to which the proceeding index is different
+function GetfirstDifferent(A: in AmmoStore) return AS_Index is
 
+begin
+
+
+      for j in A'Range loop
+
+         if(A(j) /= A(A'First)) then
+
+            if(A(j) /= A(j - 1)) then
+
+               return j;
+
+            end if;
+         end if;
+
+      end loop;
+
+      return A'First;
+
+   end GetfirstDifferent;
 
 
 
@@ -203,14 +223,14 @@ is
    end Surface;
 
 
-   procedure Dive is
+   procedure Dive (A : in Depth) is
    begin
 
-      while CurrentDepth < maxDepth loop
+      if(A + CurrentDepth < maxDepth) then
 
-         CurrentDepth := CurrentDepth + 1;
+        CurrentDepth := CurrentDepth + A;
 
-      end loop;
+      end if;
 
    end Dive;
 

@@ -8,30 +8,31 @@ Data Dependencies                 .          .          .          .            
 Flow Dependencies                 .          .          .          .            .           .          .
 Initialization                    9          9          .          .            .           .          .
 Non-Aliasing                      .          .          .          .            .           .          .
-Run-time Checks                   4          .          .          .     3 (CVC4)           .          1
+Run-time Checks                   5          .          .          .     5 (CVC4)           .          .
 Assertions                        .          .          .          .            .           .          .
 Functional Contracts             19          .          .          .    18 (CVC4)           .          1
 LSP Verification                  .          .          .          .            .           .          .
 --------------------------------------------------------------------------------------------------------
-Total                            32    9 (28%)          .          .     21 (66%)           .     2 (6%)
+Total                            33    9 (27%)          .          .     23 (70%)           .     1 (3%)
 
 
 Analyzed 1 unit
-in unit submarine, 17 subprograms and packages out of 17 analyzed
+in unit submarine, 18 subprograms and packages out of 18 analyzed
   SubMarine at submarine.ads:1 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
-  SubMarine.CheckOxygen at submarine.ads:116 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
-  SubMarine.CheckRectorTemp at submarine.ads:125 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
-  SubMarine.Dive at submarine.ads:141 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
-  SubMarine.Surface at submarine.ads:135 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
-  SubMarine.closeInnerDoor at submarine.ads:84 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.closeOuterDoor at submarine.ads:98 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.fireSingleTorpeado at submarine.ads:164 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.fireVolley at submarine.ads:156 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.initiateO2Warning at submarine.ads:111 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.initiateTempWarning at submarine.ads:120 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.invairantA at submarine.ads:70 flow analyzed (0 errors, 0 checks and 0 warnings) and not proved, 1 checks out of 2 proved
-  SubMarine.loadAllTorpeado at submarine.ads:151 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.loadChamber at submarine.ads:169 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.openInnerDoor at submarine.ads:77 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
-  SubMarine.openOuterDoor at submarine.ads:91 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
-  SubMarine.popAmmo at submarine.ads:63 flow analyzed (0 errors, 0 checks and 0 warnings) and not proved, 0 checks out of 1 proved
+  SubMarine.CheckOxygen at submarine.ads:121 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  SubMarine.CheckRectorTemp at submarine.ads:130 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  SubMarine.Dive at submarine.ads:146 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  SubMarine.GetfirstDifferent at submarine.ads:70 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.Surface at submarine.ads:140 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  SubMarine.closeInnerDoor at submarine.ads:89 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.closeOuterDoor at submarine.ads:103 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.fireSingleTorpeado at submarine.ads:169 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.fireVolley at submarine.ads:161 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.initiateO2Warning at submarine.ads:116 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.initiateTempWarning at submarine.ads:125 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.invairantA at submarine.ads:74 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.loadAllTorpeado at submarine.ads:156 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.loadChamber at submarine.ads:174 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.openInnerDoor at submarine.ads:82 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  SubMarine.openOuterDoor at submarine.ads:96 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  SubMarine.popAmmo at submarine.ads:64 flow analyzed (0 errors, 0 checks and 0 warnings) and not proved, 1 checks out of 2 proved

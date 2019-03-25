@@ -60,16 +60,21 @@ is
 
 
 
-   procedure popAmmo (A : in out AmmoStore) with
-     Pre => invairantA(A),
-     Post => invairantA(A);
 
+   procedure popAmmo (A : in out AmmoStore) with
+     Pre => (invairantA(A)) or (for all i in A'Range => A(i) = Loaded),
+     Post => invairantA(A) and (for some i in A'Range => A(i) = Empty);
+
+
+
+   function GetfirstDifferent (A: in AmmoStore) return AS_index;
 
 
 
    function invairantA (A : in AmmoStore) return boolean is
-     (for some i in A'Range => i < A'Last
-      and A(i) /= A(i - 1) and (for all j in i..A'Last => A(j) = A(i)));
+     (for all i in GetfirstDifferent(A)..A'Last => A(i) = A(GetfirstDifferent(A)));
+     --(for some i in A'Range => i < A'Last
+      --and A(i) /= A(i - 1) and (for all j in i..A'Last => A(j) = A(i)));
 
 
 
@@ -138,7 +143,7 @@ is
      Post => CurrentDepth <= Depth'First;
 
 
-   procedure Dive with
+   procedure Dive  (A : in Depth) with
      Global => (In_Out => CurrentDepth , Input => maxDepth),
      Pre => CurrentDepth <= maxDepth,
      Post => CurrentDepth <= maxDepth;
