@@ -5,28 +5,20 @@ is
 
 
 
-   procedure POPAMMO is
-   begin
-
-
-      for i in gAmmoStore'Range loop
-         gAmmoStore(i) := gAmmoStore(i - 1);
-      end loop;
-
-      gAmmoStore(gAmmoStore'last) := Empty;
-
-   end POPAMMO;
 
 
 ----- DOOR CONTROL --------------------------------------------------
    procedure openInnerDoor is
    begin
 
+
       if(DoorOuter.open_close = Open) then
 
-         closeOuterDoor;
+
+         DoorOuter.open_close := closed;
 
       end if;
+
 
       if(DoorInner.locked_unlocked = locked) then
 
@@ -55,7 +47,9 @@ is
 
       if(DoorInner.open_close = Open) then
 
-         closeInnerDoor;
+
+         DoorInner.open_close := closed;
+         DoorInner.locked_unlocked := locked;
 
       end if;
 
@@ -149,47 +143,47 @@ is
    end Surface;
 
 
-   procedure Dive (A : in Depth) is
+   procedure SetDepth (A : in Depth) is
    begin
 
-      if(A + CurrentDepth < maxDepth) then
+      if(A < maxDepth) then
 
-        CurrentDepth := CurrentDepth + A;
+        CurrentDepth := A;
 
       end if;
 
-   end Dive;
+   end SetDepth;
 
    ---------- END DIVE CONTROL ------------------------------------------------
 
 
    ---- WEAPON CONTROLS ----------------------------------------------
-   procedure loadAllTorpeado (A : in out AmmoStore; C : in out chambers)
-   is
-      i : AS_Index := A'First;
-      j : Chambered_index := C'First;
+   --procedure loadAllTorpeado (A : in out AmmoStore; C : in out chambers)
+   --is
+     -- i : AS_Index := A'First;
+      --j : Chambered_index := C'First;
 
-      FirstTorpeadoindex : AS_Index := A'First;
-   begin
+     -- FirstTorpeadoindex : AS_Index := A'First;
+ --  begin
 
       --get index of first torpeado in ammo store.
-      while i < A'Last loop
-         if(A(i) = Loaded) then
-            FirstTorpeadoindex := i;
-         end if;
-      end loop;
+    --  while i < A'Last loop
+      --   if(A(i) = Loaded) then
+        --    FirstTorpeadoindex := i;
+       --  end if;
+     -- end loop;
 
 
       -- get first empty chamber, move torpeado
       --from ammo store to chamber
-      while  j < C'Last loop
-         if (C(j) = Empty) then
-            A(FirstTorpeadoindex) := Empty;
-            C(j) := Loaded;
-         end if;
-      end loop;
+    --  while  j < C'Last loop
+      --   if (C(j) = Empty) then
+        --    A(FirstTorpeadoindex) := Empty;
+        --    C(j) := Loaded;
+      --   end if;
+    --  end loop;
 
-   end loadAllTorpeado;
+ --  end loadAllTorpeado;
 
 
    procedure fireVolley (C : in out chambers) is
@@ -223,7 +217,103 @@ is
 
    end loadChamber;
 
-   ---- END WEAPON CONROLS -------------------------------------------
 
+   procedure POPAMMO is
+
+   begin
+
+
+      for i in 0..(gAmmoStore'Last -1)   loop
+         gAmmoStore(i) := gAmmoStore(i + 1);
+      end loop;
+
+      gAmmoStore(gAmmoStore'last) := Empty;
+
+   end POPAMMO;
+
+   procedure PUSHAMMO is
+   begin
+
+      for i in reverse (gAmmoStore'First + 1)..(gAmmoStore'Last) loop
+
+         gAmmoStore(i) := gAmmoStore(i - 1);
+
+      end loop;
+
+      gAmmoStore(gAmmoStore'First) := Loaded;
+
+   end PUSHAMMO;
+
+   ---- END WEAPON CONROLS -------------------------------------------
+   procedure SmoothTurn is begin
+
+      -- if steering right
+      while(steeringWheelMidPoint > (Steering'Last / 2)) loop
+
+         -- if nose goes past 360 then reset to 1.
+         if(NoseRotation = (SubXNoseRotation'Last)) then
+
+            NoseRotation := SubXNoseRotation'First;
+         else
+            NoseRotation := NoseRotation + 1;
+
+         end if;
+      end loop;
+
+         -- when steering hard right
+         while(NoseRotation = (SubXNoseRotation'Last / 2 + (SubXNoseRotation'Last / 3))) loop
+
+           if(NoseRotation = (SubXNoseRotation'Last)) then
+
+            NoseRotation := SubXNoseRotation'First;
+         else
+            NoseRotation := NoseRotation + 4;
+
+         end if;
+
+
+      end loop;
+
+      -- if steering wheel is turning left
+         while (steeringWheelMidPoint < (Steering'Last / 2)) loop
+
+         -- if rotation goes past 1 then set to 360;
+         if(NoseRotation = (SubXNoseRotation'First)) then
+
+            NoseRotation := SubXNoseRotation'Last;
+         else
+            NoseRotation := NoseRotation - 1;
+
+         end if;
+
+
+      end loop;
+
+
+   while (steeringWheelMidPoint < (Steering'Last / 2) - (Steering'Last / 3)) loop
+
+         -- if rotation goes past 1 then set to 360;
+         if(NoseRotation = (SubXNoseRotation'First)) then
+
+            NoseRotation := SubXNoseRotation'Last;
+         else
+            NoseRotation := NoseRotation - 4;
+
+         end if;
+
+
+      end loop;
+
+   end SmoothTurn;
+
+   procedure SnapTurn (D : in Direction) is begin
+      Case D is
+         when Forward => SubDirection := Forward;
+         when Aft => SubDirection := Aft;
+         when Starboard => SubDirection := Starboard;
+         when Port => SubDirection := Port;
+
+      end case;
+      end SnapTurn;
 
 end SubMarine;

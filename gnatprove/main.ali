@@ -14,7 +14,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U main%b		main.adb		cd3b8193 OO SU
+U main%b		main.adb		e73c0c9b OO SU
 W ada%s			ada.ads			ada.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 W submarine%s		submarine.adb		submarine.ali
@@ -26,8 +26,8 @@ D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
 D a-textio.ads		20180524051738 881db35a ada.text_io%s
 D interfac.ads		20180524051736 5ab55268 interfaces%s
 D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
-D main.adb		20190325155054 b3356885 main%b
-D submarine.ads		20190325163208 f6135a4c submarine%s
+D main.adb		20190326110528 b3356885 main%b
+D submarine.ads		20190326122442 dc14d744 submarine%s
 D system.ads		20180524051738 32a08138 system%s
 D s-crtl.ads		20180524051736 0ebbdb71 system.crtl%s
 D s-ficobl.ads		20180524051738 078245e4 system.file_control_block%s
@@ -41,7 +41,7 @@ X 7 main.adb
 5U11*Main 5b11 23l5 23t9
 11i8 i<short_short_integer> 13r18
 X 8 submarine.ads
-1K9*SubMarine 7|1w6 4r5 8|173e14
+1K9*SubMarine 7|1w6 4r5 8|182e14
 25n25*Loaded{25E9} 7|13r23
 25n33*Empty{25E9} 7|17r24
 29I9*AS_Index<short_short_integer>

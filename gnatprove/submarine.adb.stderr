@@ -1,1 +1,0 @@
-submarine.adb:13:40: medium: array index check might fail (e.g. when gAmmoStore = (others => Loaded) and i = 0)[#0]

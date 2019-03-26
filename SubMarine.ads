@@ -15,6 +15,12 @@ is
    EmptyOxygen : Oxygen := Oxygen'First;
 
 
+   type SubXNoseRotation is range 1..360;
+   type Steering is range 1..180;
+
+   NoseRotation : SubXNoseRotation := (SubXNoseRotation'Last /2);
+   steeringWheelMidPoint : Steering := (Steering'Last / 2);
+
 
    type Temperature is range 0..2000;
    currentTemp : Temperature := Temperature'Last / 2;
@@ -24,7 +30,11 @@ is
 
    type TorpeadoBay is (Loaded, Empty);
 
+   type Direction is (Forward, Aft , Port, Starboard);
 
+
+
+   SubDirection : Direction := Forward;
 
    type AS_Index is range 0..25;
    type AmmoStore is array(AS_Index) of TorpeadoBay;
@@ -61,40 +71,41 @@ is
 
 
 
-   procedure POPAMMO with
-     Global => (In_Out => (gAmmoStore)),
-     Post => gAmmoStore(gAmmoStore'Last) = Empty;
-
-
 
 
    ------ DOOR CONTROL ------------------------------------------
    procedure openInnerDoor with
      Global => (In_Out => (DoorInner,DoorOuter)),
-     Pre => DoorInner.open_close = closed,
-     Post => DoorInner.open_close = open and DoorOuter.open_close = closed
-     and DoorInner.locked_unlocked = unlocked;
+     Pre => DoorInvairance(DoorOuter, DoorInner),
+     Post => DoorInvairance(DoorOuter, DoorInner);
 
 
    procedure closeInnerDoor with
-     Global => (In_Out => DoorInner),
-     Pre => DoorInner.open_close = Open,
-     Post => DoorInner.open_close = closed
-     and  DoorInner.locked_unlocked = locked;
+     Global => (In_Out => DoorInner, Input => DoorOuter),
+     Pre => DoorInvairance(DoorOuter, DoorInner),
+     Post => DoorInvairance(DoorOuter, DoorInner);
 
 
    procedure openOuterDoor with
-     Global => (In_Out => (DoorInner,DoorOuter)),
-     Pre => DoorOuter.open_close = closed,
-     Post => DoorOuter.open_close = open and DoorInner.open_close = closed
-     and DoorOuter.locked_unlocked = unlocked;
+    Global => (In_Out => (DoorInner, DoorOuter)),
+     Pre => DoorInvairance(DoorOuter, DoorInner) ,
+     Post => DoorInvairance(DoorOuter, DoorInner);
+
 
 
    procedure closeOuterDoor with
-     Global => (In_Out => DoorOuter),
-     Pre => DoorOuter.open_close = Open,
-     Post => DoorOuter.open_close = closed
-     and DoorOuter.locked_unlocked = locked;
+     Global => (In_Out =>  DoorOuter , Input => DoorInner),
+     Pre => DoorInvairance(DoorOuter, DoorInner),
+     Post => DoorInvairance(DoorOuter, DoorInner);
+
+
+
+   function DoorInvairance (DoorOuter : in door ; DoorInner : in  door) return Boolean is
+     ((if DoorInner.open_close = Open then DoorOuter.open_close = closed and DoorOuter.locked_unlocked = locked and DoorInner.locked_unlocked = unlocked) or
+          (if DoorOuter.open_close = Open then DoorInner.open_close = closed and DoorInner.locked_unlocked = locked and DoorOuter.locked_unlocked = unlocked));
+
+
+
 
    ---- END DOOR CONTROL --------------------------------------------------
 
@@ -133,24 +144,47 @@ is
      Post => CurrentDepth <= Depth'First;
 
 
-   procedure Dive  (A : in Depth) with
+   procedure SetDepth  (A : in Depth) with
      Global => (In_Out => CurrentDepth , Input => maxDepth),
      Pre => CurrentDepth <= maxDepth,
-     Post => CurrentDepth <= maxDepth;
+     Post => CurrentDepth <= maxDepth and CurrentDepth >= Depth'First;
 
   ---- END DIVE CONTROLS ---------------------------------------------------
 
+  --- Turning controlls ----------------------------------------------------
+   procedure SnapTurn (D : in Direction)with
+     Global =>(In_Out => SubDirection),
+     Pre => (D /= SubDirection),
+     Post => (SubDirection =  D);
+
+
+   procedure Smoothturn with
+     Global => (Input => steeringWheelMidPoint, In_Out => NoseRotation),
+     Post => (NoseRotation <= SubXNoseRotation'Last);
 
    ---- WEAPON CONTROLLS ---------------------------------------------------
 
-   procedure loadAllTorpeado (A : in out AmmoStore ; C : in out chambers) with
-     Pre => (for some j in A'Range => A(j)  = Loaded) and
-     (for some k in C'Range => C(k) = Empty),
-     Post => (for some i in C'Range => C(i) = Loaded);
+   --procedure loadAllTorpeado (A : in out AmmoStore ; C : in out chambers) with
+     --Pre => (for some j in A'Range => A(j)  = Loaded) and
+     --(for some k in C'Range => C(k) = Empty),
+     --Post => (for some i in C'Range => C(i) = Loaded);
 
    procedure fireVolley (C : in out chambers) with
      Pre => (for some i in C'Range => C(i) = Loaded),
      Post => (for all j in C'Range => C(j) = Empty);
+
+
+   procedure PUSHAMMO with
+     Global=> (In_Out => gAmmoStore),
+     Pre => gAmmoStore(gAmmoStore'Last) = Empty,
+     Post => gAmmoStore(gAmmoStore'First) = Loaded;
+
+
+   procedure POPAMMO with
+     Global => (In_Out => (gAmmoStore)),
+     Pre => (gAmmoStore(gAmmoStore'First) = Loaded),
+     Post => (gAmmoStore(gAmmoStore'Last) = Empty);
+
 
 
 
@@ -162,9 +196,9 @@ is
 
 
    procedure loadChamber (TI : in Chambered_index; C: in out chambers) with
-
-     Pre => (C(TI) = empty),
-     Post => (C(TI) = Loaded);
+     Global => (In_Out => gAmmoStore),
+     Pre => (C(TI) = empty) and (gAmmoStore(gAmmoStore'First) = Loaded),
+     Post => (C(TI) = Loaded) and (for all i in C'Range => (if i /= TI then C(i) = c'Old(i)));
 
    --- WEAPON CONTROLLS ----------------------------------------------------
 
