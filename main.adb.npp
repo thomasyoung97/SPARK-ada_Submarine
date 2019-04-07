@@ -101,6 +101,8 @@ begin
 
                                        SetDepth (B);
 
+
+
                                        Ada.Text_IO.Put ("Depth Set : ");
                                        Ada.Text_IO.Put (CurrentDepth'Image);
                                        Ada.Text_IO.Put (" ft");
@@ -237,105 +239,83 @@ begin
                                              if (S = "load store") then
 
                                                 begin
-                                                   if
-                                                     (gAmmoStore
-                                                        (gAmmoStore'Last) =
-                                                      Empty and
-                                                      BothDoorsClosed
-                                                        (DoorOuter, DoorInner))
-                                                   then
-                                                      PUSHAMMO;
-                                                      for i in AS_Index'Range
-                                                      loop
+                                                   if(gAmmoStore(gAmmoStore'Last) = Empty and BothDoorsClosed(DoorOuter,DoorInner)) then
+                                                   PUSHAMMO;
+                                                   for i in AS_Index'Range loop
 
-                                                         New_Line;
-                                                         Ada.Text_IO.Put
-                                                           ("Store : ");
-
-                                                         Ada.Text_IO.Put
-                                                           (i'Image);
-
-                                                         Ada.Text_IO.Put
-                                                           (gAmmoStore (i)'
-                                                              Image);
-                                                         New_Line;
-
-                                                      end loop;
-                                                   else
+                                                      New_Line;
                                                       Ada.Text_IO.Put
+                                                        ("Store : ");
+
+                                                      Ada.Text_IO.Put
+                                                        (i'Image);
+
+                                                      Ada.Text_IO.Put
+                                                        (gAmmoStore (i)'Image);
+                                                      New_Line;
+
+                                                   end loop;
+                                                      else
+                                                         Ada.Text_IO.Put
                                                         ("Pre-Condition Violated - reconsider input, or check both doors are closed");
-                                                   end if;
-                                                end;
+                                                      end if;
+                                                      end;
 
                                              else
                                                 if (S = "fire volley") then
 
                                                    begin
-                                                      if
-                                                        ((for some i in TChambers'
-                                                            Range
-                                                          =>
-                                                            TChambers (i) =
-                                                            Loaded) and
-                                                         BothDoorsClosed
-                                                           (DoorOuter,
-                                                            DoorInner))
-                                                      then
-                                                         fireVolley
-                                                           (TChambers);
-                                                         for i in Chambered_index'
-                                                           Range
-                                                         loop
+                                                      if((for some i in TChambers'Range => TChambers(i) = Loaded) and BothDoorsClosed(DoorOuter,DoorInner)) then
+                                                      fireVolley (TChambers);
+                                                      for i in Chambered_index'
+                                                        Range
+                                                      loop
 
-                                                            New_Line;
-                                                            Ada.Text_IO.Put
-                                                              ("chamber : ");
+                                                         New_Line;
+                                                         Ada.Text_IO.Put
+                                                           ("chamber : ");
 
-                                                            Ada.Text_IO.Put
-                                                              (i'Image);
+                                                         Ada.Text_IO.Put
+                                                           (i'Image);
 
-                                                            Ada.Text_IO.Put
-                                                              (TChambers (i)'
-                                                                 Image);
-                                                            New_Line;
+                                                         Ada.Text_IO.Put
+                                                           (TChambers (i)'
+                                                              Image);
+                                                         New_Line;
 
-                                                         end loop;
+                                                      end loop;
                                                       else
                                                          Ada.Text_IO.Put
-                                                           ("Pre-Condition Violated - reconsider input, or check both doors are closed");
-                                                      end if;
+                                                        ("Pre-Condition Violated - reconsider input, or check both doors are closed");
+                                                         end if;
                                                    end;
                                                 else
                                                    if (S = "open outer door")
                                                    then
 
                                                       begin
-                                                         if
-                                                           (DoorInvairance
-                                                              (DoorOuter,
-                                                               DoorInner))
-                                                         then
-                                                            openOuterDoor;
-                                                            Ada.Text_IO.Put
-                                                              ("Outer Door : ");
-                                                            Ada.Text_IO.Put
-                                                              (DoorOuter
-                                                                 .open_close'
-                                                                 Image);
-                                                            Ada.Text_IO.Put
-                                                              (DoorOuter
-                                                                 .locked_unlocked'
-                                                                 Image);
-                                                            New_Line;
-                                                            Ada.Text_IO.Put
-                                                              ("Innner Door : ");
-                                                            Ada.Text_IO.Put
-                                                              (DoorInner
-                                                                 .open_close'
-                                                                 Image);
-                                                         else
-                                                            Ada.Text_IO.Put
-                                                              ("Pre-Condition Violated - reconsider input, or check both doors are closed");
+                                                      if(DoorInvairance(DoorOuter, DoorInner)) then
+                                                         openOuterDoor;
+                                                         Ada.Text_IO.Put
+                                                           ("Outer Door : ");
+                                                         Ada.Text_IO.Put
+                                                           (DoorOuter
+                                                              .open_close'
+                                                              Image);
+                                                         Ada.Text_IO.Put
+                                                           (DoorOuter
+                                                              .locked_unlocked'
+                                                              Image);
+                                                         New_Line;
+                                                         Ada.Text_IO.Put
+                                                           ("Innner Door : ");
+                                                         Ada.Text_IO.Put
+                                                           (DoorInner
+                                                              .open_close'
+                                                              Image);
+                                                      else
+                                                          Ada.Text_IO.Put
+                                                        ("Pre-Condition Violated - reconsider input, or check both doors are closed");
                                                          end if;
                                                       end;
 
@@ -345,122 +325,91 @@ begin
                                                       then
 
                                                          begin
-                                                            if
-                                                              (DoorInvairance
-                                                                 (DoorOuter,
-                                                                  DoorInner))
-                                                            then
-                                                               openInnerDoor;
+                                                       if(DoorInvairance(DoorOuter, DoorInner)) then
+                                                            openInnerDoor;
 
-                                                               New_Line;
-                                                               Ada.Text_IO.Put
-                                                                 ("Innner Door : ");
-                                                               Ada.Text_IO.Put
-                                                                 (DoorInner
-                                                                    .open_close'
-                                                                    Image);
-                                                               New_Line;
-                                                               Ada.Text_IO.Put
-                                                                 ("Outer Door : ");
-                                                               Ada.Text_IO.Put
-                                                                 (DoorOuter
-                                                                    .open_close'
-                                                                    Image);
+                                                            New_Line;
+                                                            Ada.Text_IO.Put
+                                                              ("Innner Door : ");
+                                                            Ada.Text_IO.Put
+                                                              (DoorInner
+                                                                 .open_close'
+                                                                 Image);
+                                                            New_Line;
+                                                            Ada.Text_IO.Put
+                                                              ("Outer Door : ");
+                                                            Ada.Text_IO.Put
+                                                              (DoorOuter
+                                                                 .open_close'
+                                                                 Image);
 
-                                                            else
-                                                               Ada.Text_IO.Put
-                                                                 ("Pre-Condition Violated - reconsider input, or check both doors are closed");
-                                                            end if;
-                                                         end;
                                                       else
-                                                         if
-                                                           (S =
-                                                            "close inner door")
-                                                         then
-
-                                                            begin
-                                                               if
-                                                                 (DoorInvairance
-                                                                    (DoorOuter,
-                                                                     DoorInner))
-                                                               then
-                                                                  closeInnerDoor;
-
-                                                                  New_Line;
-                                                                  Ada.Text_IO
-                                                                    .Put
-                                                                    ("Innner Door : ");
-                                                                  Ada.Text_IO
-                                                                    .Put
-                                                                    (DoorInner
-                                                                       .open_close'
-                                                                       Image);
-                                                                  New_Line;
-                                                                  Ada.Text_IO
-                                                                    .Put
-                                                                    ("Outer Door : ");
-                                                                  Ada.Text_IO
-                                                                    .Put
-                                                                    (DoorOuter
-                                                                       .open_close'
-                                                                       Image);
-
-                                                               else
-                                                                  Ada.Text_IO
-                                                                    .Put
-                                                                    ("Pre-Condition Violated - reconsider input, or check both doors are closed");
-                                                               end if;
-                                                            end;
-                                                         else
-                                                            if
-                                                              (S =
-                                                               "close outer door")
-                                                            then
-
-                                                               begin
-                                                                  if
-                                                                    (DoorInvairance
-                                                                       (DoorOuter,
-                                                                        DoorInner))
-                                                                  then
-                                                                     closeOuterDoor;
-
-                                                                     New_Line;
-                                                                     Ada
-                                                                       .Text_IO
-                                                                       .Put
-                                                                       ("Innner Door : ");
-                                                                     Ada
-                                                                       .Text_IO
-                                                                       .Put
-                                                                       (DoorInner
-                                                                          .open_close'
-                                                                          Image);
-                                                                     New_Line;
-                                                                     Ada
-                                                                       .Text_IO
-                                                                       .Put
-                                                                       ("Outer Door : ");
-                                                                     Ada
-                                                                       .Text_IO
-                                                                       .Put
-                                                                       (DoorOuter
-                                                                          .open_close'
-                                                                          Image);
-
-                                                                  else
-                                                                     Ada
-                                                                       .Text_IO
-                                                                       .Put
-                                                                       ("Pre-Condition Violated - reconsider input, or check both doors are closed");
-                                                                  end if;
-                                                               end;
-                                                            else
-                                                               Ada.Text_IO.Put
-                                                                 ("INVALID COMMAND");
-
-                                                            end if;
+                                                         Ada.Text_IO.Put
+                                                        ("Pre-Condition Violated - reconsider input, or check both doors are closed");
                                                          end if;
+                                                      end;
+                                                      else
+                                                      if
+                                                        (S = "close inner door")
+                                                      then
+
+                                                         begin
+                                                       if(DoorInvairance(DoorOuter, DoorInner)) then
+                                                            closeInnerDoor;
+
+                                                            New_Line;
+                                                            Ada.Text_IO.Put
+                                                              ("Innner Door : ");
+                                                            Ada.Text_IO.Put
+                                                              (DoorInner
+                                                                 .open_close'
+                                                                 Image);
+                                                            New_Line;
+                                                            Ada.Text_IO.Put
+                                                              ("Outer Door : ");
+                                                            Ada.Text_IO.Put
+                                                              (DoorOuter
+                                                                 .open_close'
+                                                                 Image);
+
+                                                      else
+                                                         Ada.Text_IO.Put
+                                                        ("Pre-Condition Violated - reconsider input, or check both doors are closed");
+                                                         end if;
+                                                            end;
+                                                            else
+                                                      if
+                                                        (S = "close outer door")
+                                                      then
+
+                                                         begin
+                                                       if(DoorInvairance(DoorOuter, DoorInner)) then
+                                                            closeOuterDoor;
+
+                                                            New_Line;
+                                                            Ada.Text_IO.Put
+                                                              ("Innner Door : ");
+                                                            Ada.Text_IO.Put
+                                                              (DoorInner
+                                                                 .open_close'
+                                                                 Image);
+                                                            New_Line;
+                                                            Ada.Text_IO.Put
+                                                              ("Outer Door : ");
+                                                            Ada.Text_IO.Put
+                                                              (DoorOuter
+                                                                 .open_close'
+                                                                 Image);
+
+                                                      else
+                                                         Ada.Text_IO.Put
+                                                        ("Pre-Condition Violated - reconsider input, or check both doors are closed");
+                                                         end if;
+                                                      end;
+                                                      else
+                                                         Ada.Text_IO.Put
+                                                           ("INVALID COMMAND");
+
                                                       end if;
                                                    end if;
                                                 end if;
@@ -476,7 +425,9 @@ begin
                   end if;
                end if;
             end if;
-         end if;
+               end if;
+            end if;
+              end if;
       end;
    end loop;
 

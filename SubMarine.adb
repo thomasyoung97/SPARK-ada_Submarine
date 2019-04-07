@@ -3,10 +3,6 @@ with SPARK_Mode
 is
 
 
-
-
-
-
 ----- DOOR CONTROL --------------------------------------------------
    procedure openInnerDoor is
    begin
@@ -16,13 +12,16 @@ is
 
 
          DoorOuter.open_close := closed;
+         DoorOuter.locked_unlocked := locked;
 
       end if;
 
 
       if(DoorInner.locked_unlocked = locked) then
 
+
          DoorInner.locked_unlocked := unlocked;
+
 
       end if;
 
@@ -30,7 +29,6 @@ is
 
 
    end openInnerDoor;
-
 
 
    procedure closeInnerDoor is
@@ -79,24 +77,25 @@ is
 
 
 
-
    ----- SYSTEM WARNING CHECKS ---------------------------------------------
    procedure CheckOxygen is
    begin
-      if (OxygenLevel <= warningLevel and O2Warning.on_Off = Off) then
 
-         initiateO2Warning;
 
-      end if;
+         if (OxygenLevel <= warningLevel and O2Warning.on_Off = Off) then
 
-      if(OxygenLevel = EmptyOxygen) then
+            initiateO2Warning;
 
-         Surface;
+         end if;
 
-      end if;
+
+         if(OxygenLevel = EmptyOxygen) then
+
+            Surface;
+
+         end if;
 
    end CheckOxygen;
-
 
    procedure CheckRectorTemp is
    begin
@@ -119,7 +118,6 @@ is
       O2Warning.on_Off := On;
    end initiateO2Warning;
 
-
    procedure initiateTempWarning is
    begin
       TempWarning.on_Off := On;
@@ -130,7 +128,9 @@ is
 
 
 
-   ------- DIVE CONTROL ------------------------------------------------------
+
+
+   ------- LOCOMOTION CONTROL ------------------------------------------------------
    procedure Surface is
    begin
 
@@ -146,7 +146,7 @@ is
    procedure SetDepth (A : in Depth) is
    begin
 
-      if(A < maxDepth) then
+      if(A <= maxDepth) then
 
         CurrentDepth := A;
 
@@ -154,46 +154,42 @@ is
 
    end SetDepth;
 
-   ---------- END DIVE CONTROL ------------------------------------------------
 
-
-   ---- WEAPON CONTROLS ----------------------------------------------
-   --procedure loadAllTorpeado (A : in out AmmoStore; C : in out chambers)
-   --is
-     -- i : AS_Index := A'First;
-      --j : Chambered_index := C'First;
-
-     -- FirstTorpeadoindex : AS_Index := A'First;
- --  begin
-
-      --get index of first torpeado in ammo store.
-    --  while i < A'Last loop
-      --   if(A(i) = Loaded) then
-        --    FirstTorpeadoindex := i;
-       --  end if;
-     -- end loop;
-
-
-      -- get first empty chamber, move torpeado
-      --from ammo store to chamber
-    --  while  j < C'Last loop
-      --   if (C(j) = Empty) then
-        --    A(FirstTorpeadoindex) := Empty;
-        --    C(j) := Loaded;
-      --   end if;
-    --  end loop;
-
- --  end loadAllTorpeado;
-
-
-   procedure fireVolley (C : in out chambers) is
-      i : Chambered_index := C'First;
+   procedure SetSpeed (A : in Speed) is
    begin
 
-      while(i < C'Last) loop
+      CurrentSpeed := A;
 
-         C(i) := Empty;
+      end SetSpeed;
 
+   procedure FineDepthControll (DLever : in DepthLever) is begin
+
+      if(CurrentDepth < maxDepth - 1) then
+
+      if(DLever = Forward) then
+         CurrentDepth := CurrentDepth + 1;
+         end if;
+
+      end if;
+
+      if(CurrentDepth > Depth'First + 1) then
+
+      if(DLever = Backwards) then
+         CurrentDepth := CurrentDepth + 1;
+      end if;
+      end if;
+
+
+      end FineDepthControll;
+   ---------- END DIVE CONTROL ------------------------------------------------
+
+   procedure fireVolley (C : in out chambers) is
+
+   begin
+
+      for i in Chambered_index'Range loop
+
+         C(i):= Empty;
       end loop;
 
    end fireVolley;
@@ -203,7 +199,10 @@ is
    is
    begin
 
+
       C(TI) := Empty;
+
+
 
    end fireSingleTorpeado;
 
@@ -216,6 +215,8 @@ is
           C(TI) := Loaded;
 
    end loadChamber;
+
+
 
 
    procedure POPAMMO is
@@ -232,6 +233,7 @@ is
    end POPAMMO;
 
    procedure PUSHAMMO is
+
    begin
 
       for i in reverse (gAmmoStore'First + 1)..(gAmmoStore'Last) loop
@@ -245,6 +247,7 @@ is
    end PUSHAMMO;
 
    ---- END WEAPON CONROLS -------------------------------------------
+
    procedure SmoothTurn is begin
 
       -- if steering right

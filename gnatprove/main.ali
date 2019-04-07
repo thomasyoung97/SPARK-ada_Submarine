@@ -9,47 +9,152 @@ A -gnatc
 P GP FX
 
 RN
+RV NO_DELAY
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_FIXED_POINT
 RV NO_IO
+RV NO_RELATIVE_DELAY
 RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U main%b		main.adb		e73c0c9b OO SU
+U main%b		main.adb		8ff3e2e8 OO SU
 W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+Z ada.real_time%s	a-reatim.adb		a-reatim.ali
+W ada.strings%s		a-string.ads		a-string.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 W submarine%s		submarine.adb		submarine.ali
 Z system%s		system.ads		system.ali
 
 D ada.ads		20180524051736 76789da1 ada%s
+D a-except.ads		20180524051736 291912d5 ada.exceptions%s
+D a-inteio.ads		20180524051738 f64b89a4 ada.integer_text_io%s
 D a-ioexce.ads		20180524051736 e4a01f64 ada.io_exceptions%s
+D a-reatim.ads		20180524051738 0240fc73 ada.real_time%s
 D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
+D a-string.ads		20180524051736 90ac6797 ada.strings%s
 D a-textio.ads		20180524051738 881db35a ada.text_io%s
+D a-tiinio.ads		20180524051736 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20180524051736 5ab55268 interfaces%s
+D i-c.ads		20180524051736 5421119b interfaces.c%s
+D i-cstrin.ads		20180524051736 341d0ddf interfaces.c.strings%s
 D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
-D main.adb		20190326110528 b3356885 main%b
-D submarine.ads		20190326122442 dc14d744 submarine%s
+D main.adb		20190407174202 e2190e10 main%b
+D submarine.ads		20190407172650 13bcd606 submarine%s
 D system.ads		20180524051738 32a08138 system%s
+D s-atacco.ads		20180524051738 4c36d12f system.address_to_access_conversions%s
 D s-crtl.ads		20180524051736 0ebbdb71 system.crtl%s
 D s-ficobl.ads		20180524051738 078245e4 system.file_control_block%s
+D s-multip.ads		20180524051736 38ac9f73 system.multiprocessors%s
+D s-osinte.ads		20180524051738 2e5b26a9 system.os_interface%s
 D s-parame.ads		20180524051738 48ec542b system.parameters%s
+D s-secsta.ads		20180524051738 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180524051736 a7318a92 system.soft_links%s
+D s-stache.ads		20180524051738 a37c21ec system.stack_checking%s
+D s-stausa.ads		20180524051736 017a0a05 system.stack_usage%s
+D s-stalib.ads		20180524051738 09bd3940 system.standard_library%s
+D s-stoele.ads		20180524051738 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20180524051738 601f6b72 system.task_info%s
+D s-taspri.ads		20180524051738 6c1d93d4 system.task_primitives%s
+D s-taprop.ads		20180524051738 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20180524051738 1d8c1ccb system.tasking%s
+D s-traent.ads		20180524051736 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
+D s-win32.ads		20180524051736 b7f96285 system.win32%s
 X 1 ada.ads
-16K9*Ada 20e8 7|2r6 3r5
-X 4 a-textio.ads
-49K13*Text_IO 471e16 7|2w10 3r9
-X 7 main.adb
-5U11*Main 5b11 23l5 23t9
-11i8 i<short_short_integer> 13r18
-X 8 submarine.ads
-1K9*SubMarine 7|1w6 4r5 8|182e14
-25n25*Loaded{25E9} 7|13r23
-25n33*Empty{25E9} 7|17r24
-29I9*AS_Index<short_short_integer>
-30A9*AmmoStore(25E9)<29I9>
-31a4*gAmmoStore{30A9} 7|11r13 13m7 17m7
-41i4*temp{29I9} 7|19m4
+16K9*Ada 20e8 15|2r6 2r23 3r6 4r6 5r6 10r4 13r4 16r4 19r4 22r4 25r4 29r4
+. 30r4 31r4 33r4 34r4 35r4 37r4 38r4 39r4 41r4 42r4 43r4 49r7 51r24 55r13
+. 56r13 60r16 61r16 65r19 66r19 70r22 72r22 76r25 77r25 92r51 104r40 107r40
+. 108r40 109r40 112r40 127r40 129r40 131r40 140r57 153r46 160r49 162r49 164r49
+. 170r46 181r48 197r49 204r52 207r52 209r52 215r49 227r52 230r52 232r52 248r55
+. 251r55 254r55 260r58 276r58 279r58 282r58 289r58 300r58 302r58 306r58 311r58
+. 313r58 318r59 333r61 335r61 340r61 342r61 348r58 354r58
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[9|46] 15|3w10
+X 7 a-string.ads
+16K13*Strings 35e16 15|4w10 5w10
+X 8 a-textio.ads
+49K13*Text_IO 471e16 15|2w10 2r27 10r8 13r8 16r8 19r8 22r8 25r8 29r8 30r8
+. 31r8 33r8 34r8 35r8 37r8 38r8 39r8 41r8 42r8 43r8 49r11 51r28 55r17 56r17
+. 60r20 61r20 65r23 66r23 70r26 72r26 76r29 77r29 92r55 104r44 107r44 108r44
+. 109r44 112r44 127r44 129r44 131r44 140r61 153r50 160r53 162r53 164r53 170r50
+. 181r52 197r53 204r56 207r56 209r56 215r53 227r56 230r56 232r56 248r59 251r59
+. 254r59 260r62 276r62 279r62 282r62 289r62 300r62 302r62 306r62 311r62 313r62
+. 318r63 333r65 335r65 340r65 342r65 348r62 354r62
+166U14*New_Line 15|12s4 14s4 17s4 20s4 23s4 26s4 32s4 36s4 40s4 44s4 48s7
+. 71s22 159s49 166s49 203s52 211s52 226s52 234s52 247s55 256s55 275s58 285s58
+. 310s58 332s61 339s61
+242U14*Put 15|10s16 13s16 16s16 19s16 22s16 25s16 29s16 30s16 31s16 33s16
+. 34s16 35s16 37s16 38s16 39s16 41s16 42s16 43s16 49s19 55s25 56s25 60s28
+. 61s28 65s31 66s31 70s34 72s34 76s37 77s37 104s52 107s52 108s52 109s52 112s52
+. 127s52 129s52 131s52 153s58 160s61 162s61 164s61 170s58 197s61 204s64 207s64
+. 209s64 215s61 227s64 230s64 232s64 248s67 251s67 254s67 260s70 276s70 279s70
+. 282s70 289s70 300s70 302s70 306s70 311s70 313s70 318s71 333s73 335s73 340s73
+. 342s73 348s70 354s70
+256V13*Get_Line{string} 15|51s36 92s63 140s69 181s60
+X 15 main.adb
+6U11*Main 6b11 376l5 376t9
+7b4 run{boolean} 46r11 81m28 85m31
+51a10 S{string} 53r14 59r17 64r20 69r23 75r26 80r29 84r32 88r35 119r38 136r41
+. 176r44 220r47 240r50 266r53 294r56 325r58
+92a37 A{string} 93r64
+93i37 B{16|6I9} 98r55 102r50
+140a43 C{string} 142r68
+141i43 D{16|48I9} 147r58 151r66
+156i50 i{16|48I9} 162r66 165r63
+180a46 E{string} 183r71
+182i46 F{16|48I9} 188r61 195r62
+200i53 i{16|48I9} 207r69 210r66
+224i53 i{16|44I9} 230r69 233r67
+245i56 i{16|44I9} 252r58 255r70
+269i68 i<short_short_integer> 269r102
+271i59 i{16|48I9} 280r61 283r72
+X 16 submarine.ads
+1K9*SubMarine 15|1w6 1r23 16|223e14
+6I9*Depth<short_integer> 15|93r41 93r51 122r56
+7i4*CurrentDepth{6I9} 15|34r21 60r33 98r40 108r57 122r40 129r57
+8i4*maxDepth{6I9} 15|98r60
+13I9*Speed<short_short_integer>
+14i4*CurrentSpeed{13I9} 15|30r21 76r42
+17I9*Oxygen<short_short_integer>
+18i4*OxygenLevel{17I9} 15|38r21 55r30
+30I9*Temperature<short_integer>
+31i4*currentTemp{30I9} 15|42r21 65r36
+37n25*Loaded{37E9} 15|147r63 191r50 269r107
+37n33*Empty{37E9} 15|188r66 243r85
+44I9*AS_Index<short_short_integer> 15|224r58 245r61
+45A9*AmmoStore(37E9)<44I9>
+46a4*gAmmoStore{45A9} 15|189r50 190r53 233r55 243r55 243r66 255r58
+48I9*Chambered_index<short_short_integer> 15|141r47 142r45 156r55 182r50
+. 183r48 200r58 271r64
+49A9*chambers(37E9)<48I9>
+50a4*TChambers{49A9} 15|147r47 151m69 151r69 165r52 188r50 195m65 195r65
+. 210r55 269r73 269r92 270m67 270r67 283r61
+52n30*closed{52E9} 15|148r69 149r69
+60e7*open_close{52E9} 15|70r49 72r49 148r56 149r56 304r64 315r64 337r67 344r67
+61e7*locked_unlocked{53E9} 15|308r64
+65r4*DoorInner{59R9} 15|72r39 99r68 123r68 148r46 193r63 243r121 269r145
+. 298r84 314r61 329r85 336r64
+66r4*DoorOuter{59R9} 15|70r39 99r57 123r57 149r46 193r52 243r111 269r135
+. 298r73 303r61 307r61 329r74 343r64
+81U14*openInnerDoor 15|330s61
+91U14*openOuterDoor 15|299s58
+101V13*DoorInvairance{boolean} 15|298s58 329s59
+106V13*BothDoorsClosed{boolean} 15|99s40 123s40 192s49 243s95 269s119
+148U14*Surface 15|125s40
+154U14*SetDepth 15|102s40
+189U14*fireVolley 15|270s55
+193U14*PUSHAMMO 15|244s52
+207U14*fireSingleTorpeado 15|151s46
+214U14*loadChamber 15|195s49
+X 27 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
 
 QQ SPARKVERSION 2018 (20180523)
 GG EK_DIRECT_CALLS main 0
-GG EK_GLOBALS main local FALSE E_PROCEDURE FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 2 submarine__gammostore submarine__temp proper_output 2 submarine__gammostore submarine__temp refined_proof_in 0 refined_input 2 submarine__gammostore submarine__temp refined_output 2 submarine__gammostore submarine__temp calls_proof 0 calls 0 calls_conditional 0 local_var 0 FALSE TRUE FALSE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 2 submarine__gammostore submarine__temp LOCKS 0
+GG EK_GLOBALS main local FALSE E_PROCEDURE FALSE ORIGIN_FLOW proper_proof_in 0 proper_input 9 submarine__currentdepth submarine__maxdepth submarine__currentspeed submarine__oxygenlevel submarine__currenttemp submarine__gammostore submarine__tchambers submarine__doorinner submarine__doorouter proper_output 1 submarine__tchambers refined_proof_in 0 refined_input 9 submarine__currentdepth submarine__maxdepth submarine__currentspeed submarine__oxygenlevel submarine__currenttemp submarine__gammostore submarine__tchambers submarine__doorinner submarine__doorouter refined_output 1 submarine__tchambers calls_proof 0 calls 0 calls_conditional 13 submarine__openinnerdoor submarine__openouterdoor submarine__doorinvairance submarine__bothdoorsclosed submarine__surface submarine__setdepth submarine__firevolley submarine__pushammo submarine__firesingletorpeado submarine__loadchamber ada__text_io__new_line__2 ada__text_io__put__4 ada__text_io__get_line__4 local_var 0 FALSE TRUE FALSE ENTRY_CALLS 0 SUSPENDS_ON 0 UNSYNCH_ACCESSES 9 submarine__currentdepth submarine__maxdepth submarine__currentspeed submarine__oxygenlevel submarine__currenttemp submarine__gammostore submarine__tchambers submarine__doorinner submarine__doorouter LOCKS 0
 GG EK_END_MARKER

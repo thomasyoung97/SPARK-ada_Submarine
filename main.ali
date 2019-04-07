@@ -8,30 +8,52 @@ A -march=x86-64
 P ZX
 
 RN
+RV NO_DELAY
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_FIXED_POINT
 RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_RELATIVE_DELAY
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DYNAMIC_SIZED_OBJECTS
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U main%b		main.adb		069e7718 NE OO SU
+U main%b		main.adb		7ae79052 NE OO SU
 W ada%s			ada.ads			ada.ali
+Z ada.calendar.delays%s	a-caldel.adb		a-caldel.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.strings%s		a-string.ads		a-string.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
+Z interfaces%s		interfac.ads		interfac.ali
 W submarine%s		submarine.adb		submarine.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.val_int%s	s-valint.adb		s-valint.ali
 
 D ada.ads		20180524051736 76789da1 ada%s
+D a-calend.ads		20180524051738 372815c8 ada.calendar%s
+D a-caldel.ads		20180524051736 9f20b83d ada.calendar.delays%s
 D a-except.ads		20180524051736 291912d5 ada.exceptions%s
+D a-inteio.ads		20180524051738 f64b89a4 ada.integer_text_io%s
 D a-ioexce.ads		20180524051736 e4a01f64 ada.io_exceptions%s
 D a-stream.ads		20180524051736 119b8fb3 ada.streams%s
+D a-string.ads		20180524051736 90ac6797 ada.strings%s
 D a-tags.ads		20180524051738 491b781d ada.tags%s
 D a-textio.ads		20180524051738 881db35a ada.text_io%s
+D a-tiinio.ads		20180524051736 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20180524051738 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20180524051736 5ab55268 interfaces%s
 D i-cstrea.ads		20180524051736 e53d8b8e interfaces.c_streams%s
-D main.adb		20190325155054 b3356885 main%b
-D submarine.ads		20190325152452 3db6acc7 submarine%s
+D main.adb		20190407175218 8e497420 main%b
+D submarine.ads		20190407174216 8af8de8c submarine%s
 D system.ads		20180524051738 32a08138 system%s
 D s-crtl.ads		20180524051736 0ebbdb71 system.crtl%s
 D s-exctab.ads		20180524051738 54135002 system.exception_table%s
 D s-ficobl.ads		20180524051738 078245e4 system.file_control_block%s
+D s-imgint.ads		20180524051736 02dbe0c2 system.img_int%s
 D s-parame.ads		20180524051738 48ec542b system.parameters%s
 D s-secsta.ads		20180524051738 20bbe636 system.secondary_stack%s
 D s-soflin.ads		20180524051736 a7318a92 system.soft_links%s
@@ -40,20 +62,98 @@ D s-stalib.ads		20180524051738 09bd3940 system.standard_library%s
 D s-stoele.ads		20180524051738 2dc34a04 system.storage_elements%s
 D s-traent.ads		20180524051736 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20180524051736 34867c83 system.unsigned_types%s
+D s-valint.ads		20180524051736 48a52a3f system.val_int%s
 D s-wchcon.ads		20180524051738 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 20e8 10|2r6 3r5
-X 6 a-textio.ads
-49K13*Text_IO 471e16 10|2w10 3r9
-X 10 main.adb
-5U11*Main 5b11 23l5 23t9
-11i8 i<short_short_integer> 13r18
-X 11 submarine.ads
-1K9*SubMarine 10|1w6 4r5 11|189e14
-25n25*Loaded{25E9} 10|13r23
-25n33*Empty{25E9} 10|17r24
-29I9*AS_Index<short_short_integer>
-30A9*AmmoStore(25E9)<29I9>
-31a4*gAmmoStore{30A9} 10|11r13 13m7 17m7
-41i4*temp{29I9} 10|19m4
+16K9*Ada 20e8 15|2r6 2r23 3r6 4r6 5r6 10r4 13r4 16r4 19r4 22r4 25r4 29r4
+. 30r4 31r4 33r4 34r4 35r4 37r4 38r4 39r4 41r4 42r4 43r4 49r7 51r24 55r13
+. 56r13 60r16 61r16 65r19 66r19 70r22 72r22 76r25 77r25 92r51 104r40 105r40
+. 106r40 109r40 124r40 126r40 128r40 137r57 150r46 157r49 159r49 161r49 167r46
+. 178r48 194r49 201r52 204r52 206r52 212r49 224r52 227r52 229r52 252r58 255r58
+. 258r58 265r55 291r61 294r61 297r61 304r58 319r61 321r61 325r61 330r61 332r61
+. 337r61 356r64 358r64 363r64 365r64 371r64 390r67 393r67 399r67 402r67 409r67
+. 429r70 433r70 440r70 444r70 452r70 459r64
+X 5 a-inteio.ads
+18K13*Integer_Text_IO[11|46] 15|3w10
+X 8 a-string.ads
+16K13*Strings 35e16 15|4w10 5w10
+X 10 a-textio.ads
+49K13*Text_IO 471e16 15|2w10 2r27 10r8 13r8 16r8 19r8 22r8 25r8 29r8 30r8
+. 31r8 33r8 34r8 35r8 37r8 38r8 39r8 41r8 42r8 43r8 49r11 51r28 55r17 56r17
+. 60r20 61r20 65r23 66r23 70r26 72r26 76r29 77r29 92r55 104r44 105r44 106r44
+. 109r44 124r44 126r44 128r44 137r61 150r50 157r53 159r53 161r53 167r50 178r52
+. 194r53 201r56 204r56 206r56 212r53 224r56 227r56 229r56 252r62 255r62 258r62
+. 265r59 291r65 294r65 297r65 304r62 319r65 321r65 325r65 330r65 332r65 337r65
+. 356r68 358r68 363r68 365r68 371r68 390r71 393r71 399r71 402r71 409r71 430r73
+. 434r73 441r73 445r73 453r73 459r68
+166U14*New_Line 15|12s4 14s4 17s4 20s4 23s4 26s4 32s4 36s4 40s4 44s4 48s7
+. 71s22 156s49 163s49 200s52 208s52 223s52 231s52 251s58 261s58 290s61 300s61
+. 329s61 355s64 362s64 389s67 398s67 428s70 439s70
+242U14*Put 15|10s16 13s16 16s16 19s16 22s16 25s16 29s16 30s16 31s16 33s16
+. 34s16 35s16 37s16 38s16 39s16 41s16 42s16 43s16 49s19 55s25 56s25 60s28
+. 61s28 65s31 66s31 70s34 72s34 76s37 77s37 104s52 105s52 106s52 109s52 124s52
+. 126s52 128s52 150s58 157s61 159s61 161s61 167s58 194s61 201s64 204s64 206s64
+. 212s61 224s64 227s64 229s64 252s70 255s70 258s70 265s67 291s73 294s73 297s73
+. 304s70 319s73 321s73 325s73 330s73 332s73 337s73 356s76 358s76 363s76 365s76
+. 371s76 391s70 394s70 400s70 403s70 410s70 431s73 435s73 442s73 446s73 454s73
+. 459s76
+256V13*Get_Line{string} 15|51s36 92s63 137s69 178s60
+X 15 main.adb
+6U11*Main 6b11 483l5 483t9
+7b4 run{boolean} 46r11 81m28 85m31
+51a10 S{string} 53r14 59r17 64r20 69r23 75r26 80r29 84r32 88r35 116r38 133r41
+. 173r44 217r47 237r50 271r53 309r56 344r58 377r61 416r64
+92a37 A{string} 93r64
+93i37 B{16|6I9} 98r55 102r50
+137a43 C{string} 139r68
+138i43 D{16|48I9} 144r58 148r66
+153i50 i{16|48I9} 159r66 162r63
+177a46 E{string} 180r71
+179i46 F{16|48I9} 185r61 192r62
+197i53 i{16|48I9} 204r69 207r66
+221i53 i{16|44I9} 227r69 230r67
+248i59 i{16|44I9} 256r61 259r73
+275i68 i<short_short_integer> 278r72
+286i62 i{16|48I9} 295r64 298r75
+X 16 submarine.ads
+1K9*SubMarine 15|1w6 1r23 16|223e14
+6I9*Depth<short_integer> 15|93r41 93r51 119r56
+7i4*CurrentDepth{6I9} 15|34r21 60r33 98r40 105r57 119r40 126r57
+8i4*maxDepth{6I9} 15|98r60
+13I9*Speed<short_short_integer>
+14i4*CurrentSpeed{13I9} 15|30r21 76r42
+17I9*Oxygen<short_short_integer>
+18i4*OxygenLevel{17I9} 15|38r21 55r30
+30I9*Temperature<short_integer>
+31i4*currentTemp{30I9} 15|42r21 65r36
+37n25*Loaded{37E9} 15|144r63 188r50 279r61
+37n33*Empty{37E9} 15|185r66 243r55
+44I9*AS_Index<short_short_integer> 15|221r58 248r64
+45A9*AmmoStore(37E9)<44I9>
+46a4*gAmmoStore{45A9} 15|186r50 187r53 230r55 241r55 242r58 259r61
+48I9*Chambered_index<short_short_integer> 15|138r47 139r45 153r55 179r50
+. 180r48 197r58 286r67
+49A9*chambers(37E9)<48I9>
+50a4*TChambers{49A9} 15|144r47 148m69 148r69 162r52 185r50 192m65 192r65
+. 207r55 275r73 278r61 285m61 285r61 298r64
+52n30*closed{52E9} 15|145r69 146r69
+60e7*open_close{52E9} 15|70r49 72r49 145r56 146r56 323r67 334r67 360r70 367r70
+. 396r73 405r73 437r76 448r76
+61e7*locked_unlocked{53E9} 15|327r67
+65r4*DoorInner{59R9} 15|72r39 99r68 120r68 145r46 190r63 245r69 282r61 316r64
+. 333r64 351r67 359r67 385r70 395r70 424r73 436r73
+66r4*DoorOuter{59R9} 15|70r39 99r57 120r57 146r46 190r52 245r58 281r61 315r64
+. 322r64 326r64 350r67 366r67 384r70 404r70 423r73 447r73
+81U14*openInnerDoor 15|353s64
+86U14*closeInnerDoor 15|387s67
+91U14*openOuterDoor 15|318s61
+96U14*closeOuterDoor 15|426s70
+101V13*DoorInvairance{boolean} 15|314s61 349s64 383s67 422s70
+106V13*BothDoorsClosed{boolean} 15|99s40 120s40 189s49 244s55 280s58
+148U14*Surface 15|122s40
+154U14*SetDepth 15|102s40
+189U14*fireVolley 15|284s58
+193U14*PUSHAMMO 15|247s55
+207U14*fireSingleTorpeado 15|148s46
+214U14*loadChamber 15|192s49
 

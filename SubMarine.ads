@@ -7,6 +7,11 @@ is
    CurrentDepth : Depth := (Depth'Last / 2);
    maxDepth : Depth := Depth'Last;
 
+   type DepthLever is (Forward, Backwards);
+   Dlever : DepthLever;
+
+   type Speed is range -100..100;
+   CurrentSpeed : Speed := (Speed'Last / 2);
 
    --oxegen monitor
    type Oxygen is range 0..100;
@@ -27,11 +32,11 @@ is
    maxSafeTemp : Temperature := (Temperature'Last /100) * 90;
    warningTemp : Temperature := (Temperature'Last /100) * 80;
 
+   hasFired : Boolean := False;
 
    type TorpeadoBay is (Loaded, Empty);
 
    type Direction is (Forward, Aft , Port, Starboard);
-
 
 
    SubDirection : Direction := Forward;
@@ -42,7 +47,7 @@ is
 
    type Chambered_index is range  0..4;
    type chambers is array(Chambered_index) of TorpeadoBay;
-
+   TChambers : chambers;
 
    type OpenClose is (Open , closed);
    type lock is (locked, unlocked);
@@ -72,42 +77,38 @@ is
 
 
 
-
    ------ DOOR CONTROL ------------------------------------------
    procedure openInnerDoor with
      Global => (In_Out => (DoorInner,DoorOuter)),
      Pre => DoorInvairance(DoorOuter, DoorInner),
      Post => DoorInvairance(DoorOuter, DoorInner);
 
-
    procedure closeInnerDoor with
      Global => (In_Out => DoorInner, Input => DoorOuter),
      Pre => DoorInvairance(DoorOuter, DoorInner),
      Post => DoorInvairance(DoorOuter, DoorInner);
-
 
    procedure openOuterDoor with
     Global => (In_Out => (DoorInner, DoorOuter)),
      Pre => DoorInvairance(DoorOuter, DoorInner) ,
      Post => DoorInvairance(DoorOuter, DoorInner);
 
-
-
    procedure closeOuterDoor with
      Global => (In_Out =>  DoorOuter , Input => DoorInner),
      Pre => DoorInvairance(DoorOuter, DoorInner),
      Post => DoorInvairance(DoorOuter, DoorInner);
 
-
-
    function DoorInvairance (DoorOuter : in door ; DoorInner : in  door) return Boolean is
      ((if DoorInner.open_close = Open then DoorOuter.open_close = closed and DoorOuter.locked_unlocked = locked and DoorInner.locked_unlocked = unlocked) or
-          (if DoorOuter.open_close = Open then DoorInner.open_close = closed and DoorInner.locked_unlocked = locked and DoorOuter.locked_unlocked = unlocked));
+          (if DoorOuter.open_close = Open then DoorInner.open_close = closed and DoorInner.locked_unlocked = locked and DoorOuter.locked_unlocked = unlocked) or
+          (DoorOuter.open_close = closed and DoorOuter.locked_unlocked = locked and DoorInner.open_close = closed and DoorInner.locked_unlocked = locked));
 
-
-
+   function BothDoorsClosed(DoorOuter : in door ; DoorInner : in  door) return Boolean is
+     ((DoorOuter.open_close = closed and DoorOuter.locked_unlocked = locked) and (DoorInner.open_close = closed and DoorInner.locked_unlocked = locked));
 
    ---- END DOOR CONTROL --------------------------------------------------
+
+
 
 
 
@@ -115,89 +116,104 @@ is
    ---- SYSTEM WARNING CHECKS ----------------------------------------------
 
    procedure initiateO2Warning with
-     Global => (In_Out => O2Warning),
-     Pre => O2Warning.on_Off = Off,
+     Global => (In_Out => O2Warning, Input => (DoorOuter,DoorInner)),
+     Pre => O2Warning.on_Off = Off and BothDoorsClosed(DoorOuter,DoorInner),
      Post => O2Warning.on_Off = On;
 
    procedure CheckOxygen with
-     Global => (Input => (OxygenLevel, warningLevel,EmptyOxygen),
-                In_Out => (O2Warning, CurrentDepth));
+     Global => (Input => (OxygenLevel, warningLevel,EmptyOxygen,DoorInner,DoorOuter),
+                In_Out => (O2Warning, CurrentDepth)),
+       Pre => BothDoorsClosed(DoorOuter,DoorInner);
+
 
    procedure initiateTempWarning with
-     Global => (In_Out => TempWarning),
-     Pre => TempWarning.on_Off = Off,
+     Global => (In_Out => TempWarning , Input => (DoorOuter,DoorInner)),
+     Pre => TempWarning.on_Off = Off and BothDoorsClosed(DoorOuter,DoorInner),
      Post => TempWarning.on_Off = On;
 
+
    procedure CheckRectorTemp with
-     Global => (Input => (currentTemp,warningTemp,maxSafeTemp),
-                In_Out => (TempWarning, CurrentDepth));
+     Global => (Input => (currentTemp,warningTemp,maxSafeTemp, DoorInner,DoorOuter),
+                In_Out => (TempWarning, CurrentDepth)),
+     Pre =>BothDoorsClosed(DoorOuter,DoorInner),
+   Post => BothDoorsClosed(DoorOuter,DoorInner);
+
 
    --- END SYSTEM WARNING CHECKS ------------------------------------------
 
 
 
-   --- DIVE CONTROLS ------------------------------------------------------
 
+   --- LOCOMOTION CONTROLS ------------------------------------------------------
    procedure Surface with
-     Global => (In_Out => CurrentDepth),
-     Pre => CurrentDepth >= Depth'First,
+     Global => (In_Out => CurrentDepth, Input => (DoorInner,DoorOuter)),
+     Pre => CurrentDepth >= Depth'First and BothDoorsClosed(DoorOuter,DoorInner),
      Post => CurrentDepth <= Depth'First;
 
 
    procedure SetDepth  (A : in Depth) with
-     Global => (In_Out => CurrentDepth , Input => maxDepth),
-     Pre => CurrentDepth <= maxDepth,
+     Global => (In_Out => CurrentDepth , Input => (maxDepth,DoorOuter,DoorInner)),
+     Pre => CurrentDepth + A <= maxDepth and BothDoorsClosed(DoorOuter,DoorInner),
      Post => CurrentDepth <= maxDepth and CurrentDepth >= Depth'First;
 
-  ---- END DIVE CONTROLS ---------------------------------------------------
+
+   procedure FineDepthControll (DLever : in DepthLever)with
+     Global => (In_Out => CurrentDepth , Input => (maxDepth,DoorOuter,DoorInner)),
+     Pre => (CurrentDepth < maxDepth and CurrentDepth > Depth'First) and BothDoorsClosed(DoorOuter,DoorInner),
+     Post => (CurrentDepth <= maxDepth and CurrentDepth > Depth'First);
+
+
+   procedure SetSpeed (A : in Speed) with
+     Global => (Output => CurrentSpeed),
+     Pre => (A < Speed'Last),
+     Post => (CurrentSpeed = A);
+
+  ---- END LOCOMOTION CONTROLS ---------------------------------------------------
+
+
+
 
   --- Turning controlls ----------------------------------------------------
    procedure SnapTurn (D : in Direction)with
-     Global =>(In_Out => SubDirection),
-     Pre => (D /= SubDirection),
+     Global =>(In_Out => SubDirection, Input => (DoorInner,DoorOuter)),
+     Pre => (D /= SubDirection) and BothDoorsClosed(DoorOuter,DoorInner),
      Post => (SubDirection =  D);
 
 
    procedure Smoothturn with
-     Global => (Input => steeringWheelMidPoint, In_Out => NoseRotation),
+     Global => (Input => (steeringWheelMidPoint,DoorInner,DoorOuter), In_Out => NoseRotation),
+     Pre => BothDoorsClosed(DoorOuter,DoorInner),
      Post => (NoseRotation <= SubXNoseRotation'Last);
 
    ---- WEAPON CONTROLLS ---------------------------------------------------
-
-   --procedure loadAllTorpeado (A : in out AmmoStore ; C : in out chambers) with
-     --Pre => (for some j in A'Range => A(j)  = Loaded) and
-     --(for some k in C'Range => C(k) = Empty),
-     --Post => (for some i in C'Range => C(i) = Loaded);
-
    procedure fireVolley (C : in out chambers) with
-     Pre => (for some i in C'Range => C(i) = Loaded),
+     Pre => (for some i in C'Range => C(i) = Loaded) and BothDoorsClosed(DoorOuter,DoorInner),
      Post => (for all j in C'Range => C(j) = Empty);
 
-
    procedure PUSHAMMO with
-     Global=> (In_Out => gAmmoStore),
-     Pre => gAmmoStore(gAmmoStore'Last) = Empty,
+     Global=> (In_Out => gAmmoStore , Input => (DoorInner,DoorOuter)),
+     Pre => gAmmoStore(gAmmoStore'Last) = Empty and BothDoorsClosed(DoorOuter,DoorInner),
      Post => gAmmoStore(gAmmoStore'First) = Loaded;
 
 
+
    procedure POPAMMO with
-     Global => (In_Out => (gAmmoStore)),
-     Pre => (gAmmoStore(gAmmoStore'First) = Loaded),
+     Global => (In_Out => (gAmmoStore), Input => (DoorInner, DoorOuter)),
+     Pre => (gAmmoStore(gAmmoStore'First) = Loaded) and BothDoorsClosed(DoorOuter,DoorInner),
      Post => (gAmmoStore(gAmmoStore'Last) = Empty);
-
-
-
 
 
    --takes chambered torpeado index and fires it providing its not empty
    procedure fireSingleTorpeado (TI : in Chambered_index; C: in out chambers) with
-     Pre => (C(TI) = Loaded),
-     Post => (C(TI) = Empty);
+     Global => (Input => (DoorInner, DoorOuter)),
+     Pre => (C(TI) = Loaded)  and DoorInner.open_close = closed and DoorOuter.open_close = closed,
+     Post => (C(TI) = Empty) and DoorInner.open_close = closed and DoorOuter.open_close = closed ;
+
 
 
    procedure loadChamber (TI : in Chambered_index; C: in out chambers) with
-     Global => (In_Out => gAmmoStore),
-     Pre => (C(TI) = empty) and (gAmmoStore(gAmmoStore'First) = Loaded),
+     Global => (In_Out => gAmmoStore, Input => (DoorOuter,DoorInner)),
+     Pre => (C(TI) = empty) and (gAmmoStore(gAmmoStore'First) = Loaded) and BothDoorsClosed(DoorOuter,DoorInner),
      Post => (C(TI) = Loaded) and (for all i in C'Range => (if i /= TI then C(i) = c'Old(i)));
 
    --- WEAPON CONTROLLS ----------------------------------------------------
