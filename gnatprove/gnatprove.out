@@ -10,10 +10,10 @@ Initialization                    2         2          .          .            .
 Non-Aliasing                      .         .          .          .            .           .          .
 Run-time Checks                   7         .          .          .     7 (CVC4)           .          .
 Assertions                        .         .          .          .            .           .          .
-Functional Contracts             23         .          .          .    23 (CVC4)           .          .
+Functional Contracts             24         .          .          .    24 (CVC4)           .          .
 LSP Verification                  .         .          .          .            .           .          .
 -------------------------------------------------------------------------------------------------------
-Total                            32    2 (6%)          .          .     30 (94%)           .          .
+Total                            33    2 (6%)          .          .     31 (94%)           .          .
 
 
 Analyzed 2 units
@@ -21,24 +21,24 @@ in unit main, 0 subprograms and packages out of 1 analyzed
   Main at main.adb:6 skipped
 in unit submarine, 22 subprograms and packages out of 22 analyzed
   SubMarine at submarine.ads:1 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
-  SubMarine.BothDoorsClosed at submarine.ads:106 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
-  SubMarine.CheckOxygen at submarine.ads:123 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
-  SubMarine.CheckRectorTemp at submarine.ads:135 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (3 checks)
-  SubMarine.DoorInvairance at submarine.ads:101 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
-  SubMarine.FineDepthControll at submarine.ads:160 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (3 checks)
-  SubMarine.POPAMMO at submarine.ads:200 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.PUSHAMMO at submarine.ads:193 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.SetDepth at submarine.ads:154 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.SetSpeed at submarine.ads:166 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.Smoothturn at submarine.ads:183 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (5 checks)
-  SubMarine.SnapTurn at submarine.ads:177 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.Surface at submarine.ads:148 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  SubMarine.BothDoorsClosed at submarine.ads:107 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  SubMarine.CheckOxygen at submarine.ads:125 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (3 checks)
+  SubMarine.CheckRectorTemp at submarine.ads:138 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (3 checks)
+  SubMarine.DoorInvairance at submarine.ads:102 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (0 checks)
+  SubMarine.FineDepthControll at submarine.ads:164 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (3 checks)
+  SubMarine.POPAMMO at submarine.ads:207 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.PUSHAMMO at submarine.ads:200 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.SetDepth at submarine.ads:158 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.SetSpeed at submarine.ads:170 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.Smoothturn at submarine.ads:188 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (5 checks)
+  SubMarine.SnapTurn at submarine.ads:182 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.Surface at submarine.ads:152 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
   SubMarine.closeInnerDoor at submarine.ads:86 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
   SubMarine.closeOuterDoor at submarine.ads:96 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.fireSingleTorpeado at submarine.ads:207 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.fireVolley at submarine.ads:189 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.initiateO2Warning at submarine.ads:118 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.initiateTempWarning at submarine.ads:129 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
-  SubMarine.loadChamber at submarine.ads:214 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
+  SubMarine.fireSingleTorpeado at submarine.ads:214 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.fireVolley at submarine.ads:196 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.initiateO2Warning at submarine.ads:119 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.initiateTempWarning at submarine.ads:132 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
+  SubMarine.loadChamber at submarine.ads:220 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (2 checks)
   SubMarine.openInnerDoor at submarine.ads:81 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)
   SubMarine.openOuterDoor at submarine.ads:91 flow analyzed (0 errors, 0 checks and 0 warnings) and proved (1 checks)

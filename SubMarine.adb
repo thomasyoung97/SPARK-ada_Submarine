@@ -81,7 +81,6 @@ is
    procedure CheckOxygen is
    begin
 
-
          if (OxygenLevel <= warningLevel and O2Warning.on_Off = Off) then
 
             initiateO2Warning;
@@ -89,13 +88,21 @@ is
          end if;
 
 
-         if(OxygenLevel = EmptyOxygen) then
+         if(OxygenLevel <= EmptyOxygen) then
 
             Surface;
+
+      end if;
+
+      if(OxygenLevel > warningLevel and O2Warning.on_Off = on) then
+
+         O2Warning.on_Off := Off;
 
          end if;
 
    end CheckOxygen;
+
+
 
    procedure CheckRectorTemp is
    begin
@@ -111,12 +118,22 @@ is
 
       end if;
 
+      if (currentTemp < warningTemp and TempWarning.on_Off = On ) then
+
+         TempWarning.on_Off := Off;
+
+      end if;
+
    end CheckRectorTemp;
+
 
    procedure initiateO2Warning is
    begin
+
       O2Warning.on_Off := On;
+
    end initiateO2Warning;
+
 
    procedure initiateTempWarning is
    begin
@@ -251,7 +268,7 @@ is
    procedure SmoothTurn is begin
 
       -- if steering right
-      while(steeringWheelMidPoint > (Steering'Last / 2)) loop
+      while(steeringWheelMidPoint > ((Steering'Last / 4))) loop
 
          -- if nose goes past 360 then reset to 1.
          if(NoseRotation = (SubXNoseRotation'Last)) then
@@ -264,7 +281,7 @@ is
       end loop;
 
          -- when steering hard right
-         while(NoseRotation = (SubXNoseRotation'Last / 2 + (SubXNoseRotation'Last / 3))) loop
+         while(NoseRotation = (SubXNoseRotation'Last / 2)) loop
 
            if(NoseRotation = (SubXNoseRotation'Last)) then
 
@@ -278,7 +295,7 @@ is
       end loop;
 
       -- if steering wheel is turning left
-         while (steeringWheelMidPoint < (Steering'Last / 2)) loop
+         while (steeringWheelMidPoint > (Steering'Last / 2)) loop
 
          -- if rotation goes past 1 then set to 360;
          if(NoseRotation = (SubXNoseRotation'First)) then
@@ -293,7 +310,7 @@ is
       end loop;
 
 
-   while (steeringWheelMidPoint < (Steering'Last / 2) - (Steering'Last / 3)) loop
+   while (steeringWheelMidPoint > (Steering'Last / 2) + (Steering'Last / 4)) loop
 
          -- if rotation goes past 1 then set to 360;
          if(NoseRotation = (SubXNoseRotation'First)) then
